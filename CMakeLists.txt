@@ -45,7 +45,7 @@ option(BUILD_CRS "Build CRS" ON)
 option(BUILD_ERGC "Build ERGC" ON)
 
 # Remaining algorithms:
-option(BUILD_FH "Build FH" ON)
+option(BUILD_FH "Build FH" OFF)
 #option(BUILD_MSS "Build MSS" OFF)
 option(BUILD_PB "Build PB" OFF)
 option(BUILD_PRESLIC "Build preSLIC" OFF)
