@@ -2,9 +2,9 @@
 
 There are three main components that need to be built:
 
-* [C++ Components](c++)
-* [MatLab Components](matlab)
-* [Java Components (PF)](java-components)
+* [C++ Components](#c++)
+* [MatLab Components](#matlab)
+* [Java Components (PF)](#java)
 
 Building has been tested under Ubuntu 12.04 and Ubuntu 14.04. **Note that
 building can be customized allowing to built the desired components and

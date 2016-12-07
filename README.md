@@ -5,7 +5,7 @@ comparison of state-of-the-art superpixel algorithms.
 
 **Paper: [ArXiv](https://arxiv.org/abs/1612.01601) | [Full Resolution Original](http://davidstutz.de/projects/superpixel-benchmark/)**
 
-**[Project page](http://davidstutz.de/projects/superpixel-benchmark/)**
+**[Project page](http://davidstutz.de/projects/superpixel-benchmark/).**
 
 The corresponding datasets will be made available here:
 [davidstutz/superpixel-benchmark-data](https://github.com/davidstutz/superpixel-evaluation-data).

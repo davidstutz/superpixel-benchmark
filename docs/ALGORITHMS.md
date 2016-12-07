@@ -7,7 +7,7 @@ is taken from the appendix in [35].
          Superpixels: An Evaluation of the State-of-the-Art.
          Computing Research Repository, abs/1612.01601.
 
-![Algorithm overview.](ALGORITHMS.png?raw=true "Algorithm overview.")
+![Algorithm overview.](ALGORITHMS_TABLE.png?raw=true "Algorithm overview.")
 
     [1] F. Meyer.
         Color image segmentation.
