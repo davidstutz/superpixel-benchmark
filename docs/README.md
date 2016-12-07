@@ -12,7 +12,7 @@ Documentation index:
 * [Parameters](docs/PARAMETERS.md)
 * [Results](docs/RESULTS.md)
 
-Note that the documentation is complemented by [1]. A Copy of [1] is included: [Paper](docs/PAPER.md).
+Note that the documentation is complemented by [1]:
 
     [1] D. Stutz, A. Hermans, B. Leibe.
         Superpixels: An Evaluation of the State-of-the-Art.
