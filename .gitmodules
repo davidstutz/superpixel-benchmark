@@ -1,0 +1,6 @@
+[submodule "lib_reseeds"]
+	path = lib_reseeds
+	url = https://github.com/davidstutz/seeds-revised
+[submodule "lib_refh"]
+	path = lib_refh
+	url = https://github.com/davidstutz/graph-based-image-segmentation

@@ -1,0 +1,29 @@
+#include <common/WdgtMain.h>
+#include <QtGui/Application>
+#include <boost/program_options.hpp>
+
+int main(int argc, char *argv[])
+{
+	namespace po = boost::program_options;
+
+	// parse command line options
+	po::options_description desc("Allowed options");
+	desc.add_options()
+		("help", "produce help message")
+	;
+
+	po::variables_map vm;
+	po::store(po::parse_command_line(argc, argv, desc), vm);
+	po::notify(vm);    
+
+	if (vm.count("help")) {
+		std::cout << desc << std::endl;
+		return 1;
+	}
+
+	QApplication a(argc, argv);
+	WdgtMain w;
+	w.show();
+
+	return a.exec();
+}

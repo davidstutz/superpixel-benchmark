@@ -1,0 +1,49 @@
+find_package(Qt4 REQUIRED)
+
+add_definitions(-DSLIMAGE_IO_QT)
+
+link_directories(
+	/home/david/Projects/dasp/release/libdasp
+)
+
+include_directories(
+	${DANVILTOOLS_DIR}/CT/src
+	${dasp_SOURCE_DIR}/libdasp
+	${CANDY_DIR}/libcandy/src
+	${SLIMAGE_DIR}
+)
+
+SET(QT_USE_QTOPENGL TRUE)
+
+SET(project_SOURCES
+	main.cpp
+	tdasp.cpp
+	${dasp_SOURCE_DIR}/common/WdgtMain.cpp
+)
+SET(project_HEADERS
+	${dasp_SOURCE_DIR}/common/WdgtMain.h
+	${CANDY_DIR}/libcandy/src/Candy/System/GLSystemQtWindow.h
+)
+
+SET(project_FORMS
+	${dasp_SOURCE_DIR}/common/WdgtMain.ui
+)
+
+QT4_WRAP_CPP(project_HEADERS_MOC ${project_HEADERS})
+QT4_WRAP_UI(project_FORMS_HEADERS ${project_FORMS})
+
+INCLUDE(${QT_USE_FILE})
+ADD_DEFINITIONS(${QT_DEFINITIONS} -DQT_NO_KEYWORDS)
+
+ADD_EXECUTABLE(tdasp
+	${project_SOURCES} ${project_HEADERS_MOC} ${project_FORMS_HEADERS}
+)
+
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+
+TARGET_LINK_LIBRARIES(tdasp
+	dasp
+	candy
+	${QT_LIBRARIES}
+	boost_program_options
+)

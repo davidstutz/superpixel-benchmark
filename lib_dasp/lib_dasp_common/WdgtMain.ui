@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WdgtMainClass</class>
+ <widget class="QMainWindow" name="WdgtMainClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1003</width>
+    <height>719</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Depth-Adaptive Supervoxels (DASV)</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" colspan="2">
+     <widget class="QMdiArea" name="mdiArea"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1003</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuWindows">
+    <property name="title">
+     <string>Windows</string>
+    </property>
+    <addaction name="actionTile_Subwindows"/>
+    <addaction name="actionCascade_Subwindows"/>
+   </widget>
+   <addaction name="menuWindows"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionLoad_ONI">
+   <property name="text">
+    <string>Load ONI</string>
+   </property>
+  </action>
+  <action name="actionKinect_Live_Mode">
+   <property name="text">
+    <string>Kinect Live Mode</string>
+   </property>
+  </action>
+  <action name="actionLoad_RGB_D_Image">
+   <property name="text">
+    <string>Load RGB-D Image</string>
+   </property>
+  </action>
+  <action name="actionSave_RBG_D_Image">
+   <property name="text">
+    <string>Save RBG-D Image</string>
+   </property>
+  </action>
+  <action name="actionSave_Debug_Images">
+   <property name="text">
+    <string>Save Debug Images</string>
+   </property>
+  </action>
+  <action name="actionBatch_Save">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Batch Save</string>
+   </property>
+  </action>
+  <action name="action_Parameters">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Parameters</string>
+   </property>
+  </action>
+  <action name="action_Benchmarks">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Benchmarks</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionTile_Subwindows">
+   <property name="text">
+    <string>Tile Subwindows</string>
+   </property>
+  </action>
+  <action name="actionCascade_Subwindows">
+   <property name="text">
+    <string>Cascade Subwindows</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

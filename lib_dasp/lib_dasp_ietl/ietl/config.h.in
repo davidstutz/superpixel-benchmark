@@ -1,0 +1,103 @@
+/***************************************************************************
+* IETL++ library
+*
+* alps/config.h.in
+*
+* $Id: config.h.in,v 1.1 2003/09/05 08:12:38 troyer Exp $
+*
+* Copyright (C) 1994-2003 by Matthias Troyer <troyer@itp.phys.ethz.ch>,
+*                            Synge Todo <wistaria@comp-phys.org>,
+* This program is free software; you can redistribute it and/or
+* modify it under the terms of the GNU General Public License
+* as published by the Free Software Foundation; either version 2
+* of the License, or (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+* GNU General Public License for more details.
+*
+**************************************************************************/
+
+#ifndef IETL_CONFIG_H
+#define IETL_CONFIG_H
+
+//
+// C/C++ headers
+//
+
+// Define to 1 if you have the <stdint.h> header file.
+#undef IETL_HAVE_STDINT_H
+
+// Define to 1 if you have the <inttypes.h> header file.
+#undef IETL_HAVE_INTTYPES_H
+
+// Define to 1 if you have the <unistd.h> header file.
+#undef IETL_HAVE_UNISTD_H
+
+// Define to 1 if you have the <bind/bitypes.h> header file.
+#undef IETL_HAVE_BIND_BITYPES_H
+
+// Define to 1 if you have the <sys/int_types.h> header file.
+#undef IETL_HAVE_SYS_INT_TYPES_H
+
+// Define to 1 if you have the <sys/systeminfo.h> header file.
+#undef IETL_HAVE_SYS_SYSTEMINFO_H
+
+// Define to 1 if you have the <sys/time.h> header file.
+#undef IETL_HAVE_SYS_TIME_H
+
+// Define to 1 if you have the <sys/types.h> header file.
+#undef IETL_HAVE_SYS_TYPES_H
+
+// Define to 1 if you have the boost
+#undef IETL_HAVE_BOOST
+
+// Define to 1 if you have the boost-sandbox
+#undef IETL_HAVE_BOOST_SANDBOX
+
+// Define to 1 if you have BLAS
+#undef IETL_HAVE_BLAS
+
+// Define to 1 if you have ATLAS
+#undef IETL_HAVE_ATLAS
+
+// Define to 1 if you have LAPACK
+#undef IETL_HAVE_LAPACK
+
+//
+// Introduce [int,uint]*_t into ietl namespace
+//
+
+#ifdef IETL_HAVE_STDINT_H
+# include <stdint.h>
+#elif defined(IETL_HAVE_INTTYPES_H)
+# include <inttypes.h>
+#elif defined(IETL_HAVE_SYS_INT_TYPES_H)
+# include <sys/int_types.h>
+#elif defined(IETL_HAVE_BIND_BITYPES_H)
+# include <bind/bitypes.h>
+  typedef u_int8_t uint8_t;
+  typedef u_int16_t uint16_t;
+  typedef u_int32_t uint32_t;
+#endif
+
+#ifdef IETL_HAVE_BOOST
+#include <boost/cstdint.hpp>
+
+namespace alps {
+
+#ifndef BOOST_NO_INT64_T
+using boost::int64_t;
+using boost::uint64_t;
+#endif
+#endif
+
+} // end namespace alps
+
+#ifdef IETL_HAVE_BOOST
+#include <boost/config.hpp>
+
+#endif
+
+#endif // IETL_CONFIG_H
