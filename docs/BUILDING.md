@@ -16,7 +16,7 @@ Make sure to clone the repository recursively:
 
     $ git clone https://github.com/davidstutz/superpixel-benchmark --recursive
 
-Install [Cmake](https://cmake.org/), [Boost](http://www.boost.org/), [OpenCV](http://opencv.org/), [GLog](https://github.com/google/glog) and run:
+Install [Cmake](https://cmake.org/), [Boost](http://www.boost.org/), [OpenCV](http://opencv.org/), [GLog](https://github.com/google/glog), `libpng` and `libpng++` (`sudo apt-get install libpng-dev libpng++-dev`) and run:
 
     $ mkdir build
     $ cd build
@@ -24,7 +24,7 @@ Install [Cmake](https://cmake.org/), [Boost](http://www.boost.org/), [OpenCV](ht
     $ make
 
 To compile the evaluation code including the superpixel algorithms recommended
-in [1]
+in [1].
 
 ## C++
 
@@ -63,6 +63,8 @@ can alternatively be installed using
     $ sudo apt-get install libgoogle-glog-dev
 
 However, `cmake/FindGlog.cmake` needs to be adapted.
+
+**Also see `.travis.yml` for instructions for installation on a clean Ubuntu 14.04 machine!**
 
 ### Building Options
 
