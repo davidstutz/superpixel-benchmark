@@ -1,0 +1,27 @@
+language: cpp
+ 
+# For Ubuntu 14.04 C++11/15 support ...
+sudo: required
+dist: trusty
+ 
+compiler:  
+    - gcc
+ 
+before_script:
+    - sudo apt-get install build-essential
+    - sudo apt-get install cmake
+    - sudo apt-get install libboost-all-dev
+    - sudo apt-get install libopencv-dev
+    - sudo apt-get install libeigen3-dev
+    # Glog through apt-get does not work ...
+    - git clone https://github.com/davidstutz/glog
+    - cd glog
+    - git reset --hard 0b0b022
+    - ./configure
+    - make
+    - cd ..
+    - mkdir build
+    - cd build
+    - cmake .. -DGLOG_ROOT_DIR=../glog
+ 
+script: make 
