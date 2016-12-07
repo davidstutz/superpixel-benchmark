@@ -1,5 +1,7 @@
 # Superpixels: An Evaluation of the State-of-the-Art
 
+[![Build Status](https://travis-ci.org/davidstutz/superpixel-benchmark.svg?branch=master)](https://travis-ci.org/davidstutz/superpixel-benchmark)
+
 This repository contains the source code used for evaluation in [1], a large-scale 
 comparison of state-of-the-art superpixel algorithms.
 
