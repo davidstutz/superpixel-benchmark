@@ -78,7 +78,7 @@ by this repository at the beginning; these options correspond to the individual
 algorithms. These options include:
 
 * `-DBUILD_CCS`: build CCS (Off)
-* `-DBUILD_CIS`: build CIS (Off), follow [building CIS](docs/BUILDING_CIS.md) for details
+* `-DBUILD_CIS`: build CIS (Off), follow [building CIS](BUILDING_CIS.md) for details
 * `-DBUILD_CRS`: build CRS (On)
 * `-DBUILD_CW`: build CW (Off)
 * `-DBUILD_DASP`: build DASP (Off)
@@ -112,7 +112,7 @@ requirements need to be fulfilled.
 #### CIS
 
 The CIS source code is not directly included in this repository due to license constraints.
-For installing and building CIS, follow [these instructions](docs/BUILDING_CIS.md).
+For installing and building CIS, follow [these instructions](BUILDING_CIS.md).
 
 #### DASP
 

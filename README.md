@@ -3,7 +3,7 @@
 This repository contains the source code used for evaluation in [1], a large-scale 
 comparison of state-of-the-art superpixel algorithms.
 
-**Paper: [ArXiv](https://arxiv.org/abs/1612.01601) | [Full Resolution Original](http://davidstutz.de/projects/superpixel-benchmark/) **
+**Paper: [ArXiv](https://arxiv.org/abs/1612.01601) | [Full Resolution Original](http://davidstutz.de/projects/superpixel-benchmark/)**
 
 **[Project page](http://davidstutz.de/projects/superpixel-benchmark/)**
 
@@ -24,8 +24,8 @@ Make also sure to cite additional papers when using datasets or superpixel algor
 
 ## Table of Contents
 
-* [Introduction](introduction)
-* [Algorithms](algorithms)
+* [Introduction](#introduction)
+* [Algorithms](#algorithms)
 * [Documentation](docs/README.md)
     * [Datasets](docs/DATASETS.md)
     * [Algorithms](docs/ALGORITHMS.md)
@@ -36,7 +36,7 @@ Make also sure to cite additional papers when using datasets or superpixel algor
     * [Examples](docs/EXAMPLES.md)
     * [Parameters](docs/PARAMETERS.md)
     * [Results](docs/RESULTS.md)
-* [License](license)
+* [License](#license)
 
 ## Introduction
 
@@ -67,18 +67,18 @@ this repository:
 Included                                   | Algorithm    | Reference
 -------------------------------------------|--------------|-----------
 :ballot_box_with_check:                    | CCS          | [Ref. & Web](http://www.emrahtasli.com/research/spextraction/)
-[Instructions]/(docs/BUILDING_CIS.md)      | CIS          | [Ref.](http://www.csd.uwo.ca/~olga/Papers/eccv2010final.pdf) & [Web](http://www.csd.uwo.ca/faculty/olga/)
+[Instructions](docs/BUILDING_CIS.md)       | CIS          | [Ref.](http://www.csd.uwo.ca/~olga/Papers/eccv2010final.pdf) & [Web](http://www.csd.uwo.ca/faculty/olga/)
 :ballot_box_with_check:                    | CRS          | [Ref.](http://link.springer.com/chapter/10.1007%2F978-3-642-40395-8_21#page-1) & [Web](http://www.vsi.cs.uni-frankfurt.de/research/superpixel-segmentation/)
 :ballot_box_with_check:                    | CW           | [Ref.](https://www.tu-chemnitz.de/etit/proaut/rsrc/cws_pSLIC_ICPR.pdf) & [Web](https://www.tu-chemnitz.de/etit/proaut/forschung/cv/segmentation.html.en)
 :ballot_box_with_check:                    | DASP         | [Ref.](http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6460572) & [Web](https://github.com/Danvil/dasp)
-:ballot_box_with_check:                    | EAMS         | [Ref.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.8.5341&rep=rep1&type=pdf), [Ref.](http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=977560) [Ref.](https://courses.csail.mit.edu/6.869/handouts/PAMIMeanshift.pdf) & [Web](http://coewww.rutgers.edu/riul/research/code/EDISON/)
+:ballot_box_with_check:                    | EAMS         | [Ref.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.8.5341&rep=rep1&type=pdf), [Ref.](http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=977560), [Ref.](https://courses.csail.mit.edu/6.869/handouts/PAMIMeanshift.pdf) & [Web](http://coewww.rutgers.edu/riul/research/code/EDISON/)
 :ballot_box_with_check:                    | ERS          | [Ref.](http://www.merl.com/publications/docs/TR2011-035.pdf) & [Web](http://mingyuliu.net/)
 :ballot_box_with_check:                    | FH           | [Ref.](http://www.cs.cornell.edu/~dph/papers/seg-ijcv.pdf) & [Web](https://cs.brown.edu/~pff/segment/index.html)
-Coming Soon ...                            | MSS          | [Ref.](http://avestia.com/MVML2014_Proceedings/papers/67.pdf)
+**Coming Soon!**                           | MSS          | [Ref.](http://avestia.com/MVML2014_Proceedings/papers/67.pdf)
 :ballot_box_with_check:                    | PB           | [Ref.](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6126393&tag=1) & [Web](http://yuhang.rsise.anu.edu.au/yuhang/misc.html)
 :ballot_box_with_check:                    | preSLIC      | [Ref.](https://www.tu-chemnitz.de/etit/proaut/rsrc/cws_pSLIC_ICPR.pdf) & [Web](https://www.tu-chemnitz.de/etit/proaut/forschung/cv/segmentation.html.en)
 :ballot_box_with_check:                    | reSEEDS      | [Web](http://davidstutz.de/projects/superpixelsseeds/)
-Coming Soon ...                            | SEAW         | [Ref.](http://patrec.cs.tu-dortmund.de/pubs/papers/Strassburg2015-OIS)
+**Coming Soon!**                           | SEAW         | [Ref.](http://patrec.cs.tu-dortmund.de/pubs/papers/Strassburg2015-OIS)
 :ballot_box_with_check:                    | SEEDS        | [Ref.](http://arxiv.org/pdf/1309.3848v1.pdf) & [Web](http://www.mvdblive.org/seeds/)
 :ballot_box_with_check:                    | SLIC         | [Ref.](http://www.kev-smith.com/papers/SLIC_Superpixels.pdf) & [Web](http://ivrl.epfl.ch/research/superpixels)
 :ballot_box_with_check:                    | TP           | [Ref.](http://www.cs.toronto.edu/~babalex/09.pami.turbopixels.pdf) & [Web](http://www.cs.toronto.edu/~babalex/research.html)
@@ -86,7 +86,7 @@ Coming Soon ...                            | SEAW         | [Ref.](http://patrec
 :ballot_box_with_check:                    | vlSLIC       | [Web](http://www.vlfeat.org/overview/slic.html)
 :ballot_box_with_check:                    | W            | [Web](http://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html?highlight=watershed#watershed)
 :ballot_box_with_check:                    | WP           | [Ref.](http://cmm.ensmp.fr/~machairas/waterpixels.html) & [Web](http://cmm.ensmp.fr/~machairas/waterpixels.html)
-Coming Soon ...                            | PF           | [Ref.](http://users.dickinson.edu/~jmac/publications/fast-superpixels-WMVC09.pdf)
+**Coming Soon!**                           | PF           | [Ref.](http://users.dickinson.edu/~jmac/publications/fast-superpixels-WMVC09.pdf)
 :ballot_box_with_check:                    | LSC          | [Ref.](http://www.cv-foundation.org/openaccess/content_cvpr_2015/papers/Li_Superpixel_Segmentation_Using_2015_CVPR_paper.pdf) & [Web](http://jschenthu.weebly.com/projects.html)
 :ballot_box_with_check:                    | RW           | [Ref.](http://cns.bu.edu/~lgrady/grady2004multilabel.pdf) & [Web](http://cns.bu.edu/~lgrady/software.html)
 :ballot_box_with_check:                    | QS           | [Ref.](http://vision.cs.ucla.edu/papers/vedaldiS08quick.pdf) & [Web](http://www.vlfeat.org/overview/quickshift.html)

@@ -2,15 +2,15 @@
 
 Documentation index:
 
-* [Datasets](docs/DATASETS.md)
-* [Algorithms](docs/ALGORITHMS.md)
-* [Benchmark](docs/BENCHMARK.md)
-* [Building](docs/BUILDING.md)
-    * [Building CIS](docs/BUILDING_CIS.md)
-* [Executables](docs/EXECUTABLES.md)
-* [Examples](docs/EXAMPLES.md)
-* [Parameters](docs/PARAMETERS.md)
-* [Results](docs/RESULTS.md)
+* [Datasets](DATASETS.md)
+* [Algorithms](ALGORITHMS.md)
+* [Benchmark](BENCHMARK.md)
+* [Building](BUILDING.md)
+    * [Building CIS](BUILDING_CIS.md)
+* [Executables](EXECUTABLES.md)
+* [Examples](EXAMPLES.md)
+* [Parameters](PARAMETERS.md)
+* [Results](RESULTS.md)
 
 Note that the documentation is complemented by [1]:
 

@@ -1,6 +1,6 @@
 # Executables
 
-As discussed in [Building](docs/BUILDING.md) and depending on the chosen options,
+As discussed in [Building](BUILDING.md) and depending on the chosen options,
 several executables are provided (usually found in `bin`). Most of these provide
 easy-to-use command line tools for the various algorithms. However, some utility
 command line tools for evaluation and visualization are also provided.
@@ -30,7 +30,7 @@ All command line tools for algorithms in C++ have the following options in commo
 
 `--input` is additionally a positional option. The algorithm specific options can
 be displayed using the `--help` options. For details on the specific options, the reader
-is referred to the corresponding publication(s), see [here](docs/ALGORITHMS.md) for
+is referred to the corresponding publication(s), see [here](ALGORITHMS.md) for
 references.
 
 The `--csv` option will output the superpixel segmentations as `.csv` files in
@@ -97,7 +97,7 @@ used in [1]. The parameters are partly the original parameters used in the paper
 
 **Note that it should not be required to use this tool in most cases, unless
 parameters need to be optimized on new datasets or for new algorithms. THE PARAMETERS
-USED IN [1] ARE DETAILED [HERE](docs/PARAMETERS.md).**
+USED IN [1] ARE DETAILED [HERE](PARAMETERS.md).**
 
 For parameter optimization, the command line tools for all algorithms are normed
 in the sense that they provide the parameters `-i` and `-o` for input and output.
@@ -198,7 +198,7 @@ the created summary looks as follows:
 Note that some statistics have been omitted here. The results can more easily
 be analyzed using Excel or Calc:
 
-![Evaluation summary.](docs/SUMMARY.png?raw=true "Evaluation summary.")
+![Evaluation summary.](SUMMARY.png?raw=true "Evaluation summary.")
 
 `eval_visualization_cli` can be used to visualize superpixel segmentations
 available as `.csv` files given the corresponding images:
@@ -224,7 +224,7 @@ a white background, coloring the superpixels with random colors.
 
 Example:
 
-![Visualizations.](docs/VISUALIZATIONS.png?raw=true "Visualizations.")
+![Visualizations.](VISUALIZATIONS.png?raw=true "Visualizations.")
 
 ## Algorithms in MatLab
 

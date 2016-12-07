@@ -19,9 +19,7 @@ Additional details can be found in [1].
         Superpixels: An Evaluation of the State-of-the-Art.
         Computing Research Repository, abs/1612.01601.
 
-![Dataset overview.](docs/DATASETS.png?raw=true "Dataset overview.")
-
-The images can also be found in this [extract of [1]](docs/DATASETS.md).
+![Dataset overview.](DATASETS.png?raw=true "Dataset overview.")
 
 ## BSDS500
 

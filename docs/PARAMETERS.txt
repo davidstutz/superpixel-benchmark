@@ -1,0 +1,1098 @@
+# Parameters
+
+## CIS
+
+* Smaller lambda and sigma increase number of superpixels
+* Lambda = 10 and sigma = 10 are closest to desired number of superpixels
+
+Parameters:
+
+* lambda: 1, (2), 3, (4), 5, 7, 9
+* sigma: 0.1, 0.5, 1, 2.5, 5, 10, 25
+* iterations: 1, 3
+
+Best parameters (lambda sigma chosen in order to get the desired #superpixels):
+
+* BSDS500
+
+    sp_directory	superpixels	lambda	sigma	iterations	color-space
+    best    400	10	10/10/5	3	0
+    co_best 400	10	10/10/5	3	0
+
+* NYUV2
+
+    sp_directory	superpixels	lambda	sigma	iterations	color-space
+    best    400	10	10/10/5	3	0
+    co_best 400	10	10/10/5	3	0
+
+* Fash
+
+    sp_directory	superpixels	lambda	sigma	iterations	color-space
+    best	400	10	10/10/5	3	0
+    co_best	400	10	10/10/5	3	0
+
+* SBD
+
+    sp_directory	superpixels	lambda	sigma	iterations	color-space
+    best	400	10	10/5/5	3	0
+    co_best	400	10	10/5/5	3	0
+
+* SUNRGBD
+
+    sp_directory	superpixels	lambda	sigma	iterations	color-space
+    best	400	10	10/5	3	0
+    co_best	400	10	10/5	3	0
+
+## CRS
+
+Parameters:
+
+* compactness: 0.001, 0.005, 0.01, 0.05, 0.1
+* clique cost: 0.01, 0.05, 0.1, 0.25, 0.5, 1.0
+* iterations: 1, 3
+* depth weight: 1, 5, 10, 25
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	superpixels	compactness	clique-cost	iterations	color-space
+    best	400	0.001	0.01 (0.3 for stable #superpixels)	3	1 (0 for stable #superpixels)
+    co_best	400	0.001/0.1/0.1	0.01/1	3/3/1	1/0/0
+
+* NYUV2
+
+    sp_directory	superpixels	compactness	clique-cost	iterations	color-space
+    best	400	0.001	0.01	3	1
+    co_best	400	0.001	1	3/1/1	1/0/0
+
+* Fash
+
+    sp_directory	superpixels	compactness	clique-cost	iterations	color-space
+    best	400	0.001	0.01	3	1
+    co_best	400	0.005	1	3	0
+
+* SBD
+
+    sp_directory	superpixels	compactness	clique-cost	iterations	color-space
+    best	400	0.001	0.01	3	1
+    co_best	400	0.001/0.1/0.1	0.01/1/1	3/3/1	1
+
+* SUNRGBD
+
+    sp_directory	superpixels	compactness	clique-cost	iterations	color-space
+    best	400	0.001	0.01	3	1
+    co_best	400	0.001/0.1	1	3/1	0
+
+## CW
+
+Parameters:
+
+* compactness: 0.01, 0.05, 0.1, 0.5, 1.0, 5.0, (10.0)
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	superpixels	compactness
+    best	400	0.1
+    co_best	400	1/0.1
+
+* NYUV2
+
+    sp_directory	superpixels	compactness
+    best	400	0.05
+    co_best	400	0.5/0.1
+
+* Fash
+
+    sp_directory	superpixels	compactness
+    best	400	0.1/0.05
+    co_best	400	1/0.1
+
+* SBD
+
+    sp_directory	superpixels	compactness
+    best	400	0.1
+    co_best	400	0.5
+
+* SUNRGBD
+
+    sp_directory	superpixels	compactness
+    best	400	0.05
+    co_best	400	0.5/0.1
+
+## DASP
+
+Parameters:
+
+* spatial: 0.001, 0.005, 0.01, 0.05, 0.1, 0.5
+* normal: 0, 0.25, 0.5
+* seed mode: 0, 1
+
+Best parameters:
+
+* NYUV2
+
+    sp_directory	superpixels	seed-mode	spatial-weight	normal-weight	iterations
+    best	400	1	0.001	0	25/10
+    co_best	400	1	0.005/0.01/0.05	0	25
+
+* SUNRGBD
+
+    sp_directory	superpixels	seed-mode	spatial-weight	normal-weight	iterations
+    best	400	1/0	0.001	0	25
+    co_best	400	1	0.001/0.01	0	25
+
+## EAMS
+
+Parameters:
+
+* bandwidth: 1, 3, 5, 9, 13
+* minimum size: 10, 25, 50, 250, (500)
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	bandwidth	minimum-size	color-space
+    best	1/1/3	250/50/25	1
+    co_best	3/1/3	250/50/10	1
+
+* NYUV2
+
+    sp_directory	bandwidth	minimum-size	color-space
+    best	1/3/9	250/50/25	1/0/1 (-> 1)
+    co_best	5/3/9	250/50/25	1/0/1
+
+* Fash
+
+    sp_directory	bandwidth	minimum-size	color-space
+    best	5/3/3	250/50/10	1/0/0 (-> 0)
+    co_best	5/5/3	250/50/10	0
+
+* SBD
+
+    sp_directory	bandwidth	minimum-size	color-space
+    best	1/1/1	50/25/10	0/1/1 (-> 1)
+    co_best	3/3/1	50/25/10	0/1/1
+
+* SUNRGBD
+
+    best	3/1	250/50	0
+    co_best	3	250/50	0
+
+## ERS
+
+Parameters:
+
+* lambda: 0.1, 0.5, 1.0, 2.5, 5.0, 10.0, (25.0)
+* sigma: 0.1, 0.5, 1.0, 2.5, 5.0, 10.0, (25.0)
+* four connected: 0, 1
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	superpixels	lambda	sigma
+    best	400	0.5	5
+    co_best	400	0.5	10
+
+* NYUV2
+
+    sp_directory	superpixels	lambda	sigma
+    best	400	0.5	2.5
+    co_best	400	0.5	2.5
+
+* Fash
+
+    sp_directory	superpixels	lambda	sigma
+    best	400	0.5	5
+    co_best	400	0.5	5/10
+
+
+## FH
+
+Parameters:
+
+* sigma: 0.0
+* threshold: 15, 30, 45, 75, 90
+* minimum size: 5, 7, 10, 15, 40, 60, 90
+
+"Best" parameters:
+
+* BSDS500
+
+    sigma	minimum-size	threshold	rec_average		sp_average
+    2	180	90	0.650218					340.17
+    2	180	60	0.687573					428.41
+    0	180	5	0.711069					601.3
+    0	180	90	0.743209					825.65
+    1	90	10	0.809735					1000.72
+    1	30	90	0.850978					1213.09
+    1	60	15	0.859572					1426.69
+    2	60	5	0.845735					1675.02
+    0	60	30	0.858647					1804.59
+    1	10	90	0.879038					2033.21
+    2	15	30	0.889657					2411.02
+    1	10	60	0.911495					2834.33
+    0	30	10	0.921494					3262.98
+    1	15	30	0.943973					3559.56
+    0	15	60	0.945612					4017.73
+    1	10	30	0.95255                                         4672.29
+    2	15	10	0.959177					5294.03
+
+* NYUV2
+
+    sigma	minimum-size	threshold	rec_average					sp_average
+    2	180	90	0.739285					414.653
+    2	120	60	0.804848					633.578
+    1	180	5	0.794754					834.111
+    0	180	60	0.837359					1050.08
+    1	120	5	0.847312					1207.02
+    0	90	10	0.864632					1412.88
+    2	90	5	0.892427					1617.6
+    2	60	15	0.922343					1849.16
+    1	60	10	0.923631					2046.75
+    0	60	30	0.938902					2416.65
+    0	30	60	0.951292					2782.49
+    1	30	15	0.956369					3224.4
+    1	30	10	0.965227					3646.32
+    1	15	30	0.947853					3964.33
+    0	30	15	0.977631					4619.32
+    2	15	15	0.959475					5106.29
+
+* FASH
+
+    sigma	minimum-size	threshold						sp_average
+    2	180	90						432.829
+    1	180	60						610.721
+    2	90	60						805.351
+    0	180	90						1008.95
+    2	10	90						1218.15
+    0	90	10						1425
+    1	60	30						1609.18
+    2	10	60						1827.36
+    2	60	10						2047.69
+    1	10	90						2508.15
+    1	15	60						2875.41
+    2	30	15						3233.22
+    0	30	60						3621.58
+    0	30	5						3940.56
+    1	15	30						4370.82
+    0	15	60						5242.98
+
+* SBD
+
+    sigma	minimum-size	threshold						sp_average
+    2	120	90						205.336
+    2	90	60						301.588
+    1	60	90						400.479
+    1	60	15						605.13
+    1	15	90						836.492
+    0	30	90						1046.26
+    2	30	15						1204.26
+    2	30	5						1396.6
+    1	15	30						1685.38
+    0	15	60						1859.67
+    2	15	15						2044.47
+    2	15	10						2438.55
+    0	15	10						2820.9
+    0	10	30						3263.03
+    1	10	10						3471.18
+    1	10	5						4067.45
+    0	10	5						4338.45
+
+* SUNRGBD
+
+    sigma	minimum-size	threshold						sp_average
+    2	180	90						434.285
+    2	90	90						628.88
+    1	180	30						812.56
+    2	60	60						1016.11
+    0	120	5						1245.47
+    2	30	60						1405.59
+    1	90	15						1614.52
+    1	90	10						1832.51
+    1	15	90						2040.45
+    2	60	10						2406.36
+    0	60	15						2810.65
+    1	10	60						3283.03
+    2	30	15						3600.66
+    1	30	10						4185.46
+    0	10	90						4685.36
+    2	30	5						5265.74
+
+## LSC
+
+* ratio greatly influences number of unconnected superpixels
+* number of superpixels reduces on small images when increasing number of desired superpixels
+
+Parameters:
+
+* ratio: 0.0, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5
+* threshold: 10
+* iterations: 1, 5, 10, 20
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	superpixels	ratio	iterations	threshold	color-space
+    best	400	0/0.01/0.05 (0.5 for stable #superpixels)	5/5/1 (-> 5)	10	1 (1 for stable #superpixels)
+    co_best	400	0.25/0.5/0.5	10/10/5	10	1
+
+* NYUV2
+
+    sp_directory	superpixels	ratio	iterations	threshold	color-space
+    best	400	0/0.01 (0.5 for stable #superpixels)	5	10	0 (1 for stable #superpixels)
+    co_best	400	0.25/0.5/1	10/5/10	10	1
+
+* Fash
+
+    sp_directory	superpixels	ratio	iterations	threshold	color-space
+    best	400	0/0.01/0.1 (0.5 for stable #superpixels)	50/25/50 (-> 50)	10	1 (1 for stable #superpixels)
+    co_best	400	0.5/0.5/0.5	10/5/5	10	1
+
+* SBD
+
+    sp_directory	superpixels	ratio	iterations	threshold	color-space
+    best	400	0/0.01/0.1 (0.5 for stable #superpixels)	10/5/1 (-> 5)	10	1 (1 for stable #superpixels)
+    co_best	400	0.25/0.5/0.5	10/5/1	10	1
+
+* SUNRGBD
+
+    sp_directory	superpixels	ratio	iterations	threshold	color-space
+    best	400	0 (0.5 for stable #superpixels)	25/5 (-> 25)	10	0/1 (1 for stable #superpixels)
+    co_best	400	0.25	5	10	1
+
+## PB
+
+* maxflow: #superpixels increases with sigma -> 0; runtime increases with sigma -> \infty
+* elimination: #non-connected superpixels increases with sigma -> 0; fast / #superpixels more stable
+
+Parameters:
+
+* maxflow: sigma: 20, 10, 7.5, 5, 2.5, 1
+* elimination: sigma: 50, 20, 10, 7.5, 5, 2.5, 1
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	superpixels	sigma	max-flow
+    best	400	1 (20 required for stable #superpixels)	1 (0 for better results with stable #superpixels)
+    co_best	400	20	1 (results in rectangles)
+
+* NYUV2
+
+    sp_directory	superpixels	sigma	max-flow
+    best	400	1 (20 required for stable #superpixels)	1 (0 for better results with stable #superpixels)
+    co_best	400	5/7.5/20	1 (results in rectangles)
+
+* Fash
+
+    BSDS500 for stable #superpixels
+
+* SBD
+
+    BSDS500 for stable #superpixels
+
+* SUNRGBD
+
+    BSDS500 for stable #superpixels
+
+## PF
+
+Parameters:
+
+* radius: 1, 3, 5, 7, 9, 11, 21, 31
+
+Best parameters:
+
+* BSDS400
+
+    sp_directory	superpixels	radius
+    best	400	3/1 (-> 1)
+    co_best	400	1/1
+
+* NYUV2
+
+    sp_directory	superpixels	radius
+    best	400	1/1
+    co_best	400	1/1
+
+* Fash
+
+    sp_directory	superpixels	radius
+    best	400	3
+    co_best	400	1/1/3
+
+* SBD
+
+    sp_directory	superpixels	radius
+    best	400	1/1/3
+    co_best	400	1/1/3
+
+* SUNRGBD
+
+    sp_directory	superpixels	radius
+    best	400	1/1
+    co_best	400	1/1
+
+## preSLIC/SLIC/vlSLIC
+
+Parameters:
+
+* compactness: 1, 2.5, 5, 7.5, 10, 20, 40, 80, 160
+* iterations: 1, 5, 10, 25, 50
+* perturb seeds: 0, 1
+
+* SLIC/BSDS500
+
+    sp_directory	superpixels	compactness	iterations	perturb-seeds	color-space
+    best	400	10/5/5	25/5/5	0/0/1	1
+    co_best	400	40/40/80	10/10/25	0	1
+
+* vlSLIC/BSDS500
+
+    sp_directory	superpixels	minimum-region-size	compactness	iterations
+    best	400	20	1/20/40	5
+    co_best	400	20	80/160/160	50/10/50
+
+* preSLIC/BSDS500
+
+    sp_directory	superpixels	compactness	iterations	perturb-seeds	color-space
+    best	400	20	5	0	1
+    co_best	400	160	5	0	0/1/1
+
+* SLIC/NYUV2
+
+    sp_directory	superpixels	compactness	iterations	perturb-seeds	color-space
+    best	400	1	10/5/5 (-> 10)	0/1/1 (-> 1)	1
+    co_best	400	20/40/160	10/5/10	0	1
+
+* SLIC3D/NYUV2
+
+    sp_directory	superpixels	compactness	iterations	perturb-seeds	color-space
+    best	400	160/80/160	10/5/5	1	1
+    co_best	400	160	25/50	0	1
+
+* vlSLIC/NYUV2
+
+    sp_directory	superpixels	minimum-region-size	compactness	iterations
+    best	400	20	1	5
+    co_best	400	20	40/160	50/50/10
+
+* preSLIC/NYUV2
+
+    sp_directory	superpixels	compactness	iterations	perturb-seeds	color-space
+    best	400	5/1/1	10/10/5 (-> 10)	0	0
+    co_best	400	80/80/160	5	0	1
+
+* SLIC/Fash
+
+    sp_directory	superpixels	compactness	iterations	perturb-seeds	color-space
+    best	400	10/10/20	50/50/50	0/0/1	1
+    co_best	400	40/40/80	10/10/25	0	1
+
+* vlSLIC/FASH
+
+    sp_directory	superpixels	minimum-region-size	compactness	iterations
+    best	400	20	1/20/80	10/5/50 (-> 50)
+    co_best	400	20	160	10/5/50
+
+* preSLIC/FASH
+
+    sp_directory	superpixels	compactness	iterations	perturb-seeds	color-space
+    best	400	20/20/40	5	0	1/1/0
+    co_best	400	80/160/160	5	0	1/0/1
+
+* SLIC/SBD
+
+    sp_directory	superpixels	compactness	iterations	perturb-seeds	color-space
+    best	400	5	5	0/1	1
+    co_best	400	40/80	10	0	1
+
+* vlSLIC/SBD
+
+    sp_directory	superpixels	minimum-region-size	compactness	iterations
+    best	400	20	1/40/80	5/5/1
+    co_best	400	20	80/160	50
+
+* preSLIC/SBD
+
+    sp_directory	superpixels	compactness	iterations	perturb-seeds	color-space
+    best	400	20/20/10	10/5/5	0	0/0/1
+    co_best	400	160	5	0	0/1/1
+
+* SLIC/SUNRGBD
+
+    sp_directory	superpixels	compactness	iterations	perturb-seeds	color-space
+    best	400	1	5	1	1
+    co_best	400	20/40	10/5	0	1
+
+* SLIC3D/SUNRGBD
+
+    sp_directory	superpixels	compactness	iterations	perturb-seeds	color-space
+    best	400	160	10	1	1
+    co_best	400	160	50/25	0/1	1
+
+* vlsSLIC/SUNRGBD
+
+    sp_directory	superpixels	minimum-region-size	compactness	iterations
+    best	400	20	1	5
+    co_best	400	20	80	5
+
+## QS
+
+* larger kernel size -> slower and bigger segments
+
+Parameters:
+
+* ratio: 0, 0.5, 1
+* kernel size: 1, 2, 3, 4, 5, 7
+* max distance: 6, 8, 10, 12, 14
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	ratio	kernel-size	max-distance	color-space
+    best	0.5	1	10/6	0
+    co_best	0.5	1	10/6	0
+
+* NYUV2 (results for 1200 superpixels useless)
+
+    sp_directory	ratio	kernel-size	max-distance	color-space
+    best	0.5	1	6	0
+    co_best	0.5	1	6	0
+
+## SEEDS/reSEEDS
+
+Parameters:
+
+* iterations: 1, 2, 5, 10, 25, 50
+* spatial weight: 0.0, 0.125, 0.25, 0.5, 0.75, 1.0
+* bins: 1, 3, 5, 7, 9
+* neighborhood: 0, 1
+* color: 0, 1, 2 
+
+Best parameters:
+
+* reSEEDS/BSDS500
+
+    sp_directory	superpixels	bins	neighborhood	confidence	spatial-weight	iterations	color-space
+    best	400	5	0	0.1	0	25	0
+    co_best	400	7	1	0.1	0.5	25	1
+
+* reSEEDS/NYUV2
+
+    sp_directory	superpixels	bins	neighborhood	confidence	spatial-weight	iterations	color-space
+    best	400	7	0	0.1	0	25	0
+    co_best	400	1	0	0.1	0.5	1	1
+
+* reSEEDS/Fash
+
+    sp_directory	superpixels	bins	neighborhood	confidence	spatial-weight	iterations	color-space
+    best	400	5/7/7	0	0.1	0/0/0.25	25/10/25	0/1/0 (-> 0)
+    co_best	400	7/1/1	1	0.1	0.5	25/1/1	1
+
+* reSEEDS/SBD
+
+    sp_directory	superpixels	bins	neighborhood	confidence	spatial-weight	iterations	color-space
+    best	400	3/5/5	0	0.1	0	25	0
+    co_best	400	1	0/1/1	0.1	0.5	25/1/1	1
+
+* reSEEDS/SUNRGBD
+
+    sp_directory	superpixels	bins	neighborhood	confidence	spatial-weight	iterations	color-space
+    best	400	5/3	0	0.1	0	25	0
+    co_best	400	1	0/1	0.1	0.5	25/1	1
+
+* SEEDS/BSDS500
+
+    sp_directory	superpixels	bins	prior	confidence	iterations	color-space	means
+    best	400	9	0	0.1	25	1	1
+    co_best	400	5/1	1	0.1	1	2	1
+
+* SEEDS/NYUV2
+
+    sp_directory	superpixels	bins	prior	confidence	iterations	color-space	means
+    best	400	9	0	0.1	25	1	1
+    co_best	400	5/1	1	0.1	1	2	1
+
+* SEEDS/Fash
+
+    sp_directory	superpixels	bins	prior	confidence	iterations	color-space	means
+    best	400	9/9/1	0/0/1	0.1	25	2/2/1	1
+    co_best	400	5/5/1	1	0.1	1	2	1
+
+* SEEDS/SBD
+
+    sp_directory	superpixels	bins	prior	confidence	iterations	color-space	means
+    best	400	9/1	0	0.1	25	2/1	1
+    co_best	400	5/1	1	0.1	1	2	1
+
+* SEEDS/SUNRGBD
+
+    sp_directory	superpixels	bins	prior	confidence	iterations	color-space	means
+    best	400	9/1	0	0.1	25	1	1
+    co_best	400	5	1	0.1	1	2	1
+
+## RW
+
+Parameters:
+
+* beta: 1, 5, 25, 50, 100, 250
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	superpixels	beta
+    best	400	50/50/50
+    co_best	400	25/5/5
+
+* NYUV2
+
+    sp_directory	superpixels	beta
+    best	400	100
+    co_best	400	25/5
+
+
+## TP
+
+* Sigma has a bit influence on the number of superpixels and whether the superpixels are evolved completely
+* number of superpixels decreases on small images when increasing the number of desired superpixels
+
+Parameters:
+
+* iterations: 50, 100, 250, 500
+* time step: 0.5, 1.0
+* sigma: 1.0, 2.5, 5.0, 10.0, 15.0
+
+Best parameters:
+
+* BSDS500:
+
+    sp_directory	superpixels	time-step	sigma	max-iterations
+    best	400	0.5	5	100
+    co_best	400	0.5	5	100
+
+* NYUV2
+
+    sp_directory	superpixels	time-step	sigma	max-iterations
+    best	400	1	15/10	500/250
+    co_best	400	1/0.5	10/5	100/50
+
+* Fash
+
+    sp_directory	superpixels	time-step	sigma	max-iterations
+    best	400	0.5	10/5	250/100
+    co_best	400	0.5	5/2.5	100/50
+
+* SBD
+
+    sp_directory	superpixels	time-step	sigma	max-iterations
+    best	400	0.5/1/0.5	5/5/5	100/100/250
+    co_best	400	1/0.5/0.5	5/1/5	50/50/250
+
+* SUNRGBD
+
+    sp_directory	superpixels	time-step	sigma	max-iterations
+    best	400	1	15/10	500/250
+    co_best	400	0.5	2.5	50
+
+## TPS
+
+Parameters:
+
+* type: 0, 1, 2
+* gamma: 0, 0.1, 0.25, 0.5, 0.75, 0.9, 1.0
+* sigma: 0.0, 0.25, 0.5, 0.75, 1.0
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	superpixels	type	gamma	sigma
+    best	400	1	1	1
+    co_best	400	1	1	0.75/0.5
+
+* NYUV2
+
+    sp_directory	superpixels	type	gamma	sigma
+    best	400	1	0.75	0.75
+    co_best	400	1	0.75	0.75/0.5
+
+* Fash
+
+    sp_directory	superpixels	type	gamma	sigma
+    best	400	1	0.75	0.75
+    co_best	400	1	0.75	0.75
+
+
+## VCCS
+
+* not connected components icnreases when spatial weight decreases
+* runtime increases when decreasing seed resolution
+* Compactness score dominated by Boundary Recall
+
+Parameters:
+
+* voxel resolution: 0.002, 0.004, 0.008
+* seed resolution: 0.14 - 0.16 for 400, 0.1 for 1200, 0.05 - 0.06  for 3600
+* spatial weight: 1.0, 0.5, 0.25, 0.0
+* normal weight: 0.0, 0.5
+
+Best parameters (not necessarily taken from parameter optimization):
+
+* NYUV2
+
+    sp_directory	voxel-resolution	seed-resolution	spatial-weight	normal-weight
+    best    0.008   0.24 - 0.07/0.08    >0.0/0.05   0
+
+## W
+
+* superpixels only
+
+## WP
+
+Parameters:
+
+* filter: 0, 1
+* weight: 0.1, 1, 2.5, 5, 10, 25, 50
+
+Best parameters:
+
+* BSDS500 (co_best nan)
+
+    sp_directory	superpixels	weight
+    best	400	5/5/25
+
+
+* NYUV2 (co_best nan)
+
+    sp_directory	superpixels	weight
+    best	400	1/1/2.5
+
+* Fash (co_best nan)
+
+    sp_directory	superpixels	weight
+    best	400	5/5/10
+
+* SBD (co_best nan)
+
+    sp_directory	superpixels	weight
+    best	400	5/5/50
+
+* SUNRGBD
+
+    sp_directory	superpixels	weight
+    best	400	1/1/(2.5 like NYUV2)
+
+## MSS
+
+Parameters:
+
+* noise: 1, 2.5, 5, 10, 25, 50
+* structure size: 3, 7, 9, 11, 17
+* tolerance: 1, 5, 10, 25
+* iterations: 1 (or doubles number of superpixels per iteration)
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	superpixels	structure-size	noise	tolerance	iterations
+    best	400	7/7/3	1	1/5/25	1
+    co_best	400	11/11/15	25/25/50	1/1/5	1
+
+* NYUV2
+
+    sp_directory	superpixels	structure-size	noise	tolerance	iterations
+    best	400	7/7/3	1	5/1/5	1
+    co_best	400	15	10/25/50	10/5/5	1
+
+* Fash
+
+    sp_directory	superpixels	structure-size	noise	tolerance	iterations
+    best	400	11/1/7	1	10/1/5	1
+    co_best	400	15	10/25/50	10/5/5	1
+
+* SBD
+
+    sp_directory	superpixels	structure-size	noise	tolerance	iterations
+    best	400	7/3/3	1/1/2.5	5/25/1	1
+    co_best	400	15/15/15	25/50/50	1/10/1	1
+
+* SUNRGBD
+
+    sp_directory	superpixels	structure-size	noise	tolerance	iterations
+    best	400	7	1	5/1	1
+    co_best	400	7/15	10	1	1
+
+## NC
+
+Parameters:
+
+* eigenvectors: 5, 40, 200
+* coarse superpixels: 100, 200
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	superpixels	coarse-superpixels	eigenvectors
+    best	400	0	40
+    co_best	400	100	200
+
+* NYUV2
+
+    sp_directory	superpixels	coarse-superpixels	eigenvectors
+    best	400	0	40
+    co_best	400	100	200
+
+
+## SEAW
+
+* lower level increases runtime
+* dist funct = 1 nearly doubles #superpixels
+
+Parameters:
+
+* levels: 5, 4, 3
+* sigma: 1, 5, 10, 25, 35
+* dist func: 0, 1
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	level	sigma	dist-func
+    best	5	10	1 (0 for more stable #superpixels)
+
+* NYUV2
+
+    sp_directory	level	sigma	dist-func
+    best	5	10	1 (0 for more stable #superpixels)
+
+## VC
+
+* weight influences the number of connected components (the higher the fewer superpixels and the more compact)
+* radius does not show much influence
+* threshold does not show much influence 
+* neighboring clusters does not show much influence
+* direct neighbors 
+
+Parameters:
+
+* weight: 10, 25, 50, 100
+* radius: 3, 9, 15
+* threshold: 10
+* neighboring clusters: 20, 200, 400
+* direct neighbors: 1, 4, 16
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	superpixels	weight	radius	threshold	neighboring-clusters	direct-neighbors
+    best	400	10	3	10 (>=50 for appr. stable #superpixels)	200	4
+    co_best	400	10	3	10 (>=50 for appr. stable #superpixels)	400	4
+
+* NYUV2
+
+    sp_directory	superpixels	weight	radius	threshold	neighboring-clusters	direct-neighbors
+    best	400	10	3	10 (>=50 for appr. stable #superpixels)	200	4
+    co_best	400	10	3	10 (>=50 for appr. stable #superpixels)	400	4
+
+* Fash
+
+    sp_directory	superpixels	weight	radius	threshold	neighboring-clusters	direct-neighbors
+    best	400	10	15/3	10	200/400	16
+    co_best	400	250	15	10	400/200	16/4
+
+* SBD
+
+    sp_directory	superpixels	weight	radius	threshold	neighboring-clusters	direct-neighbors
+    best	400	10	15	10	200/400	4/16
+    co_best	400	10	15	10	200/400	4/16
+
+* SUNRGBD
+
+    sp_directory	superpixels	weight	radius	threshold	neighboring-clusters	direct-neighbors
+    best	400	10	15/3	10	400	4/16
+    co_best	400	25/50	3	10	200	16/4
+
+## ETPS
+
+* size weight does not show influence
+
+Parameters:
+
+* regularization weight: 0.01, 0.05, 0.1, 0.5, 1, 5, 10
+* length weight: 0.1, 1, 10
+* size weight: 1
+* iterations: 1, 5, 10, 25
+
+Best parmeters:
+
+* BSDS500
+
+    sp_directory	superpixels	regularization-weight	length-weight	size-weight	iterations
+    best	400	0.01	0.1	1	25
+    co_best	400	1	10	1	1
+
+* NYUV2
+
+    sp_directory	superpixels	regularization-weight	length-weight	size-weight	iterations
+    best	400	0.01	0.1	1	5
+    co_best	400	0.5	10	1	1
+
+* Fash
+
+    sp_directory	superpixels	regularization-weight	length-weight	size-weight	iterations
+    best	400	0.01	0.1	1	25
+    co_best	400	1	10	1	1
+
+* SBD
+
+    sp_directory	superpixels	regularization-weight	length-weight	size-weight	iterations
+    best	400	0.01	0.1	1	25
+    co_best	400	5	10	1	1
+
+* SUNRGBD
+
+    sp_directory	superpixels	regularization-weight	length-weight	size-weight	iterations
+    best	400	0.01	0.1	1	25
+    co_best	400	0.1	10	1	25
+
+## ERGC
+
+Parameters:
+
+* pertub seeds: 0, 1
+* color space: 0, 1
+* compacity: 0, 1, 2, 5, 10, 25, 50
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	superpixels	perturb-seeds	color-space	compacity
+    best	400	0/1	1	0
+    co_best	400	1/0	1	25
+
+* NYUV2
+
+    sp_directory	superpixels	perturb-seeds	color-space	compacity
+    best	400	0/1	0	1
+    co_best	400	1/0	1	25
+
+* Fash
+
+    sp_directory	superpixels	perturb-seeds	color-space	compacity
+    best	400	0	1	0
+    co_best	400	1	1	25
+
+* SBD
+
+    sp_directory	superpixels	perturb-seeds	color-space	compacity
+    best	400	0/1	0	1
+    co_best	400	1	1	25
+
+* SUNRGBD
+
+    sp_directory	superpixels	perturb-seeds	color-space	compacity
+    best	400	1	0	1
+    co_best	400	1/0	1	25
+
+
+## POISE
+
+* higher sigma slows down algorithm
+* higher threshold results in less superpixels (until 0.15 is OK)
+* lower threshold sightly increases #superpixels
+* edge and color modifier influence number of superpixels
+* number of superpixels will plateau after a given number depending on the images
+
+Parameters:
+
+* threshold: 0.01, 0.03, 0.05, 0.1, 0.2
+* edge modifier: 0.4, 0.8, 2
+* color modifier: 0.3, 0.6, 2
+* sigma: 0.1, 0.5, 1.5, 2.5, 5
+
+Best parameters:
+
+* BSDS500
+
+    sp_directory	superpixels	sigma	edge-modifier	color-modifier	threshold
+    best	400	2.5	2/0.4	0.6	0.03/0.01
+    co_best	400	5	0.8/0.4	0.3	0.01
+
+* NYUV2
+
+    sp_directory	superpixels	sigma	edge-modifier	color-modifier	threshold
+    best	400	2.5	2	0.3/0.6	0.01
+    co_best	400	5	2	0.3	0.01
+
+* Fash
+
+    sp_directory	superpixels	sigma	edge-modifier	color-modifier	threshold
+    best	400	0.5/2.5	2	0.6	0.01/0.03
+    co_best	400	2.5/5	2	0.6/0.3	0.01
+
+* SBD
+
+    sp_directory	superpixels	sigma	edge-modifier	color-modifier	threshold
+    best	400	2.5	0.4	0.6/0.3	0.03/0.01
+    co_best	400	5	2/0.4	0.3	0.01
+
+* SUNRGBD
+
+    sp_directory	superpixels	sigma	edge-modifier	color-modifier	threshold
+    best	400	2.5	2/0.4	0.3/0.6	0.01
+    co_best	400	5	2	0.3	0.01
+
+# CCS
+
+* compactness influences #sp
+* rgb results in more #sp
+
+Parameters:
+
+* compactness: 25, 50, 100, 2500, 500
+* iterations: 25, 50, 100, 250, 500
+
+* BSDS500
+
+    sp_directory	superpixels	compactness	iterations	color-space
+    best	400	25	50	0
+    co_best	400	250	50/5	1
+
+* NYUV2
+
+    sp_directory	superpixels	compactness	iterations	color-space
+    best	400	25	50	0
+    co_best	400	100	50/5    1
+
+* Fash
+
+    sp_directory	superpixels	compactness	iterations	color-space
+    best	400	25	50	1
+    co_best	400	250	50/5	1
+
+* SBD
+
+    sp_directory	superpixels	compactness	iterations	color-space
+    best	400	25	50	0
+    co_best	400	250	50/5	1
+
+* SUNRGBD
+
+    sp_directory	superpixels	compactness	iterations	color-space
+    best	400	25	50	0
+    co_best	400	100	50/5	1
