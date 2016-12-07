@@ -14,6 +14,7 @@ before_script:
     - sudo apt-get install libopencv-dev
     - sudo apt-get install libpng-dev
     - sudo apt-get install libpng++-dev
+    - sudo apt-get install cimg-dev cimg-doc cimg-examples
     # Glog through apt-get does not work ...
     - git clone https://github.com/davidstutz/glog
     - cd glog

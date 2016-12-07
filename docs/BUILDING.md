@@ -12,16 +12,26 @@ algorithms only.**
 
 **Quick Start:**
 
-Make sure to clone the repository recursively:
+Make sure to clone the repository recursively, then execute:
 
     $ git clone https://github.com/davidstutz/superpixel-benchmark --recursive
-
-Install [Cmake](https://cmake.org/), [Boost](http://www.boost.org/), [OpenCV](http://opencv.org/), [GLog](https://github.com/google/glog), `libpng` and `libpng++` (`sudo apt-get install libpng-dev libpng++-dev`) and run:
-
+    $ sudo apt-get install build-essential cmake libboost-dev-all libopencv-dev cimg-dev cimg-doc cimg-examples libpng-dev libpng++-dev
+    # Alternatively download GLog 0.3.3 to avoid the hard reset!
+    $ git clone https://github.com/davidstutz/glog
+    $ cd glog
+    $ git reset --hard 0b0b022
+    $ ./configure
+    $ make
+    $ cd ..
+    $ cd superpixel-benchmark
     $ mkdir build
     $ cd build
-    $ cmake ..
+    # Better install GLog properly and adapt cmake/FindGlog.cmake!
+    $ cmake .. -DGLOG_ROOT_DIR=~/glog
     $ make
+
+Installs [Cmake](https://cmake.org/), [Boost](http://www.boost.org/), [OpenCV](http://opencv.org/), 
+[GLog](https://github.com/google/glog), `libpng`, `libpng++` and [CImg](http://cimg.eu/)
 
 To compile the evaluation code including the superpixel algorithms recommended
 in [1].
@@ -44,7 +54,7 @@ and [GLog](https://github.com/google/glog). Note that the required CMake modules
 be found in `cmake` in case these need to be adapted. Build essentials, CMake, OpenCV
 and Boost can be installed as follows:
 
-    $sudo apt-get install build-essential cmake libboost-dev-all libopencv-dev
+    $ sudo apt-get install build-essential cmake libboost-dev-all libopencv-dev
 
 OpenCV can alternatively be installed following [these instructions](http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html#linux-installation).
 GLog should be installed manually (at least this was the best option at the
