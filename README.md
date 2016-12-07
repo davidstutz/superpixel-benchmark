@@ -8,7 +8,7 @@ comparison of state-of-the-art superpixel algorithms.
 **[Project page](http://davidstutz.de/projects/superpixel-benchmark/).**
 
 The corresponding datasets will be made available here:
-[davidstutz/superpixel-benchmark-data](https://github.com/davidstutz/superpixel-evaluation-data).
+[davidstutz/superpixel-benchmark-data](https://github.com/davidstutz/superpixel-benchmark-data).
 
 This repository subsumes earlier work on comparing superpixel algorithms:
 [davidstutz/gcpr2015-superpixels](https://github.com/davidstutz/gcpr2015-superpixels), 
