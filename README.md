@@ -63,6 +63,11 @@ metrics and independent of the number of generated superpixels, as shown below.
 
 ![Algorithm ranking.](RANKING.png?raw=true "Algorithm ranking.")
 
+The table shows the average ranks across the 5 datasets, taking into account Average
+Boundary Recall (ARec) and Average Undersegmentation Error (AUE) - lower is better 
+in both cases, see [Benchmark](docs/BENCHMARK.md).
+The confusion matrix shows the rank distribution of the algorithms across the datasets.
+
 ## Algorithms
 
 The following algorithms were evaluated in [1], and most of them are included in
