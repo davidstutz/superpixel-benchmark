@@ -59,7 +59,9 @@ we additionally enforced connectivity. Furthermore, to evaluate superpixel algor
 independent of the number of superpixels, we propose to integrate over commonly 
 used metrics such as Boundary Recall, Undersegmentation Error and Explained Variation. 
 Finally, we present a ranking of the superpixel algorithms considering multiple 
-metrics and independent of the number of generated superpixels.
+metrics and independent of the number of generated superpixels, as shown below.
+
+![Algorithm ranking.](RANKING.png?raw=true "Algorithm ranking.")
 
 ## Algorithms
 
