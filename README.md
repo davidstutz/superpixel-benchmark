@@ -24,6 +24,11 @@ This repository subsumes earlier work on comparing superpixel algorithms:
 
 Make also sure to cite additional papers when using datasets or superpixel algorithms.
 
+**Update:** As the presented paper was in preparation for a longer period of time, 
+some recent superpixel algorithms are not included in the comparison — these include 
+[SCSP](https://github.com/freifeld/fastSCSP) and [LRW](https://github.com/shenjianbing/lrw14).
+To keep the benchmark up-to-date, these superpixel algorithms will be included in future updates.
+
 ## Table of Contents
 
 * [Introduction](#introduction)
