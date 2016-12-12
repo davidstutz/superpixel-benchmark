@@ -128,11 +128,12 @@ On a higher level, integrating an implementation into this benchmark is easy:
 
 * Write a command line tool, preferably in C++ or Matlab, following the standards
   described in [Submission](docs/SUBMISSION.md). This is easily done by following
-  the example of the provided algorithms in this repository.
+  the examples of the provided algorithms in this repository.
 * Optimize parameters on the provided training sets. This can be done following the
   examples in `lib_eval_parameter_optimization_cli`, see [Submission](docs/SUBMISSION.md).
 * Using the obtained parameters, run the algorithm on the test sets to obtain
-  [200, 400, ..., 5200] superpixels and contact us to integrate to look over the results
+  [200, 400, ..., 5200] superpixels, evaluate the results using `eval_summary_cli`
+  and contact us to look over the results
   and integrate them into the plots.
 
 ## License
