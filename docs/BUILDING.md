@@ -33,6 +33,8 @@ Make sure to clone the repository recursively, then execute:
 Installs [Cmake](https://cmake.org/), [Boost](http://www.boost.org/), [OpenCV](http://opencv.org/), 
 [GLog](https://github.com/google/glog), `libpng`, `libpng++` and [CImg](http://cimg.eu/)
 
+Also see `.travis.yml` for details on building on a fresh Ubuntu 14.04 installation!
+
 To compile the evaluation code including the superpixel algorithms recommended
 in [1].
 
@@ -137,7 +139,6 @@ For installing and building CIS, follow [these instructions](BUILDING_CIS.md).
 [CImg](http://cimg.eu/) and [LAPACK](http://www.netlib.org/lapack/) is required:
 
     sudo apt-get install cimg-dev cimg-doc cimg-examples
-    # TODO: installation instructions on clean Ubuntu
 
 #### ETPS
 

@@ -4,6 +4,7 @@ Documentation index:
 
 * [Datasets](DATASETS.md)
 * [Algorithms](ALGORITHMS.md)
+    * [Submission](SUBMISSION.md)
 * [Benchmark](BENCHMARK.md)
 * [Building](BUILDING.md)
     * [Building CIS](BUILDING_CIS.md)
@@ -11,6 +12,7 @@ Documentation index:
 * [Examples](EXAMPLES.md)
 * [Parameters](PARAMETERS.md)
 * [Results](RESULTS.md)
+    * [Data](DATA.md)
 
 Note that the documentation is complemented by [1]:
 

@@ -24,6 +24,9 @@ This repository subsumes earlier work on comparing superpixel algorithms:
 
 Make also sure to cite additional papers when using datasets or superpixel algorithms.
 
+**Update:** Also check [Submit an Algorithm](#submit-an-algorithm) to help us
+keep the benchmark up-to-date!
+
 **Update:** As the presented paper was in preparation for a longer period of time, 
 some recent superpixel algorithms are not included in the comparison — these include 
 [SCSP](https://github.com/freifeld/fastSCSP) and [LRW](https://github.com/shenjianbing/lrw14).
@@ -33,9 +36,11 @@ To keep the benchmark up-to-date, these superpixel algorithms will be included i
 
 * [Introduction](#introduction)
 * [Algorithms](#algorithms)
+    * [Submit an Algorithm](#submit-an-algorithm)
 * [Documentation](docs/README.md)
     * [Datasets](docs/DATASETS.md)
     * [Algorithms](docs/ALGORITHMS.md)
+        * [Submission](docs/SUBMISSION.md)
     * [Benchmark](docs/BENCHMARK.md)
     * [Building](docs/BUILDING.md)
         * [Building CIS](docs/BUILDING_CIS.md)
@@ -43,6 +48,7 @@ To keep the benchmark up-to-date, these superpixel algorithms will be included i
     * [Examples](docs/EXAMPLES.md)
     * [Parameters](docs/PARAMETERS.md)
     * [Results](docs/RESULTS.md)
+        * [Data](docs/DATA.md)
 * [License](#license)
 
 ## Introduction
@@ -110,6 +116,24 @@ Included                                   | Algorithm    | Reference
 :ballot_box_with_check:                    | VC           | [Ref.](http://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6186738) & [Web](http://www-personal.umich.edu/~jwangumi/software.html)
 :ballot_box_with_check:                    | ETPS         | [Ref.](http://www.cs.toronto.edu/~yaojian/cvpr15.pdf) & [Web](https://bitbucket.org/mboben/spixel)
 :ballot_box_with_check:                    | ERGC         | [Ref.](https://hal.archives-ouvertes.fr/hal-00945893/document), [Ref.](http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7025886) & [Web](https://sites.google.com/site/pierrebuyssens/code/ergc)
+
+### Submit an Algorithm
+
+To keep the benchmark alive, we are encouraging authors to make their implementations
+publicly available and integrate them into this benchmark. We are happy to help with the
+integration and update the results published in [1] and on the 
+[project page](http://davidstutz.de/projects/superpixel-benchmark/).
+
+On a higher level, integrating an implementation into this benchmark is easy:
+
+* Write a command line tool, preferably in C++ or Matlab, following the standards
+  described in [Submission](docs/SUBMISSION.md). This is easily done by following
+  the example of the provided algorithms in this repository.
+* Optimize parameters on the provided training sets. This can be done following the
+  examples in `lib_eval_parameter_optimization_cli`, see [Submission](docs/SUBMISSION.md).
+* Using the obtained parameters, run the algorithm on the test sets to obtain
+  [200, 400, ..., 5200] superpixels and contact us to integrate to look over the results
+  and integrate them into the plots.
 
 ## License
 
