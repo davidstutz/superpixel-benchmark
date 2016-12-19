@@ -9,13 +9,10 @@
 #include <vector>
 #include <algorithm>
 
-template <class T, T V>
-struct constant
-{
-    operator T() const { return V; }
-};
-
-
+/** \brief Efficient (multi-label) connected components algorithm.
+ * \see http://xenia.media.mit.edu/~rahimi/connected/
+ * \author Ali Rahimi
+ */
 class ConnectedComponents
 {
 public:

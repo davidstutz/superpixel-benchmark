@@ -38,7 +38,8 @@
 
 /** \brief Relabel superpixels in order to be connected.
  * Usage:
- * $ ../bin/eval_connected_relabel_cli --help
+ * \code{sh}
+ *   $ ../bin/eval_connected_relabel_cli --help
  *   Allowed options:
  *     --help                     produce help message
  *     -i [ --input-csv ] arg     folder containing the corresponding images to 
@@ -47,7 +48,7 @@
  *     -r [ --overwrite ]         Overwrite original files
  *     -o [ --csv ] arg (=output) save segmentation as CSV file
  *     -w [ --wordy ]             wordy/verbose
- *
+ * \endcode
  * \author David Stutz
  */
 int main (int argc, char ** argv) {

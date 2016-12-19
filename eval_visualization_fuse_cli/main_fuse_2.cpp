@@ -39,7 +39,8 @@
 
 /** \brief Combine several visualizations into a single image.
  * Usage:
- * $ ../bin/eval_visualization_fuse_2_cli --help
+ * \code{sh}
+ *   $ ../bin/eval_visualization_fuse_2_cli --help
  *   Allowed options:
  *     --help                     produce help message
  *     --images-one arg           image directory one
@@ -50,7 +51,7 @@
  *     --suffix2 arg              input and output file suffix
  *     --exclude arg              file name part to exclude
  *     -w [ --wordy ]             verbose/wordy/debug
- *
+ * \endcode
  * \author David Stutz
  */
 int main(int argc, const char** argv) {

@@ -39,7 +39,8 @@
 
 /** \brief Visualize segmentations.
  * Usage:
- * $ ../bin/eval_visualization_cli --help
+ * \code{sh}
+ *   $ ../bin/eval_visualization_cli --help
  *   Allowed options:
  *     --help                     produce help message
  *     --csv arg                  superpixel segmentation (as CSV)
@@ -52,7 +53,7 @@
  *     -v [ --vis ] arg (=output) output folder
  *     -x [ --prefix ] arg        input and output file prefix
  *     -w [ --wordy ]             verbose/wordy/debug
- *
+ * \endcode
  * \author David Stutz
  */
 int main(int argc, const char** argv) {

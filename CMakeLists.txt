@@ -59,7 +59,7 @@ option(BUILD_VC "Build VC" OFF)
 option(BUILD_CCS "Build CCS" OFF)
 option(BUILD_DASP "Build DASP" OFF)
 option(BUILD_VCCS "Build VCCS" OFF)
-option(BUILD_REFH "Build reFH" OFF)
+option(BUILD_REFH "Build reFH" ON)
 option(BUILD_VLSLIC "Build vlSLIC" OFF)
 
 # Examples:

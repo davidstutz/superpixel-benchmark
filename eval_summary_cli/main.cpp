@@ -40,7 +40,8 @@
 
 /** \brief Compute an evaluation summary.
  * Usage:
- * $ ../bin/eval_summary_cli --help
+ * \code{sh}
+ *   $ ../bin/eval_summary_cli --help
  *   Allowed options:
  *     --sp-directory arg    superpixel segmentation directory
  *     --img-directory arg   image directory
@@ -48,7 +49,7 @@
  *     --append-file arg     append file
  *     --vis                 visualize results
  *     --help                produce help message
- *
+ * \endcode
  * \author David Stutz
  */
 int main(int argc, const char** argv) {

@@ -48,12 +48,12 @@ std::string JAVA_EXECUTABLE = "/home/david/jdk-1.8.0_45/release/java";
 // CCS
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of CCS.
+/** \brief Connector for parameter optimization of CCS.
  * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_CCS(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -77,12 +77,12 @@ void connector_CCS(boost::filesystem::path img_directory,
 // CIS
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of CIS.
+/** \brief Connector for parameter optimization of CIS.
  * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_CIS(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -107,12 +107,12 @@ void connector_CIS(boost::filesystem::path img_directory,
 // CRS
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of CRS.
+/** \brief Connector for parameter optimization of CRS.
  * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_CRS(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -134,47 +134,15 @@ void connector_CRS(boost::filesystem::path img_directory,
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// DCRS
-////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Connector for parameter optimization of DCRS.
- * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
- */
-void connector_DCRS(boost::filesystem::path img_directory, 
-        boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
-        boost::filesystem::path depth_directory, std::vector<int> superpixels) {
-    
-    for (unsigned int k = 0; k < superpixels.size(); k++) {
-        ParameterOptimizationTool tool(img_directory, gt_directory,
-                base_directory / boost::filesystem::path(std::to_string(superpixels[k])),
-                RELATIVE_PATH + "/bin/dcrs_cli", FAIR);
-        tool.useDepth(depth_directory);
-
-        tool.addIntegerParameter("superpixels", "--superpixels", std::vector<int>{superpixels[k]});
-        tool.addFloatParameter("compactness", "--compactness", std::vector<float>{0.001f, 0.01f, 0.05f, 0.1f}); // 4
-        tool.addFloatParameter("clique-cost", "--clique-cost", std::vector<float>{0.01f, 0.1f, 0.5f, 1.0f}); // 4
-        tool.addFloatParameter("depth-weight", "--depth-weight", std::vector<float>{1.0f, 5.0f, 10.0f, 25.0f}); // 4
-        tool.addIntegerParameter("iterations", "--iterations", std::vector<int>{1, 3}); // 2
-        tool.addIntegerParameter("color-space", "--color-space", std::vector<int>{0, 1}); // 2
-
-        tool.optimize();
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // CW
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of CW.
+/** \brief Connector for parameter optimization of CW.
  * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_CW(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -196,12 +164,14 @@ void connector_CW(boost::filesystem::path img_directory,
 // DASP
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of DASP.
+/** \brief Connector for parameter optimization of DASP.
  * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] depth_directory
+ * \param[in] intrinsics_directory
+ * \param[in] superpixels
  */
 void connector_DASP(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -232,12 +202,13 @@ void connector_DASP(boost::filesystem::path img_directory,
 // EAMS
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of EAMS.
+/** \brief Connector for parameter optimization of EAMS.
  * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
+ * \param[in] superpixel_tolerances
  */
 void connector_EAMS(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -262,12 +233,12 @@ void connector_EAMS(boost::filesystem::path img_directory,
 // ERGC
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of ERGC.
+/** \brief Connector for parameter optimization of ERGC.
  * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_ERGC(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -291,12 +262,12 @@ void connector_ERGC(boost::filesystem::path img_directory,
 // ERS
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of ERS.
+/** \brief Connector for parameter optimization of ERS.
  * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_ERS(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -319,12 +290,12 @@ void connector_ERS(boost::filesystem::path img_directory,
 // ETPS
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of ETPS.
+/** \brief Connector for parameter optimization of ETPS.
  * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_ETPS(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -349,8 +320,7 @@ void connector_ETPS(boost::filesystem::path img_directory,
 // FH
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of FH.
+/** \brief Connector for parameter optimization of FH.
  * 
  * @param img_directory
  * @param gt_directory
@@ -371,95 +341,15 @@ void connector_FH(boost::filesystem::path img_directory,
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// CFH
-////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Connector for parameter optimization of CFH.
- * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
- */
-void connector_CFH(boost::filesystem::path img_directory, 
-        boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
-        std::vector<int> superpixels) {
-    
-    for (unsigned int k = 0; k < superpixels.size(); k++) {
-        ParameterOptimizationTool tool(img_directory, gt_directory,
-                base_directory / boost::filesystem::path(std::to_string(superpixels[k])),
-                RELATIVE_PATH + "/bin/cfh_cli", "");
-
-        tool.addIntegerParameter("superpixels", "--superpixels", std::vector<int>{superpixels[k]});
-
-        tool.optimize();
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// DFH
-////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Connector for parameter optimization of DFH.
- * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
- */
-void connector_DFH(boost::filesystem::path img_directory, 
-        boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
-        boost::filesystem::path depth_directory, std::vector<int> superpixels) {
-    
-    for (unsigned int k = 0; k < superpixels.size(); k++) {
-        ParameterOptimizationTool tool(img_directory, gt_directory,
-                base_directory / boost::filesystem::path(std::to_string(superpixels[k])),
-                RELATIVE_PATH + "/bin/dfh_cli", "");
-        tool.useDepth(depth_directory);
-
-        tool.addIntegerParameter("minimum-size", "--minimum-size", std::vector<int>{5, 7, 10, 15, 30, 60, 90}); // 7
-        tool.addFloatParameter("threshold", "--threshold", std::vector<float>{15, 30, 45, 75, 90}); // 5
-
-        tool.optimize();
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////
-// GSP
-////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Connector for parameter optimization of GSP.
- * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
- */
-void connector_GSP(boost::filesystem::path img_directory, 
-        boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
-        std::vector<int> superpixels) {
-    
-    ParameterOptimizationTool tool(img_directory, gt_directory, 
-            base_directory,
-            RELATIVE_PATH + "/bin/gsp_cli", "");
-
-    tool.addIntegerParameter("max-radius", "--max-radius", std::vector<int>{10, 12, 15, 17, 20, 30, 40, 50}); // 8
-    tool.addIntegerParameter("a", "--a", std::vector<int>{10, 25, 50}); // 3
-    tool.addFloatParameter("epsilon", "--epsilon", std::vector<float>{0.001f, 0.1f, 0.5f}); // 3
-
-    tool.optimize();
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // MSS
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of MSS.
+/** \brief Connector for parameter optimization of MSS.
  * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_MSS(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -484,12 +374,12 @@ void connector_MSS(boost::filesystem::path img_directory,
 // PB
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of PB.
+/** \brief Connector for parameter optimization of PB.
  * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_PB(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -512,12 +402,12 @@ void connector_PB(boost::filesystem::path img_directory,
 // POISE
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of POISE.
+/** \brief Connector for parameter optimization of POISE.
  * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_POISE(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -543,12 +433,12 @@ void connector_POISE(boost::filesystem::path img_directory,
 // preSLIC
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of preSLIC.
+/** \brief Connector for parameter optimization of preSLIC.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_preSLIC(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -575,12 +465,12 @@ void connector_preSLIC(boost::filesystem::path img_directory,
 // reSEEDS
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of reSEEDS.
+/** \brief Connector for parameter optimization of reSEEDS.
  * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_reSEEDS(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -604,53 +494,15 @@ void connector_reSEEDS(boost::filesystem::path img_directory,
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// reSEEDS3D
-////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Connector for parameter optimization of reSEEDS.
- * 
- * @param img_directory
- * @param gt_directory
- * @param base_directory
- */
-void connector_reSEEDS3D(boost::filesystem::path img_directory, 
-        boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
-        boost::filesystem::path depth_directory, boost::filesystem::path intrinsics_directory,
-        std::vector<int> superpixels) {
-    
-    for (unsigned int k = 0; k < superpixels.size(); k++) {
-        ParameterOptimizationTool tool(img_directory, gt_directory,
-                base_directory / boost::filesystem::path(std::to_string(superpixels[k])),
-            RELATIVE_PATH + "/bin/reseeds3d_cli", FAIR);
-        tool.useDepth(depth_directory);
-
-        if (!intrinsics_directory.empty()) {
-            tool.useIntrinsics(intrinsics_directory);
-        }
-
-        tool.addIntegerParameter("superpixels", "--superpixels", std::vector<int>{superpixels[k]});
-        tool.addIntegerParameter("bins", "--bins", std::vector<int>{1, 3, 5, 7}); // 4
-        tool.addIntegerParameter("neighborhood", "--neighborhood", std::vector<int>{0, 1}); // 2
-        tool.addFloatParameter("confidence", "--confidence", std::vector<float>{0.1f}); // 1
-        tool.addFloatParameter("spatial-weight", "--spatial-weight", std::vector<float>{0.0f, 0.25f, 0.5f}); // 3
-        tool.addIntegerParameter("iterations", "--iterations", std::vector<int>{1, 10, 25}); // 3
-        tool.addIntegerParameter("color-space", "--color-space", std::vector<int>{0, 1, 2}); // 3
-
-        tool.optimize();
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // SEAW
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of SEAW.
+/** \brief Connector for parameter optimization of SEAW.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_SEAW(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -683,12 +535,12 @@ void connector_SEAW(boost::filesystem::path img_directory,
 // SEEDS
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of SEEDS.
+/** \brief Connector for parameter optimization of SEEDS.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_SEEDS(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -715,12 +567,12 @@ void connector_SEEDS(boost::filesystem::path img_directory,
 // SLIC
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of SLIC.
+/** \brief Connector for parameter optimization of SLIC.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_SLIC(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -742,51 +594,15 @@ void connector_SLIC(boost::filesystem::path img_directory,
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// SLIC3D
-////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Connector for parameter optimization of SLIC3D.
- *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
- */
-void connector_SLIC3D(boost::filesystem::path img_directory, 
-        boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
-        boost::filesystem::path depth_directory, boost::filesystem::path intrinsics_directory,
-        std::vector<int> superpixels) {
-    
-    for (unsigned int k = 0; k < superpixels.size(); k++) {
-        ParameterOptimizationTool tool(img_directory, gt_directory,
-                base_directory / boost::filesystem::path(std::to_string(superpixels[k])),
-                RELATIVE_PATH + "/bin/slic3d_cli", "");
-        tool.useDepth(depth_directory);
-
-        if (!intrinsics_directory.empty()) {
-            tool.useIntrinsics(intrinsics_directory);
-        }
-
-        tool.addIntegerParameter("superpixels", "--superpixels", std::vector<int>{superpixels[k]});
-        tool.addFloatParameter("compactness", "--compactness", std::vector<float>{1.0f, 5.0f, 10.0f, 20.0f, 40.0f, 80.0f, 160.0f}); // 9
-        tool.addIntegerParameter("iterations", "--iterations", std::vector<int>{1, 5, 10, 25, 50}); // 5 
-        tool.addIntegerParameter("perturb-seeds", "--perturb-seeds", std::vector<int>{0, 1}); // 2
-        tool.addIntegerParameter("color-space", "--color-space", std::vector<int>{0, 1}); // 2
-
-        tool.optimize();
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // TP
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of TP.
+/** \brief Connector for parameter optimization of TP.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_TP(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -812,12 +628,12 @@ void connector_TP(boost::filesystem::path img_directory,
 // TPS
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of TPS.
+/** \brief Connector for parameter optimization of TPS.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_TPS(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -842,12 +658,12 @@ void connector_TPS(boost::filesystem::path img_directory,
 // vlSLIC
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of vlSLIC.
+/** \brief Connector for parameter optimization of vlSLIC.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_vlSLIC(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -871,12 +687,12 @@ void connector_vlSLIC(boost::filesystem::path img_directory,
 // W
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of W.
+/** \brief Connector for parameter optimization of W.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_W(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -897,12 +713,12 @@ void connector_W(boost::filesystem::path img_directory,
 // WP
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of WP.
+/** \brief Connector for parameter optimization of WP.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_WP(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -922,47 +738,15 @@ void connector_WP(boost::filesystem::path img_directory,
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// LRW
-////////////////////////////////////////////////////////////////////////////////
-
-/**
- * Connector for parameter optimization of LRW.
- *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
- */
-void connector_LRW(boost::filesystem::path img_directory, 
-        boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
-        std::vector<int> superpixels) {
-    
-    for (unsigned int k = 0; k < 1; k++) {
-        ParameterOptimizationTool tool(img_directory, gt_directory,
-                base_directory / boost::filesystem::path(std::to_string(superpixels[k])),
-                RELATIVE_PATH + "/lrw_cli/lrw_dispatcher.sh", 
-                "-e " + MATLAB_EXECUTABLE + " -a " + RELATIVE_PATH + "/lrw_cli/ > /dev/null");    
-
-        tool.addIntegerParameter("superpixels", "-s", std::vector<int>{superpixels[k]});
-        tool.addFloatParameter("threshold", "-h", std::vector<float>{1.0f, 1.35f}); // 2
-        tool.addFloatParameter("beta", "-b", std::vector<float>{30.0f}); // 1
-        tool.addFloatParameter("alpha", "-a", std::vector<float>{0.9992}); // 1
-        tool.addIntegerParameter("iterations", "-t", std::vector<int>{1, 5}); // 2
-        tool.addIntegerParameter("color-space", "-r", std::vector<int>{0, 1}); // 2
-
-        tool.optimize();
-    }
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // PF
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of PF.
+/** \brief Connector for parameter optimization of PF.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_PF(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -986,12 +770,12 @@ void connector_PF(boost::filesystem::path img_directory,
 // LSC
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of LSC.
+/** \brief Connector for parameter optimization of LSC.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_LSC(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -1016,12 +800,12 @@ void connector_LSC(boost::filesystem::path img_directory,
 // RW
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of RW.
+/** \brief Connector for parameter optimization of RW.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_RW(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -1044,12 +828,13 @@ void connector_RW(boost::filesystem::path img_directory,
 // QS
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of QS.
+/** \brief Connector for parameter optimization of QS.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
+ * \param[in] superpixel_tolerances
  */
 void connector_QS(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -1075,12 +860,12 @@ void connector_QS(boost::filesystem::path img_directory,
 // NC
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of NC.
+/** \brief Connector for parameter optimization of NC.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_NC(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -1104,12 +889,14 @@ void connector_NC(boost::filesystem::path img_directory,
 // VCCS
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of VCCS.
+/** \brief Connector for parameter optimization of VCCS.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] depth_directory
+ * \param[in] intrinsics_directory
+ * \param[in] superpixels
  */
 void connector_VCCS(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -1149,12 +936,12 @@ void connector_VCCS(boost::filesystem::path img_directory,
 // VC
 ////////////////////////////////////////////////////////////////////////////////
 
-/**
- * Connector for parameter optimization of VC.
+/** \brief Connector for parameter optimization of VC.
  *
- * @param img_directory
- * @param gt_directory
- * @param base_directory
+ * \param[in] img_directory
+ * \param[in] gt_directory
+ * \param[in] base_directory
+ * \param[in] superpixels
  */
 void connector_VC(boost::filesystem::path img_directory, 
         boost::filesystem::path gt_directory, boost::filesystem::path base_directory,
@@ -1179,7 +966,8 @@ void connector_VC(boost::filesystem::path img_directory,
 
 /** \brief Optimize parameters for the different algorithms. 
  * Usage:
- * $ ../bin/eval_parameter_optimization_cli --help
+ * \code{sh}
+ *   $ ../bin/eval_parameter_optimization_cli --help
  *   Allowed options:
  *     --img-directory arg                   image directory
  *     --gt-directory arg                    ground truth directory
@@ -1193,6 +981,7 @@ void connector_VC(boost::filesystem::path img_directory,
  *                                           java executable
  *     --not-fair                            do not use fair parameters
  *     --help                                produce help message
+ * \endcode
  * \author David Stutz
  */
 int main(int argc, const char** argv) {
@@ -1351,9 +1140,6 @@ int main(int argc, const char** argv) {
     }
     else if (algorithm == "wp") {
         connector_WP(img_directory, gt_directory, base_directory, superpixels);
-    }
-    else if (algorithm == "lrw") {
-        connector_LRW(img_directory, gt_directory, base_directory, superpixels);
     }
     else if (algorithm == "pf") {
         connector_PF(img_directory, gt_directory, base_directory, superpixels);

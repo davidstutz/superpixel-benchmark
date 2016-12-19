@@ -41,7 +41,7 @@
 
 /** \brief Command line tool for running CRS.
  * Usage:
- * 
+ * \code{sh}
  *   $ ../bin/crs_cli --help
  *   Allowed options:
  *     -h [ --help ]                         produce help message
@@ -60,9 +60,7 @@
  *     -v [ --vis ] arg                      visualize contours
  *     -x [ --prefix ] arg                   output file prefix
  *     -w [ --wordy ]                        verbose/wordy/debug
- * 
- * Also see README.md for further documentation and default parameters.
- * 
+ * \encode
  * \author David Stutz
  */
 int main(int argc, const char** argv) {

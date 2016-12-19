@@ -8,6 +8,7 @@ Documentation index:
 * [Benchmark](BENCHMARK.md)
 * [Building](BUILDING.md)
     * [Building CIS](BUILDING_CIS.md)
+* [Doxygen](DOXYGEN.md)
 * [Executables](EXECUTABLES.md)
 * [Examples](EXAMPLES.md)
 * [Parameters](PARAMETERS.md)

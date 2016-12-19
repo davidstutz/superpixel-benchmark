@@ -5,12 +5,7 @@
 This repository contains the source code used for evaluation in [1], a large-scale 
 comparison of state-of-the-art superpixel algorithms.
 
-**Paper: [ArXiv](https://arxiv.org/abs/1612.01601) | [Full Resolution Original](http://davidstutz.de/projects/superpixel-benchmark/)**
-
-**[Project page](http://davidstutz.de/projects/superpixel-benchmark/).**
-
-The corresponding datasets will be made available here:
-[davidstutz/superpixel-benchmark-data](https://github.com/davidstutz/superpixel-benchmark-data).
+**[ArXiv](https://arxiv.org/abs/1612.01601) | [Project Page](http://davidstutz.de/projects/superpixel-benchmark/) | [Datasets](https://github.com/davidstutz/superpixel-benchmark-data)**
 
 This repository subsumes earlier work on comparing superpixel algorithms:
 [davidstutz/gcpr2015-superpixels](https://github.com/davidstutz/gcpr2015-superpixels), 
@@ -24,19 +19,19 @@ This repository subsumes earlier work on comparing superpixel algorithms:
 
 Make also sure to cite additional papers when using datasets or superpixel algorithms.
 
-**Update:** Also check [Submit an Algorithm](#submit-an-algorithm) to help us
-keep the benchmark up-to-date!
+**Updates:**
 
-**Update:** As the presented paper was in preparation for a longer period of time, 
-some recent superpixel algorithms are not included in the comparison — these include 
-[SCSP](https://github.com/freifeld/fastSCSP) and [LRW](https://github.com/shenjianbing/lrw14).
-To keep the benchmark up-to-date, these superpixel algorithms will be included in future updates.
+* Doxygen documentation is now available [here](http://davidstutz.github.io/superpixel-benchmark/).
+* The presented paper was in preparation for a longer period of time — 
+  some recent superpixel algorithms are not included in the comparison. These include 
+  [SCSP](https://github.com/freifeld/fastSCSP) and [LRW](https://github.com/shenjianbing/lrw14).
+  We are working on including these algorithms in future updates.
 
 ## Table of Contents
 
 * [Introduction](#introduction)
 * [Algorithms](#algorithms)
-    * [Submit an Algorithm](#submit-an-algorithm)
+    * [Submission](#submission)
 * [Documentation](docs/README.md)
     * [Datasets](docs/DATASETS.md)
     * [Algorithms](docs/ALGORITHMS.md)
@@ -117,24 +112,13 @@ Included                                   | Algorithm    | Reference
 :ballot_box_with_check:                    | ETPS         | [Ref.](http://www.cs.toronto.edu/~yaojian/cvpr15.pdf) & [Web](https://bitbucket.org/mboben/spixel)
 :ballot_box_with_check:                    | ERGC         | [Ref.](https://hal.archives-ouvertes.fr/hal-00945893/document), [Ref.](http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7025886) & [Web](https://sites.google.com/site/pierrebuyssens/code/ergc)
 
-### Submit an Algorithm
+### Submission
 
-To keep the benchmark alive, we are encouraging authors to make their implementations
+To keep the benchmark alive, we encourage authors to make their implementations
 publicly available and integrate them into this benchmark. We are happy to help with the
 integration and update the results published in [1] and on the 
 [project page](http://davidstutz.de/projects/superpixel-benchmark/).
-
-On a higher level, integrating an implementation into this benchmark is easy:
-
-* Write a command line tool, preferably in C++ or Matlab, following the standards
-  described in [Submission](docs/SUBMISSION.md). This is easily done by following
-  the examples of the provided algorithms in this repository.
-* Optimize parameters on the provided training sets. This can be done following the
-  examples in `lib_eval_parameter_optimization_cli`, see [Submission](docs/SUBMISSION.md).
-* Using the obtained parameters, run the algorithm on the test sets to obtain
-  [200, 400, ..., 5200] superpixels, evaluate the results using `eval_summary_cli`
-  and contact us to look over the results
-  and integrate them into the plots.
+Also see the [Documentation](docs/README.md) for details.
 
 ## License
 

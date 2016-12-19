@@ -39,6 +39,24 @@
 #include "visualization.h"
 #include "superpixel_tools.h"
 
+/** \brief Command line tool for running reFH.
+ * Usage:
+ * \code{sh}
+ *   $ ../bin/refh_cli --help
+ *   Allowed options:
+ *     -h [ --help ]                   produce help message
+ *     -i [ --input ] arg              folder containing the images to process
+ *     -g [ --sigma ] arg (=0)         sigma used for smoothing (no smoothing if 
+ *                                     zero)
+ *     -t [ --threshold ] arg (=20)    constant for threshold function
+ *     -m [ --minimum-size ] arg (=10) minimum component size
+ *     -o [ --csv ] arg                save segmentation as CSV file
+ *     -v [ --vis ] arg                visualize contours
+ *     -x [ --prefix ] arg             output file prefix
+ *     -w [ --wordy ]                  verbose/wordy/debug
+ * \endcode
+ * \author David Stutz
+ */
 int main (int argc, char ** argv) {
     
     boost::program_options::options_description desc("Allowed options");

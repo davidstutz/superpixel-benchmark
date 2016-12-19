@@ -35,7 +35,7 @@ In `loadEdges` comment out the following line:
 
     image<uchar> *edges = loadPGM(name);
 
-Adapt `computeWeights` and `computeWeightsColor` to accept an additional
+Adapt `computeWeights` to accept an additional
 parameter named `sigma`, thereby commenting the following line out:
 
     float sigma = 2.0f;

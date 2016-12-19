@@ -1,0 +1,14 @@
+\form#0:$UE(G, S) = \frac{1}{N} = \sum_{S_j \in S} \min_{G_i} \{|G_i - S_j|\}$
+\form#1:$Rec(S, G) = \frac{TP}{TP + FN}$
+\form#2:$Pre(S, G) = \frac{TP}{TP + FP}$
+\form#3:$UE_{NP}(S, G) = \frac{1}{N} \sum_{G_i \in G} \sum_{S_j \cap G_i \neq \emptyset} \min\{S_j \cap G_i, S_j - g_i\}$
+\form#4:$UE_{Levin}(S, G) = \frac{1}{|G|} \sum_{G_i \in G} \frac{\sum_{S_j \cap G_i \neq \emptyset} |S_j| - |G_i|}{|G_i|}$
+\form#5:$ASA(G, S) = \frac{1}{N_t} \sum_{S_j \in S} |S_j \cap G_{g(j)}|$
+\form#6:$g(j)$
+\form#7:$MDE(S, G) = \frac{1}{|B|} \sum_{b \in B} D(b)$
+\form#8:$CO(S) = \sum_{S_j in S} \frac{|S_j|}{N} \frac{4*pi*A(S_j)}{L(S_j)*L(S_j)}$
+\form#9:$A(S_j)$
+\form#10:$L(S_j)$
+\form#11:$S_j$
+\form#12:$CD(S) = \frac{|C|}{N}$
+\form#13:$G_i$

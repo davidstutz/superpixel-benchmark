@@ -41,7 +41,7 @@
 
 /** \brief Command line tool for running SEEDS.
  * Usage:
- * 
+ * \code{sh}
  *   $ ../bin/seeds_cli --help
  *   Allowed options:
  *     -h [ --help ]                         produce help message
@@ -65,9 +65,7 @@
  *     -v [ --vis ] arg                      visualize contours
  *     -x [ --prefix ] arg                   output file prefix
  *     -w [ --wordy ]                        verbose/wordy/debug
- *
- * Also see README.md for further documentation and default parameters.
- * 
+ * \endcode
  * \author David Stutz
  */
 int main(int argc, const char** argv) {

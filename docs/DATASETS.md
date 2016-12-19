@@ -10,8 +10,8 @@ The pre-processing, formating and conversion tools used are detailed afterwards.
 * [Fash](fash)
 
 **Downloads of the pre-processed datasets will be made available (if possible)
-in the data repository: 
-[davidstutz/superpixel-evaluation-data](https://github.com/davidstutz/superpixel-evaluation-data)**
+here: 
+[davidstutz/superpixel-benchmark-data](https://github.com/davidstutz/superpixel-benchmark-data)**
 
 Additional details can be found in [1].
 

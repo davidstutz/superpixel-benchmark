@@ -6,9 +6,21 @@ There are three main components that need to be built:
 * [MatLab Components](#matlab)
 * [Java Components (PF)](#java)
 
-Building has been tested under Ubuntu 12.04 and Ubuntu 14.04. **Note that
+Building has been tested with Ubuntu 12.04 and Ubuntu 14.04. **Note that
 building can be customized allowing to built the desired components and
-algorithms only.**
+algorithms only.** For different Linux distributions, the
+building process might need to be adapted. As reference, these are the
+library versions installed (checked using `dpkg -l`):
+
+    ||/ Name                Version        Architecture   Description
+    +++-===================-==============-==============-============================================
+    ii  gcc                 4:4.8.2-1ubunt amd64          GNU C compiler
+    ii  cmake               3.2.2-2ubuntu2 amd64          cross-platform, open-source make system
+    ii  libboost-dev        1.54.0.1ubuntu amd64          Boost C++ Libraries development files (defau
+    ii  cimg-dev            1.5.7+dfsg-1   all            powerful image processing library
+    ii  libpng++-dev        0.2.5-1        all            C++ interface to the PNG (Portable Network G
+
+OpenCV 2.4.11 and Glog 0.3.3 where manually installed.
 
 **Quick Start:**
 
@@ -59,6 +71,10 @@ and Boost can be installed as follows:
     $ sudo apt-get install build-essential cmake libboost-dev-all libopencv-dev
 
 OpenCV can alternatively be installed following [these instructions](http://docs.opencv.org/2.4/doc/tutorials/introduction/linux_install/linux_install.html#linux-installation).
+Currently, OpenCV 2.4.11 is supported, in general 2.4.x should work fine. For upgrading
+to OpenCV 3.0 and OpenCV 3.1, it might be necessary to update constants (e.g. as used for
+color conversion). Some implementations are known to work with OpenCV 3 and OpenCV 3.1 (e.g. reSEEDS).
+
 GLog should be installed manually (at least this was the best option at the
 point of writing). GLog should be downloaded or cloned from [google/glog](https://github.com/google/glog). The 
 release 0.3.3 was tested and works with the provided `cmake/FindGlog.cmake`. Extract
