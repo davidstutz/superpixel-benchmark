@@ -132,7 +132,7 @@ MSS          | --
 PB           | [Web](http://yuhang.rsise.anu.edu.au/yuhang/misc.html)
 preSLIC      | [Web](https://www.tu-chemnitz.de/etit/proaut/forschung/cv/segmentation.html.en)
 reSEEDS      | [Web](http://davidstutz.de/projects/superpixelsseeds/)
-SEAW         | --
+SEAW         | [Web](https://github.com/JohannStrassburg/InfluenceSegImageParsingCode)
 SEEDS        | [Web](http://www.mvdblive.org/seeds/)
 SLIC         | [Web](http://ivrl.epfl.ch/research/superpixels)
 TP           | [Web](http://www.cs.toronto.edu/~babalex/research.html)
@@ -140,7 +140,7 @@ TPS          | [Web](http://hzfu.github.io/subpage/codes.html)
 vlSLIC       | [Web](http://www.vlfeat.org/overview/slic.html)
 W            | [Web](http://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html?highlight=watershed#watershed)
 WP           | [Web](http://cmm.ensmp.fr/~machairas/waterpixels.html)
-PF           | --
+PF           | [Web](http://users.dickinson.edu/~jmac/publications/PathFinder.zip)
 LSC          | [Web](http://jschenthu.weebly.com/projects.html)
 RW           | [Web](http://cns.bu.edu/~lgrady/software.html)
 QS           | [Web](http://www.vlfeat.org/overview/quickshift.html)
