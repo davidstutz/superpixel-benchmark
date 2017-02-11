@@ -89,7 +89,7 @@ Included                                   | Algorithm    | Reference
 :ballot_box_with_check:                    | EAMS         | [Ref.](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.8.5341&rep=rep1&type=pdf), [Ref.](http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=977560), [Ref.](https://courses.csail.mit.edu/6.869/handouts/PAMIMeanshift.pdf) & [Web](http://coewww.rutgers.edu/riul/research/code/EDISON/)
 :ballot_box_with_check:                    | ERS          | [Ref.](http://www.merl.com/publications/docs/TR2011-035.pdf) & [Web](http://mingyuliu.net/)
 :ballot_box_with_check:                    | FH           | [Ref.](http://www.cs.cornell.edu/~dph/papers/seg-ijcv.pdf) & [Web](https://cs.brown.edu/~pff/segment/index.html)
-**Coming Soon!**                           | MSS          | [Ref.](http://avestia.com/MVML2014_Proceedings/papers/67.pdf)
+:ballot_box_with_check:                    | MSS          | [Ref.](http://avestia.com/MVML2014_Proceedings/papers/67.pdf)
 :ballot_box_with_check:                    | PB           | [Ref.](http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6126393&tag=1) & [Web](http://yuhang.rsise.anu.edu.au/yuhang/misc.html)
 :ballot_box_with_check:                    | preSLIC      | [Ref.](https://www.tu-chemnitz.de/etit/proaut/rsrc/cws_pSLIC_ICPR.pdf) & [Web](https://www.tu-chemnitz.de/etit/proaut/forschung/cv/segmentation.html.en)
 :ballot_box_with_check:                    | reSEEDS      | [Web](http://davidstutz.de/projects/superpixelsseeds/)
