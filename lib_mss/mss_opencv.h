@@ -36,8 +36,21 @@
 #include "superpixel_tools.h"
 #include "mss.h"
 
+/** \brief Wrapper for running MSS on OpenCV images.
+ * \author David Stutz
+ */
 class MSS_OpenCV {
 public:
+    /** \brief Compute superpixels using MSS.
+     * \param[in] image image to computer superpixels on
+     * \param[out] labels superpixel labels
+     * \param[in] region_size
+     * \param[in] size
+     * \param[in] size
+     * \param[in] noise
+     * \param[in] tolerance
+     * \param[in] iterations
+     */
     static void computeSuperpixels(const cv::Mat &image, cv::Mat &labels, 
             int region_size, int size, double noise, double tolerance, int iterations) {
         
