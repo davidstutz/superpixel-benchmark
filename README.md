@@ -5,7 +5,7 @@
 This repository contains the source code used for evaluation in [1], a large-scale 
 comparison of state-of-the-art superpixel algorithms.
 
-**[ArXiv](https://arxiv.org/abs/1612.01601) | [Project Page](http://davidstutz.de/projects/superpixel-benchmark/) | [Datasets](https://github.com/davidstutz/superpixel-benchmark-data)**
+**[ArXiv](https://arxiv.org/abs/1612.01601) | [Project Page](http://davidstutz.de/projects/superpixel-benchmark/) | [Datasets](https://github.com/davidstutz/superpixel-benchmark-data) | [Doxygen Documentation](https://davidstutz.github.io/superpixel-benchmark/)**
 
 This repository subsumes earlier work on comparing superpixel algorithms:
 [davidstutz/gcpr2015-superpixels](https://github.com/davidstutz/gcpr2015-superpixels), 
