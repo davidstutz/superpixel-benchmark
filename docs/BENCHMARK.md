@@ -1,12 +1,13 @@
 # Benchmark
 
 The benchmark combines metrics from different references focussing on different
-aspects of good superpixel segmentations. Details can be found in [1]. In the
-following, the relevant metrics are briefly introduced.
+aspects of superpixel segmentations. Detailed equations can be found in the paper
+or in the [Doxygen Documentation](https://davidstutz.github.io/superpixel-benchmark/),
+specifically in the class [Evaluation](https://davidstutz.github.io/superpixel-benchmark/classEvaluation.html).
 
-    [1] D. Stutz, A. Hermans, B. Leibe.
-        Superpixels: An Evaluation of the State-of-the-Art.
-        Computing Research Repository, abs/1612.01601.
+Note: Evaluation should be done using the executables discussed in [Executables](EXECUTABLES.md).
+However, the metrics implemented in the [Evaluation](https://davidstutz.github.io/superpixel-benchmark/classEvaluation.html).
+class can also be used directly from within C++.
 
 ## Boundary Recall
 
@@ -41,10 +42,8 @@ These pixels constitute the leakage of superpixels across the ground truth segme
         Superpixel benchmark and comparison.
         Forum Bildverarbeitung, 2012.
 
-Note: `lib_eval/evaluation.h` includes three different implementations of Undersegmentation
-Error: the definition by Neubert and Protzel, the definition by Levinshtein, and
-a custom definition which can be understood as counterpart of a simplified Achievable
-Segmentation Accuracy (which is called Oversegmentation Error in `lib_eval/evaluation.h`).
+Note: `lib_eval/evaluation.h` includes two different implementations of Undersegmentation
+Error: the definition by Neubert and Protzel and the definition by Levinshtein.
 
 ## Achievable Segmentation Accuracy
 
@@ -109,10 +108,8 @@ in the superpixel segmentation
         Waterpixels.
         Transactions on Image Processing 24 (11) (2015) 3707–3716.
 
-## Average Boundary Recall, Average Undersegmentation Error and Average Explained Variation
+## Average Metrics
 
 In order to render Boundary Recall, Undersegmentation Error and Explained Variation independent
-of the number of generated superpixels, the area above (and below and above)
-the corresponding curves is used to summarize performance. To avoid confusion, 
-these metrics are called Average Recall, Average Undersegmentation Error and 
-Average Explained Variation.
+of the number of generated superpixels, the area above (or below in the case of
+Undersegmentation Error) the corresponding curves is used to summarize performance.

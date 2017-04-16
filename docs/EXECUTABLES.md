@@ -12,7 +12,19 @@ functions instead.
 
 The same holds for PF, which is writen in Java, and WP, written in Python.
 
-**Examples of calling the executables can be found in `examples`!**
+Table of contents:
+
+* [Algorithms in C++](#algorithms-in-c++)
+* [Utilities in C++](#utilities-in-c++)
+    * [`eval_boundaries2labels_cli`](#eval_boundaries2labels_cli)
+    * [`eval_connected_relabel_cli`](#eval_connected_relabel_cli)
+    * [`eval_parameter_optimization`](#eval_parameter_optimization)
+    * [`eval_summary_cli`](#eval_summary_cli)
+    * [`eval_average_cli`](#eval_average_cli)
+    * [`eval_visualization_cli`](#eval_visualization_cli)
+* [Algorithms in MatLab](#algorithms-in-matlab)
+* [Algorithms in Java](#algorithms-in-java)
+* [Algorithms in Python](#algorithms-in-python)
 
 ## Algorithms in C++
 
@@ -57,7 +69,13 @@ Examples:
 
 ## Utilities in C++
 
-`eval_boundaries2labels_cli` converts boundary maps saved as `.csv` files to superpixel segmentations as `.csv`:
+As part of the benchmark, several tools for evaluation are provided. All of them
+are prefixed by `eval_` and only depend on `lib_eval`.
+
+### `eval_boundaries2labels_cli`
+
+`eval_boundaries2labels_cli` converts boundary maps saved as `.csv` 
+files to superpixel segmentations as `.csv`:
 
     $ ../bin/eval_boundaries2labels_cli --help
     Allowed options:
@@ -69,7 +87,11 @@ Examples:
       -o [ --csv ] arg (=output) save segmentation as CSV file
       -w [ --wordy ]             wordy/verbose
 
-An example can be found in `examples/bash/tp.sh`.
+Usage examples:
+
+* `examples/bash/run_tp.sh`
+
+### `eval_connected_relabel_cli`
 
 `eval_connected_relabel_cli` takes superpixel segmentations as `.csv` files and
 relabels them such that superpixels represent connected components. The original
@@ -86,7 +108,11 @@ be saved in a separate directory:
       -o [ --csv ] arg (=output) save segmentation as CSV file
       -w [ --wordy ]             wordy/verbose
 
-An example can be found in `examples/bash/tp.sh`.
+Usage examples:
+
+* `examples/bash/run_tp.sh`
+
+### `eval_parameter_optimization`
 
 `eval_parameter_optimization` demonstrates the parameter optimization procedure
 used in [1]. The parameters are partly the original parameters used in the paper.
@@ -95,9 +121,8 @@ used in [1]. The parameters are partly the original parameters used in the paper
         Superpixels: An Evaluation of the State-of-the-Art.
         Computing Research Repository, abs/1612.01601.
 
-**Note that it should not be required to use this tool in most cases, unless
-parameters need to be optimized on new datasets or for new algorithms. THE PARAMETERS
-USED IN [1] ARE DETAILED [HERE](PARAMETERS.md).**
+Note that it should not be required to use this tool in most cases, unless
+parameters need to be optimized on new datasets or for new algorithms.
 
 For parameter optimization, the command line tools for all algorithms are normed
 in the sense that they provide the parameters `-i` and `-o` for input and output.
@@ -157,10 +182,12 @@ needs to be specified together with the remaining options:
       --not-fair                            do not use fair parameters
       --help                                produce help message
 
+### `eval_summary_cli`
+
 `eval_summary_cli` may the most important tool provided. It bundles all evaluation
-metrics discussed in [1] plus additional metrics and, given a directory containing
-superpixel segmentations as `.csv` files and directories with the corresponding images
-and ground truth segmentations as `.csv` files, summarizes the performance of
+metrics. Given a directory containing superpixel segmentations as `.csv` files 
+and directories with the corresponding images (as `.png`, `.jpg` or `:jpeg`)
+and ground truth segmentations (also as `.csv` files), summarizes the performance of
 the superpixel segmentations. The provided options are:
 
     $ ../bin/eval_summary_cli --help
@@ -172,7 +199,7 @@ the superpixel segmentations. The provided options are:
       --vis                 visualize results
       --help                produce help message
 
-Usage examples can be found in `examples/bash`. For `examples/bash/reseeds.sh`
+Usage examples can be found in `examples/bash`. For `examples/bash/run_reseeds.sh`
 the created summary looks as follows:
 
     metric,mean[0],mean[1],mean[2],mean[3],mean[4],mean_min,mean_max
@@ -200,6 +227,61 @@ be analyzed using Excel or Calc:
 
 ![Evaluation summary.](SUMMARY.png?raw=true "Evaluation summary.")
 
+More usage examples:
+
+* `examples/bash/run_ccs.sh`
+* `examples/bash/run_cis.sh`
+* `examples/bash/run_crs.sh`
+* ...
+
+### `eval_average_cli`
+
+`eval_average_cli` is used to calculate the average metrics
+given an evaluation summary. In the ideal case, the `--append-file` option for
+`eval_summary_cli` is used to gather the results for different numbers of superpixels
+in a single CSV file. The tool then offers the following options:
+
+    $ ../bin/eval_average_cli --help
+    Allowed options:
+      --summary-file arg                    CSV summary file
+      -o [ --output-file ] arg (=average.csv)
+                                            output file
+      --help  
+
+The output might look as follows:
+
+        K         Rec        1 - UE     EV
+        188.291   0.602725   0.772888   0.717307
+        296.472   0.658145   0.817905   0.754624
+        387.935   0.692999   0.837564   0.773384
+        608.065   0.749924   0.866199   0.802638
+        794.477   0.783432   0.879694   0.816675
+        1100.89   0.822392    0.89422   0.833498
+        1302.86   0.843054   0.900908   0.841242
+        1302.86   0.843054   0.900908   0.841242
+        1572.26   0.865465   0.907163   0.849824
+        1960.33   0.890398   0.913937   0.858543
+        1960.33   0.890398   0.913937   0.858543
+        2478.44   0.917414   0.921283   0.867261
+        3292.52   0.945248   0.928409   0.876992
+        3292.52   0.945248   0.928409   0.876992
+        3292.52   0.945248   0.928409   0.876992
+        4439.47   0.969279   0.934941   0.885738
+        4439.47   0.969279   0.934941   0.885738
+        6526.86    0.99025   0.943163   0.896176
+     ---------- ---------- ---------- ----------
+                   10.4497    8.74869    14.1893
+
+Where the final numbers correspond to the average metrics.
+
+Usage examples:
+
+* `examples/bash/evaluate_w.sh`
+* `examples/bash/compare_fh_refh.sh`
+* `examples/bash/compare_seeds_reseeds.sh`
+
+### `eval_visualization_cli`
+
 `eval_visualization_cli` can be used to visualize superpixel segmentations
 available as `.csv` files given the corresponding images:
 
@@ -226,6 +308,13 @@ Example:
 
 ![Visualizations.](VISUALIZATIONS.png?raw=true "Visualizations.")
 
+Usage examples:
+
+* `examples/bash/run_ccs.sh`
+* `examples/bash/run_cis.sh`
+* `examples/bash/run_crs.sh`
+* ...
+
 ## Algorithms in MatLab
 
 For parameter optimization purposes, all algorithms implemented in MatLab provide
@@ -241,11 +330,17 @@ The MatLab function usually provides the following parameters:
 * `wordy`: whether to run in verbose mode.
 
 Details on the algorithm specific algorithms can be found in the corresponding
-MatLab functions. Usually, all parameters after `folder` are optional!
+MatLab functions. Usually, all parameters after `folder` are optional.
 
 Alternatively, the Bash file usually provides options similar to the options
-provided by the C++ command line tools. `-i` is the input directory; `-o` the output
-CSV directory; `-v` the output visualization directory and `-h` for a help message, e.g.
+provided by the C++ command line tools:
+
+* `-i` is the input directory;
+* `-o` the output CSV directory;
+* `-v` the output visualization directory;
+* and `-h` for a help message.
+
+An examples:
 
     $ ../tp_cli/tp_dispatcher.sh -h
     Allowed options:
@@ -262,8 +357,7 @@ Additionally, it is required to provide the path to the MatLab functions via `-a
 in this case the path to `tp_cli.m`, as well as the path to the MatLab
 executable via `-e`.
 
-Examples of using the Bash scripts assuming MatLab R2015b to be installed in the home
-directory:
+Examples of using the Bash scripts:
 
     $ cd examples
     # EAMS
@@ -294,6 +388,13 @@ Examples of using the MatLab functions directly:
     catch e
         fprintf([e.message '\n'])
     end
+
+More usage examples:
+
+* `examples/bash/run_eams.sh`
+* `examples/bash/run_nc.sh`
+* `examples/bash/run_poise.sh`
+* ...
 
 ## Algorithms in Java
 

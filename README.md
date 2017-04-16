@@ -5,27 +5,41 @@
 This repository contains the source code used for evaluation in [1], a large-scale 
 comparison of state-of-the-art superpixel algorithms.
 
-**[ArXiv](https://arxiv.org/abs/1612.01601) | [Project Page](http://davidstutz.de/projects/superpixel-benchmark/) | [Datasets](https://github.com/davidstutz/superpixel-benchmark-data) | [Doxygen Documentation](https://davidstutz.github.io/superpixel-benchmark/)**
+**[ArXiv](https://arxiv.org/abs/1612.01601) | 
+[Project Page](http://davidstutz.de/projects/superpixel-benchmark/) | 
+[Datasets](https://github.com/davidstutz/superpixel-benchmark-data) | 
+[Doxygen Documentation](https://davidstutz.github.io/superpixel-benchmark/)**
 
 This repository subsumes earlier work on comparing superpixel algorithms:
 [davidstutz/gcpr2015-superpixels](https://github.com/davidstutz/gcpr2015-superpixels), 
 [davidstutz/superpixels-revisited](https://github.com/davidstutz/superpixels-revisited).
 
-**Please cite the following work if you use this benchmark:**
+**Please cite the following work if you use this benchmark or the provided tools or implementations:**
 
     [1] D. Stutz, A. Hermans, B. Leibe.
         Superpixels: An Evaluation of the State-of-the-Art.
         Computing Research Repository, abs/1612.01601.
 
-Make also sure to cite additional papers when using datasets or superpixel algorithms.
+Also make also sure to cite additional papers when using datasets or superpixel algorithms.
 
 **Updates:**
 
+* An implementation of the average metrics, i.e. Average Boundary Recall (called
+Average Miss Rate in the updated paper), Average Undersegmentation Error
+and Average Explained Variation (called Average Unexplained Variation in the updated paper)
+is provided in `lib_eval/evaluation.h` and an easy-to-use command line tool is provided,
+see `eval_average_cli` and the corresponding documentation and examples in
+[Executables](docs/EXECUTABLES.md) and [Examples](docs/EXAMPLE.md) respectively.
+* As of Mar 29, 2017 the paper was accepted for publication at 
+[CVIU](https://www.journals.elsevier.com/computer-vision-and-image-understanding/).
+* The converted (i.e. pre-processed) NYUV2, SBD and SUNRGBD datasets are now available
+in the [data repository](https://github.com/davidstutz/superpixel-benchmark-data).
+* The source code of MSS has been added.
+* The source code of PF and SEAW has been added.
 * Doxygen documentation is now available [here](http://davidstutz.github.io/superpixel-benchmark/).
 * The presented paper was in preparation for a longer period of time — 
   some recent superpixel algorithms are not included in the comparison. These include 
   [SCSP](https://github.com/freifeld/fastSCSP) and [LRW](https://github.com/shenjianbing/lrw14).
-  We are working on including these algorithms in future updates.
 
 ## Table of Contents
 

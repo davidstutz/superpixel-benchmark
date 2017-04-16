@@ -3,7 +3,6 @@ var searchData=
   ['dasp_5fopencv',['DASP_OpenCV',['../classDASP__OpenCV.html',1,'']]],
   ['dasp_5fopencv_2ecpp',['dasp_opencv.cpp',['../dasp__opencv_8cpp.html',1,'']]],
   ['dasp_5fopencv_2eh',['dasp_opencv.h',['../dasp__opencv_8h.html',1,'']]],
-  ['data_2emd',['DATA.md',['../DATA_8md.html',1,'']]],
   ['datasets_2emd',['DATASETS.md',['../DATASETS_8md.html',1,'']]],
   ['depth_5fdirectory',['depth_directory',['../classParameterOptimizationTool.html#afd47406e019b12e8bf11b44de6f44c2f',1,'ParameterOptimizationTool']]],
   ['depth_5ftools_2ecpp',['depth_tools.cpp',['../depth__tools_8cpp.html',1,'']]],
@@ -20,6 +19,5 @@ var searchData=
   ['drawprecisionrecall',['drawPrecisionRecall',['../classVisualization.html#a9eb0aeb10b2f9979c3d0533961eae8db',1,'Visualization']]],
   ['drawrandom',['drawRandom',['../classVisualization.html#a4d9f0409489e86c241e245935defd52c',1,'Visualization']]],
   ['drawundersegmentationerror',['drawUndersegmentationError',['../classVisualization.html#a5f00da5fe858bb2a2772469290e929e6',1,'Visualization']]],
-  ['data',['Data',['../md_docs_DATA.html',1,'']]],
   ['datasets',['Datasets',['../md_docs_DATASETS.html',1,'']]]
 ];

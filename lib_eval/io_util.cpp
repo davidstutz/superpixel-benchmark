@@ -427,3 +427,71 @@ int IOUtil::readCSVHeaderString(boost::filesystem::path file, std::vector<std::s
     
     return header.size();
 }
+
+////////////////////////////////////////////////////////////////////////////////
+// readCSVSummary
+////////////////////////////////////////////////////////////////////////////////
+
+int IOUtil::readCSVSummary(boost::filesystem::path file, std::vector<std::string>& row_headers, 
+        std::vector<std::string>& col_headers, cv::Mat &result) {
+
+    LOG_IF(FATAL, !boost::filesystem::is_regular_file(file)) 
+            << "File does not exist: " << file.string() << ".";
+    
+    std::ifstream file_stream(file.c_str());
+    
+    int i = 0;
+    int cols = 0; // To be determined.
+    
+    std::string line;
+    while (std::getline(file_stream, line, '\n')) {
+        
+        std::stringstream line_stream(line);
+        std::string cell;
+        
+        std::vector<std::string> data;
+        while(std::getline(line_stream, cell, ',')) {
+            data.push_back(cell);
+        }
+        
+        // Intialize output matrix.
+        if (i == 0) {
+            cols = data.size() - 1;
+            result.create(0, cols, CV_32SC1);
+            
+//            LOG(INFO) << "Reading CSV file with " << cols << " columns (" 
+//                    << file.string() << ").";
+            
+            for (unsigned int k = 0; k < data.size(); k++) {
+                col_headers.push_back(data[k]);
+            }
+        }
+        
+        LOG_IF (FATAL, data.size() != cols + 1) << "Invalid CSV file: " << cols << "!=" 
+                << data.size() << " " << i << "(" << file.string() << ").";;
+        
+        cv::Mat result_row(1, cols, CV_32SC1, cv::Scalar(0));
+    
+        row_headers.push_back(data[0]);
+        if (i > 0) {
+            for (int j = 1; j < cols; j++) {
+                result_row.at<float>(0, j - 1) = atof(data[j].c_str());
+            }
+            
+            result.push_back(result_row);
+        }
+        
+        i++;
+    }
+    
+    LOG_IF(FATAL, col_headers.size() != result.cols + 1)
+            << "Read invalid number of columns.";
+    LOG_IF(FATAL, row_headers.size() != result.rows + 1)
+            << "Read invalid number of rows.";
+//    LOG(INFO) << "Read CSV file with " << i << " rows (" 
+//            << file.string() << ").";
+    
+    file_stream.close();
+    
+    return i;
+}

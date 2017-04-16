@@ -1,6 +1,7 @@
 var searchData=
 [
   ['readcsvheaderstring',['readCSVHeaderString',['../classIOUtil.html#a98f41161281f66a907466baae0000483',1,'IOUtil']]],
+  ['readcsvsummary',['readCSVSummary',['../classIOUtil.html#a9e7c777463186a87bc2cfe24396dba41',1,'IOUtil']]],
   ['readdirectory',['readDirectory',['../classIOUtil.html#a9a2042854799a9885a77767b359c7b5c',1,'IOUtil::readDirectory(boost::filesystem::path directory, std::vector&lt; std::string &gt; extensions, std::multimap&lt; std::string, boost::filesystem::path &gt; &amp;files, std::string prefix=&quot;&quot;, std::string suffix=&quot;&quot;, std::vector&lt; std::string &gt; exclude=std::vector&lt; std::string &gt;{})'],['../classIOUtil.html#a582358728d3e0c09bd886db618c923e1',1,'IOUtil::readDirectory(boost::filesystem::path directory, std::multimap&lt; std::string, boost::filesystem::path &gt; &amp;files, std::string prefix=&quot;&quot;, std::string suffix=&quot;&quot;)']]],
   ['readmat',['readMat',['../classIOUtil.html#a46bb84fe3409d74aca7b2e9e2699e35e',1,'IOUtil']]],
   ['readmatcsvfloat',['readMatCSVFloat',['../classIOUtil.html#a301206e86594f7eafa2a561bef4c1eaf',1,'IOUtil']]],

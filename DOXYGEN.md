@@ -3,7 +3,10 @@
 This is the documentation corresponding to [davidstutz/superpixel-benchmark](https://github.com/davidstutz/superpixel-benchmark),
 presenting a large-scale comparison of superpixel algorithms conducted in [1].
 
-**[ArXiv](https://arxiv.org/abs/1612.01601) | [Project Page](http://davidstutz.de/projects/superpixel-benchmark/) | [Datasets](https://github.com/davidstutz/superpixel-benchmark-data)**
+**[ArXiv](https://arxiv.org/abs/1612.01601) | 
+[Project Page](http://davidstutz.de/projects/superpixel-benchmark/) | 
+[Datasets](https://github.com/davidstutz/superpixel-benchmark-data) | 
+[Doxygen Documentation](https://davidstutz.github.io/superpixel-benchmark/)**
 
 **Also check Related Files in the navigation for further documentation.** Note however,
 that some of the links might not work. For the links to work, navigate to the `docs/`
@@ -13,11 +16,13 @@ This repository subsumes earlier work on comparing superpixel algorithms:
 [davidstutz/gcpr2015-superpixels](https://github.com/davidstutz/gcpr2015-superpixels), 
 [davidstutz/superpixels-revisited](https://github.com/davidstutz/superpixels-revisited).
 
-**Please cite the following work if you use this benchmark:**
+**Please cite the following work if you use this benchmark or the provided tools or implementations:**
 
     [1] D. Stutz, A. Hermans, B. Leibe.
         Superpixels: An Evaluation of the State-of-the-Art.
         Computing Research Repository, abs/1612.01601.
+
+Also make sure to cite additional papers when using datasets or superpixel algorithms.
 
 ## License
 

@@ -31,6 +31,9 @@
 cmake_minimum_required (VERSION 2.8)
 project (superpixel_benchmark)
 
+find_package(OpenCV REQUIRED)
+
+include_directories(${OpenCV_INCLUDE_DIRS})
 add_library(pb
     pb_opencv.cpp
     graph.txx
@@ -43,3 +46,4 @@ add_library(pb
     QPBO_LazyElim.cc
     QPBO_MaxFlow.cc
 )
+target_link_libraries(pb ${OpenCV_LIBRARIES})

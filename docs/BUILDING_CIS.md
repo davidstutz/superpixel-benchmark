@@ -1,14 +1,15 @@
 # Building CIS
 
 Unfortunately, the code from CIS cannot be shipped with this library due to the 
-restrictive license of the corresponding code.
-Therefore, only a command line tool in `cis_cli` is provided.
+restrictive license. Therefore, only a command line tool in `cis_cli` is provided.
 
 Installation instructions:
 
-Go to [http://www.csd.uwo.ca/faculty/olga/](http://www.csd.uwo.ca/faculty/olga/) and download the code.
+Go to [http://www.csd.uwo.ca/faculty/olga/](http://www.csd.uwo.ca/faculty/olga/) 
+and download the code.
 
-Extract the archive into `lib_cis` in order to obtain the following directory structure (where the `CMakeLists.txt` files are provided by this library):
+Extract the archive into `lib_cis` in order to obtain the following directory 
+structure (where the `CMakeLists.txt` files are provided by this library):
 
     lib_cis
     |- vlib
@@ -50,4 +51,4 @@ to
     this->add_tweights(y, 0, C);
     this->add_edge(x, y, B+C, 0);
 
-Now use `-DBUILD_CIS=On` to run CMake.
+Now use `-DBUILD_CIS=On` to run CMake (as described in [Building](BUILDING.md).

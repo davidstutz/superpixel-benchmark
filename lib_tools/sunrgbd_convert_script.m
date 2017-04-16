@@ -40,7 +40,9 @@
 %    that this may take quite some time!
 %    It might be wise to extract the contained directories (xtion,
 %    realsense, kv1, kv2) separately as this may take some time!
-% 5. Run this script.
+% 5. Adapt the ROOT_DIR variable below to point to the data directory (i.e. the
+%    parent directory of the SUNRGBD directory).
+% 6. Run this script.
 
 % NOTE THAT THIS SCRIPT MAY TAKE SOME TIME TO FINISH.
 % On 8GB RAM, i5 Ubuntu 12.04, it took ~ 17475 + 1290 + 864 + 94 + 56 seconds.

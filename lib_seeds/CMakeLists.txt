@@ -31,4 +31,8 @@
 cmake_minimum_required (VERSION 2.8)
 project (superpixel_benchmark)
 
+find_package(OpenCV REQUIRED)
+
+include_directories(${OpenCV_INCLUDE_DIRS})
 add_library(seeds seeds2.cpp)
+target_link_libraries(seeds ${OpenCV_LIBRARIES})

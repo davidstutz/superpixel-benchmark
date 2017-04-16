@@ -16,6 +16,4 @@ from the root directory. Note that Doxygen needs to be installed; use
 
     sudo apt-get install doxygen
 
-on Ubuntu.
-
-Afterwards, copy the images in `docs/` into `docs/html`!
+on Ubuntu 14.04. Afterwards, copy the images in `docs/` into `docs/html`!

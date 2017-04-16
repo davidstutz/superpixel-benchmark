@@ -1,13 +1,43 @@
 # Algorithms
 
-An overview of the evaluated algorithms can be found below. The table
-is taken from the appendix in [35].
+An overview of the evaluated algorithms can be found below. More details can be found
+in the paper or in the original README found in the respective library directory.
+Also check the corresponding web pages for author and license information. The
+corresponding references are given below the table.
 
-    [35] D. Stutz, A. Hermans, B. Leibe.
-         Superpixels: An Evaluation of the State-of-the-Art.
-         Computing Research Repository, abs/1612.01601.
-
-![Algorithm overview.](ALGORITHMS_TABLE.png?raw=true "Algorithm overview.")
+Algorithm    | Library       | Executable    | Implementation | Reference | Link
+-------------|---------------|---------------|----------------|-----------|-----
+CCS          | `lib_ccs`     | `ccs_cli`     | C++            | [22,23]   | [Web](http://www.emrahtasli.com/research/spextraction/)
+CIS          | `lib_cis`     | `cis_cli`     | C++            | [10]      | [Web](http://www.csd.uwo.ca/faculty/olga/)
+CRS          | `lib_crs`     | `crs_cli`     | C++            | [13,14]   | [Web](http://www.vsi.cs.uni-frankfurt.de/research/superpixel-segmentation/)
+CW           | `lib_cw`      | `cw_cli`      | C++            | [25]      | [Web](https://www.tu-chemnitz.de/etit/proaut/forschung/cv/segmentation.html.en)
+DASP         | `lib_dasp`    | `dasp_cli`    | C++            | [17]      | [Web](https://github.com/Danvil/dasp)
+EAMS         | `lib_eams`    | `eams_cli`    | MatLab         | [2]       | [Web](http://coewww.rutgers.edu/riul/research/code/EDISON/)
+ERS          | `lib_ers`     | `ers_cli`     | C++            | [15]      | [Web](http://mingyuliu.net/)
+FH           | `lib_fh`      | `fh_cli`      | C++            | [4]       | [Web](https://cs.brown.edu/~pff/segment/index.html)
+reFH         | `lib_refh`    | `refh_cli`    | C++            | --        | [Web](http://davidstutz.de/projects/superpixel-segmentation/)
+MSS          | `lib_mss`     | `mss_cli`     | C++            | [28]      | --
+PB           | `lib_pb`      | `pb_cli`      | C++            | [16]      | [Web](http://yuhang.rsise.anu.edu.au/yuhang/misc.html)
+preSLIC      | `lib_preslic` | `preslic_cli` | C++            | [25]      | [Web](https://www.tu-chemnitz.de/etit/proaut/forschung/cv/segmentation.html.en)
+SEEDS        | `lib_seeds`   | `seeds_cli`   | C++            | [18]      | [Web](http://www.mvdblive.org/seeds/)
+reSEEDS      | `lib_reseeds` | `reseeds_cli` | C++            | --        | [Web](http://davidstutz.de/projects/superpixel-segmentation/)
+SEAW         | `lib_seaw`    | `seaw_cli`    | MatLab         | [34]      | [Web](https://github.com/JohannStrassburg/InfluenceSegImageParsingCode)
+SLIC         | `lib_slic`    | `slic_cli`    | C++            | [11,12]   | [Web](http://ivrl.epfl.ch/research/superpixels)
+vlSLIC       | `lib_clslic`  | `vlslic_cli`  | C++            | --        | [Web](http://www.vlfeat.org/overview/slic.html)
+TP           | `lib_tp`      | `tp_cli`      | MatLab         | [9]       | [Web](http://www.cs.toronto.edu/~babalex/research.html)
+TPS          | `lib_tps`     | `tps_cli`     | MatLab         | [19,20]   | [Web](http://hzfu.github.io/subpage/codes.html)
+W            | `lib_w`       | `w_cli`       | C++            | [1]       | [Web](http://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html?highlight=watershed#watershed)
+WP           | `lib_wp`      | `wp_cli`      | Python         | [29,30]   | [Web](http://cmm.ensmp.fr/~machairas/waterpixels.html)
+PF           | `lib_pf`      | `pf_cli`      | Java           | [8]       | [Web](http://users.dickinson.edu/~jmac/publications/PathFinder.zip)
+LSC          | `lib_lsc`     | `lsc_cli`     | C++            | [32]      | [Web](http://jschenthu.weebly.com/projects.html)
+RW           | `lib_rw`      | `rw_cli`      | MatLab         | [5, 6]    | [Web](http://cns.bu.edu/~lgrady/software.html)
+QS           | `lib_qs`      | `qs_cli`      | MatLab         | [7]       | [Web](http://www.vlfeat.org/overview/quickshift.html)
+NC           | `lib_nc`      | `nc_cli`      | C++            | [3]       | [Web](http://www.cs.sfu.ca/~mori/research/superpixels)
+VCCS         | `lib_vccs`    | `vccs_cli`    | MatLab         | [24]      | [Web](http://pointclouds.org/documentation/tutorials/supervoxel_clustering.php)
+POISE        | `lib_poise`   | `poise_cli`   | MatLab         | [33]      | [Web](http://rehg.org/poise/)
+VC           | `lib_vc`      | `vc_cli`      | C++            | [21]      | [Web](http://www-personal.umich.edu/~jwangumi/software.html)
+ETPS         | `lib_etps`    | `etps_cli`    | C++            | [31]      | [Web](https://bitbucket.org/mboben/spixel)
+ERGC         | `lib_ergc`    | `ergc_cli`    | C++            | [26,27]   | [Web](https://sites.google.com/site/pierrebuyssens/code/ergc)
 
     [1] F. Meyer.
         Color image segmentation.
@@ -111,42 +141,3 @@ is taken from the appendix in [35].
     [34] J. Strassburg, R. Grzeszick, L. Rothacker, G. A. Fink.
          On the influence of superpixel methods for image parsing.
          International Conference on Computer Vision Theory and Application, 2015, pp. 518–527.
-    
-## Licenses
-
-As far as the provided algorithms included a `README.md` or `LICENSE.md` file, these
-can be found in the corresponding subdirectories. For all algorithms, we include
-the author's web pages below:
-
-Algorithm    | Link
--------------|-----
-CCS          | [Web](http://www.emrahtasli.com/research/spextraction/)
-CIS          | [Web](http://www.csd.uwo.ca/faculty/olga/)
-CRS          | [Web](http://www.vsi.cs.uni-frankfurt.de/research/superpixel-segmentation/)
-CW           | [Web](https://www.tu-chemnitz.de/etit/proaut/forschung/cv/segmentation.html.en)
-DASP         | [Web](https://github.com/Danvil/dasp)
-EAMS         | [Web](http://coewww.rutgers.edu/riul/research/code/EDISON/)
-ERS          | [Web](http://mingyuliu.net/)
-FH           | [Web](https://cs.brown.edu/~pff/segment/index.html)
-MSS          | --
-PB           | [Web](http://yuhang.rsise.anu.edu.au/yuhang/misc.html)
-preSLIC      | [Web](https://www.tu-chemnitz.de/etit/proaut/forschung/cv/segmentation.html.en)
-reSEEDS      | [Web](http://davidstutz.de/projects/superpixelsseeds/)
-SEAW         | [Web](https://github.com/JohannStrassburg/InfluenceSegImageParsingCode)
-SEEDS        | [Web](http://www.mvdblive.org/seeds/)
-SLIC         | [Web](http://ivrl.epfl.ch/research/superpixels)
-TP           | [Web](http://www.cs.toronto.edu/~babalex/research.html)
-TPS          | [Web](http://hzfu.github.io/subpage/codes.html)
-vlSLIC       | [Web](http://www.vlfeat.org/overview/slic.html)
-W            | [Web](http://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html?highlight=watershed#watershed)
-WP           | [Web](http://cmm.ensmp.fr/~machairas/waterpixels.html)
-PF           | [Web](http://users.dickinson.edu/~jmac/publications/PathFinder.zip)
-LSC          | [Web](http://jschenthu.weebly.com/projects.html)
-RW           | [Web](http://cns.bu.edu/~lgrady/software.html)
-QS           | [Web](http://www.vlfeat.org/overview/quickshift.html)
-NC           | [Web](http://www.cs.sfu.ca/~mori/research/superpixels)
-VCCS         | [Web](http://pointclouds.org/documentation/tutorials/supervoxel_clustering.php)
-POISE        | [Web](http://rehg.org/poise/)
-VC           | [Web](http://www-personal.umich.edu/~jwangumi/software.html)
-ETPS         | [Web](https://bitbucket.org/mboben/spixel)
-ERGC         | [Web](https://sites.google.com/site/pierrebuyssens/code/ergc)

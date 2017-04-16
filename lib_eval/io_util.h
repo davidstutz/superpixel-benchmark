@@ -127,6 +127,15 @@ public:
      */
     static int readCSVHeaderString(boost::filesystem::path file, std::vector<std::string> &header);
     
+    /** \brief Read a CSV summary file as produced by EvaluationSummary.
+     * \param[in] file path to summary file
+     * \param[out] row_headers row names (i.e. first column)
+     * \param[out] col_headers column names (i.e. first row)
+     * \param[out] data data corresponding to the inner of the CSV file
+     */
+    static int readCSVSummary(boost::filesystem::path file, std::vector<std::string>& row_headers, 
+            std::vector<std::string>& col_headers, cv::Mat &data);
+    
     /** \brief Creates an ordered list of all subdirectories.
      * \param[in] directory directory to find subdirectories in
      * \param[out] subdirectores multimap of subdirectories found

@@ -44,5 +44,5 @@ target_link_libraries(cw_cli
     eval
     cw
     ${Boost_LIBRARIES} 
-    ${OpenCV_LIBS}
+    ${OpenCV_LIBRARIES}
 )

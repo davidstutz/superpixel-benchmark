@@ -1,29 +1,25 @@
 # Building
 
-There are three main components that need to be built:
+For getting started quickly:
+
+* [#Quick Start](quick-start)
+
+For details, there are three main components that need to be built:
 
 * [C++ Components](#c++)
+    * [Prerequisites](#prerequisites)
+    * [Building Options](#building-options)
+    * [Prerequisites for Individual Algorithms](#prerequisites-for-individual-algorithms)
+        * [CIS](#cis)
+        * [DASP](#dasp)
+        * [ERGC](#ergc)
+        * [vlSLIC](#vlslic)
 * [MatLab Components](#matlab)
 * [Java Components (PF)](#java)
 
-Building has been tested with Ubuntu 12.04 and Ubuntu 14.04. **Note that
-building can be customized allowing to built the desired components and
-algorithms only.** For different Linux distributions, the
-building process might need to be adapted. As reference, these are the
-library versions installed (checked using `dpkg -l`):
+## Getting Started
 
-    ||/ Name                Version        Architecture   Description
-    +++-===================-==============-==============-============================================
-    ii  gcc                 4:4.8.2-1ubunt amd64          GNU C compiler
-    ii  cmake               3.2.2-2ubuntu2 amd64          cross-platform, open-source make system
-    ii  libboost-dev        1.54.0.1ubuntu amd64          Boost C++ Libraries development files (defau
-    ii  cimg-dev            1.5.7+dfsg-1   all            powerful image processing library
-    ii  libpng++-dev        0.2.5-1        all            C++ interface to the PNG (Portable Network G
-
-OpenCV 2.4.11 and Glog 0.3.3 where manually installed.
-
-**Quick Start:**
-
+The following quick start was tested on Ubuntu 12.04 and Ubuntu 14.04.
 Make sure to clone the repository recursively, then execute:
 
     $ git clone https://github.com/davidstutz/superpixel-benchmark --recursive
@@ -43,30 +39,38 @@ Make sure to clone the repository recursively, then execute:
     $ make
 
 Installs [Cmake](https://cmake.org/), [Boost](http://www.boost.org/), [OpenCV](http://opencv.org/), 
-[GLog](https://github.com/google/glog), `libpng`, `libpng++` and [CImg](http://cimg.eu/)
+[GLog](https://github.com/google/glog), `libpng`, `libpng++` and [CImg](http://cimg.eu/).
+This builts the seven recommended algorithms as discussed in the paper as well 
+as the benchmark and tools.
 
 Also see `.travis.yml` for details on building on a fresh Ubuntu 14.04 installation!
-
-To compile the evaluation code including the superpixel algorithms recommended
-in [1].
 
 ## C++
 
 Building the C++ components is done using [CMake](https://cmake.org/) and all of them are based
-on the `lib_eval` component which holds the evaluation metrics as well as
-IO and superpixel tools.
+on the `lib_eval` component which holds the benchmark as well as toopls.
 
 ### Prerequisites
 
 A C++ compiler supporting C++11 is assumed to be available.
-It was tested with gcc >= 4.8.4.
+It was tested with gcc >= 4.8.4. Building has been tested with Ubuntu 12.04 and Ubuntu 14.04.
 
-Being able to build `lib_eval` is prerequisite independent of the algorithms
-to be built. Requirements to build `lib_eval` are [CMake](https://cmake.org/), 
-[OpenCV](http://www.boost.org/), [Boost](https://github.com/google/glog)
-and [GLog](https://github.com/google/glog). Note that the required CMake modules, e.g. for finding GLog, can
-be found in `cmake` in case these need to be adapted. Build essentials, CMake, OpenCV
-and Boost can be installed as follows:
+All algorithms depend on the tools in `lib_eval`. Requirements are:
+
+* [CMake](https://cmake.org/), 
+* [OpenCV](http://www.boost.org/)
+* [Boost](https://github.com/google/glog)
+* [GLog](https://github.com/google/glog).
+
+Additionally, the algorithms built by default depend on:
+
+* [PNG](http://www.libpng.org/pub/png/libpng.html)
+* [PNG++](http://www.nongnu.org/pngpp/)
+
+Note that the required CMake modules, e.g. for finding GLog, can
+be found in `cmake` in case these need to be adapted. 
+
+CMake, OpenCV and Boost can be installed as follows:
 
     $ sudo apt-get install build-essential cmake libboost-dev-all libopencv-dev
 
@@ -75,37 +79,49 @@ Currently, OpenCV 2.4.11 is supported, in general 2.4.x should work fine. For up
 to OpenCV 3.0 and OpenCV 3.1, it might be necessary to update constants (e.g. as used for
 color conversion). Some implementations are known to work with OpenCV 3 and OpenCV 3.1 (e.g. reSEEDS).
 
-GLog should be installed manually (at least this was the best option at the
-point of writing). GLog should be downloaded or cloned from [google/glog](https://github.com/google/glog). The 
-release 0.3.3 was tested and works with the provided `cmake/FindGlog.cmake`. Extract
-GLog into the home directory, and:
+GLog 0.3.3 should be installed manually. GLog should be downloaded or cloned from [google/glog](https://github.com/google/glog).
+If the repository is cloned, make sure to checkout version 0.3.3. Then:
 
     $ cd glog-0.3.3/
     $ ./configure
     $ make
     $ sudo make install
 
-For further instructions see the issue tracker at [google/glog](https://github.com/google/glog). Note that GLog 
-can alternatively be installed using
+For further instructions see the issue tracker at [google/glog](https://github.com/google/glog).
+
+Note that GLog can alternatively be installed using
 
     $ sudo apt-get install libgoogle-glog-dev
 
-However, `cmake/FindGlog.cmake` needs to be adapted.
+However, `cmake/FindGlog.cmake` needs to be adapted and some parts might not working
+with newer versions.
 
-**Also see `.travis.yml` for instructions for installation on a clean Ubuntu 14.04 machine!**
+For installing PNG and PNG++:
+
+    sudo apt-get install libpng-dev # should already be installed for OpenCV
+    sudo apt-get install libpng++-dev
+
+As reference, these are the library versions as installed on Ubuntu 14.04 (checked using `dpkg -l`)
+where OpenCV and GLog where installed manually:
+
+    ||/ Name                Version        Architecture  
+    +++-===================-==============-==============
+    ii  gcc                 4:4.8.2-1ubunt amd64
+    ii  cmake               3.2.2-2ubuntu2 amd64
+    ii  libboost-dev        1.54.0.1ubuntu amd64
+    ii  libpng12-dev        1.2.50-1ubuntu amd64
+    ii  libpng++-dev        0.2.5-1        all
 
 ### Building Options
 
-After verifying that the requirements for `lib_eval` are installed:
+After verifying that the requirements are met:
 
     $ mkdir build
     $ cd build
     $ cmake ..
     $ cmake -LAH
 
-This will list all available CMake options. You will find the options provided
-by this repository at the beginning; these options correspond to the individual
-algorithms. These options include:
+This will list all available CMake options. These options include:
 
 * `-DBUILD_CCS`: build CCS (Off)
 * `-DBUILD_CIS`: build CIS (Off), follow [building CIS](BUILDING_CIS.md) for details
@@ -130,10 +146,10 @@ algorithms. These options include:
 * `-DBUILD_VLSLIC`: build vlSLIC (Off)
 * `-DBUILD_W`: build W (Off)
 
-Note that the algorithms recommended in [1] are built by default. To change this,
-use the option indicated above or edit `CMakeLists.txt` accordingly.
+Note that the algorithms recommended in the paper are built by default. To change this,
+use the options indicated above or edit `CMakeLists.txt` accordingly.
 
-### Individual Requirements
+### Prerequisites for Individual Algorithms
 
 In the following, we outline additional prerequisites needed to build selected
 superpixel algorithms. Note that when using the default options, no additional
@@ -150,30 +166,32 @@ For installing and building CIS, follow [these instructions](BUILDING_CIS.md).
 
     sudo apt-get install libeigen3-dev
 
+For reference, the following version was installed on Ubuntu 14.04:
+
+    ||/ Name                Version        Architecture
+    +++-===================-==============-==============
+    ii  libeigen3-dev       3.2.0-8        all
+
 #### ERGC
 
 [CImg](http://cimg.eu/) and [LAPACK](http://www.netlib.org/lapack/) is required:
 
     sudo apt-get install cimg-dev cimg-doc cimg-examples
 
-#### ETPS
+For reference, the following version was installed on Ubuntu 14.04:
 
-`libpng` and `png++` need to be installed. `libpng` should be installed as prerequisite of OpenCV,
-otherwise use
-
-    sudo apt-get install libpng-dev
-
-For `png++` use
-
-    sudo apt-get install libpng++-dev
+    ||/ Name                Version        Architecture
+    +++-===================-==============-==============
+    ii  cimg-dev            1.5.7+dfsg-1   all
 
 #### vlSLIC
 
 Note that the source code in `lib_vlslic` is part of the [VLFeat](http://www.vlfeat.org/) library.
 The library was stripped to the essentials components needed for vlSLIC. Alternatively,
-VLFeat can be installed as described [here](http://www.vlfeat.org/compiling-unix.html). The corresponding `CMakeLists.txt`
-in `vlslic_cli` and `lib_vlslic` may need to be adapted (note that `lib_vlslic/vlslic_opencv.h`
-is header only such that `lib_vlslic` might not be required to be compiled.
+VLFeat can be installed as described [here](http://www.vlfeat.org/compiling-unix.html). 
+The corresponding `CMakeLists.txt` in `vlslic_cli` and `lib_vlslic` may need to 
+be adapted (note that `lib_vlslic/vlslic_opencv.h` is header only such that `lib_vlslic`
+might not be required to be compiled.
 
 ## MatLab
 
@@ -204,11 +222,9 @@ Only PF is written in Java. For compiling the Java source, follow `lib_pf/make.s
     $JAR cfm PathFinder.jar Manifest.txt *.java *.class
     $JAVA -jar PathFinder.jar
 
-Make sure to set the variables `JAVAC`, `JAR` and `JAVA` correctly. On Ubuntu, this
-may look as follows:
+Make sure to set the variables `JAVAC`, `JAR` and `JAVA` correctly. On Ubuntu 14.04,
+this may look as follows:
 
     JAVAC="/home/david/jdk1.8.0_45/bin/javac"
     JAR="/home/david/jdk1.8.0_45/bin/jar"
     JAVA="/home/david/jdk1.8.0_45/bin/java"
-
-Here, Java SE was installed locally for the use "david".

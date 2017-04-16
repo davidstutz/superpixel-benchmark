@@ -942,6 +942,89 @@ float Evaluation::computeEdgeRecall(const cv::Mat &labels, const cv::Mat &edges,
 }
 
 ////////////////////////////////////////////////////////////////////////////////
+// computeAverageMetric
+////////////////////////////////////////////////////////////////////////////////
+
+float Evaluation::computeAverageMetric(const std::vector<float>& values, const std::vector<float>& superpixels,
+        int min_superpixels, int max_superpixels) {
+    
+    LOG_IF(FATAL, values.size() != superpixels.size()) 
+            << "Number of metric values does not match number of numbers of superpixels.";
+    
+    std::vector<int> indices(values.size());
+    for (unsigned int i = 0; i < values.size(); i++) {
+        indices[i] = i;
+    }
+    
+    std::sort(std::begin(indices), std::end(indices), 
+            [&](int i1, int i2) {return superpixels[i1] < superpixels[i2];});
+            
+    int i_min = 0;
+    while (superpixels[indices[i_min + 1]] <= min_superpixels) {
+        i_min++;
+    }
+    
+    int i_max = indices.size() - 1;
+    while (superpixels[indices[i_max - 1]] >= max_superpixels) {
+        i_max--;
+    }
+    
+    std::vector<float> corrected_values;
+    std::vector<int> corrected_superpixels;
+    
+    if (superpixels[indices[i_min]] > min_superpixels) {
+        corrected_values.push_back(values[indices[i_min]]);
+        corrected_superpixels.push_back(min_superpixels);
+    }
+    else {        
+        float m = (values[indices[i_min + 1]] - values[indices[i_min]])/(superpixels[indices[i_min + 1]] - superpixels[indices[i_min]]);
+        float n = values[indices[i_min]] - m*superpixels[indices[i_min]];
+        
+        corrected_values.push_back(m*min_superpixels + n);
+        corrected_superpixels.push_back(min_superpixels);
+        i_min++;
+    }
+    
+    for (unsigned int i = i_min; i < i_max - 1; i++) {
+        corrected_values.push_back(values[indices[i]]);
+        corrected_superpixels.push_back(superpixels[indices[i]]);
+    }
+    
+    if (superpixels[indices[i_max]] < max_superpixels) {
+        corrected_values.push_back(values[indices[i_max]]);
+        corrected_superpixels.push_back(max_superpixels);
+    }
+    else {        
+        int end = corrected_superpixels.size() - 1;
+        float m = (corrected_values[end] - corrected_values[end - 1])/(corrected_superpixels[end] - corrected_superpixels[end - 1]);
+        float n = corrected_values[end] - m*corrected_superpixels[end];
+        
+        corrected_values[end] = m*max_superpixels + n;
+        corrected_superpixels[end] = max_superpixels;
+    }
+    
+    float average = 0;
+    for (unsigned int i = 1; i < corrected_values.size(); i++) {
+        
+        float a = 0;
+        float b = 0;
+        
+        if (corrected_values[i] > corrected_values[i - 1]) {
+            a = (1 - corrected_values[i])*(corrected_superpixels[i] - corrected_superpixels[i - 1]);
+            b = 0.5*(corrected_values[i] - corrected_values[i - 1])*(corrected_superpixels[i] - corrected_superpixels[i - 1]);
+        }
+        else {
+            a = (1 - corrected_values[i - 1])*(corrected_superpixels[i] - corrected_superpixels[i - 1]);
+            b = 0.5*(corrected_values[i - 1] - corrected_values[i])*(corrected_superpixels[i] - corrected_superpixels[i - 1]);
+        }
+        
+        average += a + b;
+    }
+    
+    return 100*average/(max_superpixels - min_superpixels);
+}
+
+////////////////////////////////////////////////////////////////////////////////
 // computeBoundingBoxes
 ////////////////////////////////////////////////////////////////////////////////
 

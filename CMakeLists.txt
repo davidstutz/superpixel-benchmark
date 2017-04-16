@@ -71,6 +71,7 @@ add_subdirectory(eval_connected_relabel_cli)
 add_subdirectory(eval_boundaries2labels_cli)
 add_subdirectory(eval_parameter_optimization_cli)
 add_subdirectory(eval_summary_cli)
+add_subdirectory(eval_average_cli)
 add_subdirectory(eval_visualization_cli)
 add_subdirectory(eval_visualization_fuse_cli)
 

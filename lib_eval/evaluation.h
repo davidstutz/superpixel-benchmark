@@ -241,6 +241,17 @@ public:
     static float computeEdgeRecall(const cv::Mat &labels, const cv::Mat &edges,
             float d = 0.0025);    
     
+    /** \brief Computes the average of a metric, i.e. computes the
+     * integral of the metric in the given superpixel range using the trapezoidal
+     * rule.
+     * \param[in] values metric values
+     * \param[in] superpixels number of superpixels corresponding to the metric values
+     * \param[in] min_superpixels lower interval bound for intergration
+     * \param[in] max_superpixels upper interval bound for integration
+     */
+    static float computeAverageMetric(const std::vector<float>& values, const std::vector<float>& superpixels,
+        int min_superpixels = 200, int max_superpixels = 5200);
+    
 private:
     /** \brief Compute bounding boxes for all superpixels as cv::Rect.
      * \param[in] labels superpixel labels as int image

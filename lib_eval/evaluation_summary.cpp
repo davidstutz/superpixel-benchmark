@@ -1233,7 +1233,7 @@ void EvaluationSummary::computeSummary(int &gt_max) {
                 
                 boost::filesystem::path gt_file_t = gt_directory / 
                         boost::filesystem::path(it->second.stem().string() + "-" + std::to_string(t) + ".csv");
-                LOG_IF(ERROR, !boost::filesystem::is_regular_file(gt_file_t)) << "[" << i << "]Ground truth " << (t + 1)
+                LOG_IF(ERROR, !boost::filesystem::is_regular_file(gt_file_t)) << "[" << i << "] Ground truth " << (t + 1)
                         << " not found for file " << i << "/" << sp_files.size() << ".";
                 
                 if (boost::filesystem::is_regular_file(gt_file_t)) {
