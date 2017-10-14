@@ -23,7 +23,7 @@ The following quick start was tested on Ubuntu 12.04 and Ubuntu 14.04.
 Make sure to clone the repository recursively, then execute:
 
     $ git clone https://github.com/davidstutz/superpixel-benchmark --recursive
-    $ sudo apt-get install build-essential cmake libboost-dev-all libopencv-dev cimg-dev cimg-doc cimg-examples libpng-dev libpng++-dev
+    $ sudo apt-get install build-essential cmake libboost-all-dev libopencv-dev cimg-dev cimg-doc cimg-examples libpng-dev libpng++-dev
     # Alternatively download GLog 0.3.3 to avoid the hard reset!
     $ git clone https://github.com/davidstutz/glog
     $ cd glog
