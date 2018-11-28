@@ -18,7 +18,7 @@ This repository subsumes earlier work on comparing superpixel algorithms:
 
     [1] D. Stutz, A. Hermans, B. Leibe.
         Superpixels: An Evaluation of the State-of-the-Art.
-        Computing Research Repository, abs/1612.01601.
+        Computer Vision and Image Understanding, 2018.
 
 Also make also sure to cite additional papers when using datasets or superpixel algorithms.
 
@@ -136,21 +136,25 @@ Also see the [Documentation](docs/README.md) for details.
 
 ## License
 
-Note that part of the provided algorithms come with different licenses, see [Algorithms](docs/ALGORITHMS.md)
-for details. Also note that the datasets come with different licenses, see [Datasets](docs/DATASETS.md)
-for details.
+Licenses for source code corresponding to:
 
-Further, note that the additional dataset downloads as in [Datasets](docs/DATASETS.md)
-follow the licenses of the original datasets.
+D. Stutz, A. Hermans, B. Leibe. **Superpixels: An Evaluation of the State-of-the-Art.** Computer Vision and Image Understanding, 2018.
+		
+Note that the source code/data is based on other projects for which separate licenses apply, see:
 
-The remaining source code provided in this repository is licensed as follows:
+* [Algorithms](docs/ALGORITHMS.md)
+* [Datasets](docs/DATASETS.md)
 
-Copyright (c) 2016, David Stutz All rights reserved.
+Copyright (c) 2016-2018 David Stutz, RWTH Aachen University
 
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+**Please read carefully the following terms and conditions and any accompanying documentation before you download and/or use this software and associated documentation files (the "Software").**
 
-* Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-* Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-* Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+The authors hereby grant you a non-exclusive, non-transferable, free of charge right to copy, modify, merge, publish, distribute, and sublicense the Software for the sole purpose of performing non-commercial scientific research, non-commercial education, or non-commercial artistic projects.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+Any other use, in particular any use for commercial purposes, is prohibited. This includes, without limitation, incorporation in a commercial product, use in a commercial service, or production of other artefacts for commercial purposes.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+You understand and agree that the authors are under no obligation to provide either maintenance services, update services, notices of latent defects, or corrections of defects with regard to the Software. The authors nevertheless reserve the right to update, modify, or discontinue the Software at any time.
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. You agree to cite the corresponding papers (see above) in documents and papers that report on research using the Software.
