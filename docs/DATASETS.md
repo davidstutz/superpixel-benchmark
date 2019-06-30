@@ -68,7 +68,7 @@ the train set in this case).
 
 The ground truth was converted to `.csv` files after thinning unlabeled regions.
 The converted dataset is available in the data repository:
-[davidstutz/superpixel-evaluation-data](https://github.com/davidstutz/superpixel-evaluation-data).
+[davidstutz/superpixel-benchmark-data](https://github.com/davidstutz/superpixel-benchmark-data).
 
 In order to manually convert the NYUV2 dataset and extract the used validation and
 testing subsets, use `lib_tools/nyuv2_convert.script.m`:
@@ -96,7 +96,7 @@ Validation and testing sets of size 238 and 477, respectively, were chosen at ra
 
 The ground truth was converted to `.csv` files. The converted dataset 
 is available in the data repository: 
-[davidstutz/superpixel-evaluation-data](https://github.com/davidstutz/superpixel-evaluation-data).
+[davidstutz/superpixel-benchmark-data](https://github.com/davidstutz/superpixel-benchmark-data).
 
 To manually convert the SBD and select validation and testing images, follow
 `lib_tools/sbd_convert_script.m`:
@@ -123,7 +123,7 @@ dataset were ignored.
 
 The ground truth was converted to `.csv` files. The converted dataset
 is available in the data repository:
-[davidstutz/superpixel-evaluation-data](https://github.com/davidstutz/superpixel-evaluation-data).
+[davidstutz/superpixel-benchmark-data](https://github.com/davidstutz/superpixel-benchmark-data).
 
 To manually convert the dataset, follow `lib_tools/sunrgbd_convert_script.m`:
 
@@ -148,11 +148,7 @@ Validation set and training set of size 222 and 463, respectively, were chosen a
         Parsing clothing in fashion photographs.
         IEEE Conference on Computer Vision and Pattern Recognition, 2012, pp. 3570–3577.
 
-The ground truth was converted to `.csv` files. The converted dataset is available
-in the data repository:
-[davidstutz/superpixel-evaluation-data](https://github.com/davidstutz/superpixel-evaluation-data).
-
-In order to manually convert the dataset, follow the steps in `lib_tools/fash_convert_script.m`:
+The ground truth needs to be converted to `.csv` files using the steps in `lib_tools/fash_convert_script.m`:
 
 1. Download the Fashionista dataset from [here](http://vision.is.tohoku.ac.jp/~kyamagu/research/clothing_parsing/).
 2. Extract fashionista_v0.2.1.mat into data/Fash.
