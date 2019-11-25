@@ -23,7 +23,7 @@ SEEDS        | `lib_seeds`   | `seeds_cli`   | C++            | GPL3       | [18
 reSEEDS      | `lib_reseeds` | `reseeds_cli` | C++            | BSD3       | --        | [Web](http://davidstutz.de/projects/superpixel-segmentation/)
 SEAW         | `lib_seaw`    | `seaw_cli`    | MatLab         | ?          | [34]      | [Web](https://github.com/JohannStrassburg/InfluenceSegImageParsingCode)
 SLIC         | `lib_slic`    | `slic_cli`    | C++            | GPL3       | [11,12]   | [Web](http://ivrl.epfl.ch/research/superpixels)
-vlSLIC       | `lib_clslic`  | `vlslic_cli`  | C++            | BSD2       | --        | [Web](http://www.vlfeat.org/overview/slic.html)
+vlSLIC       | `lib_vlslic`  | `vlslic_cli`  | C++            | BSD2       | --        | [Web](http://www.vlfeat.org/overview/slic.html)
 TP           | `lib_tp`      | `tp_cli`      | MatLab         | ?          | [9]       | [Web](http://www.cs.toronto.edu/~babalex/research.html)
 TPS          | `lib_tps`     | `tps_cli`     | MatLab         | ?          | [19,20]   | [Web](http://hzfu.github.io/subpage/codes.html)
 W            | `lib_w`       | `w_cli`       | C++            |            | [1]       | [Web](http://docs.opencv.org/2.4/modules/imgproc/doc/miscellaneous_transformations.html?highlight=watershed#watershed)
