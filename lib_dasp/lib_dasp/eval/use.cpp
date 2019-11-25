@@ -12,6 +12,7 @@
 #include <set>
 #include <cmath>
 #include <vector>
+#include <numeric>
 
 //#define DASP_DEBUG_GUI
 

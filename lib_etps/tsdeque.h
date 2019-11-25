@@ -3,6 +3,7 @@
 #include <vector>
 #include <unordered_set>
 #include <mutex>
+#include <functional>
 
 
 // ParallelDeque 
