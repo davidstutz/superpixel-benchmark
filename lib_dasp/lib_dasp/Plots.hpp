@@ -14,6 +14,7 @@
 #include <Slimage/Paint.hpp>
 #include <Danvil/Color.h>
 #include <vector>
+#include <numeric>
 //----------------------------------------------------------------------------//
 namespace dasp {
 namespace plots {
