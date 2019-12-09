@@ -2,6 +2,7 @@
 #include <Superpixels.hpp>
 #include <boost/math/constants/constants.hpp>
 #include <iostream>
+#include <numeric>
 
 namespace dasp {
 namespace eval {
