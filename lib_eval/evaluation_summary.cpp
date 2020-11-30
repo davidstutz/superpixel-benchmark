@@ -830,7 +830,7 @@ float EvaluationSummary::computeMean(const std::vector<int> gt, const cv::Mat &d
     mean_min = -1;
     mean_max = -1;
     
-    if (max_gt > 0) {
+    if (max_gt >= 0) {
         
         int count_0 = 0;
         
@@ -906,7 +906,7 @@ void EvaluationSummary::comuteMedianFirstAndThirdQuartile(const std::vector<int>
         gt_sorted[gt[i]].push_back(data.at<float>(i, j));
     }
     
-    if (max_gt > 0) {
+    if (max_gt >= 0) {
         std::vector<float> min_sorted;
         std::vector<float> max_sorted;
         
@@ -1006,7 +1006,7 @@ void EvaluationSummary::comuteMinMax(const std::vector<int> gt, const cv::Mat &d
     min_max = -1;
     max_max = -1;
     
-    if (max_gt > 0) {
+    if (max_gt >= 0) {
         float min = std::numeric_limits<float>::max();
         float max = std::numeric_limits<float>::min();
         
@@ -1077,7 +1077,7 @@ float EvaluationSummary::computeStandardDeviation(const std::vector<int> gt, con
     std_min = -1;
     std_max = -1;
     
-    if (max_gt > 0) {
+    if (max_gt >= 0) {
         
         int count_0 = 0;
         
