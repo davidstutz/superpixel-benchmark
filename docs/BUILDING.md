@@ -38,6 +38,8 @@ Make sure to clone the repository recursively, then execute:
     $ cmake .. -DGLOG_ROOT_DIR=~/glog
     $ make
 
+**On newer systems, the used GLog version might not be supported anymore. In this case, check out [this issue](https://github.com/google/glog/issues/359) and you might need to find an appropriate GLog version that fits your system and compiles with the benchmark code.**
+
 Installs [Cmake](https://cmake.org/), [Boost](http://www.boost.org/), [OpenCV](http://opencv.org/), 
 [GLog](https://github.com/google/glog), `libpng`, `libpng++` and [CImg](http://cimg.eu/).
 This builts the seven recommended algorithms as discussed in the paper as well 
