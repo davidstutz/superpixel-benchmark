@@ -24,6 +24,7 @@ Also make also sure to cite additional papers when using datasets or superpixel 
 
 **Updates:**
 
+* A docker implementation containing many of the algorithms was added to [./docker](./docker/).
 * An implementation of the average metrics, i.e. Average Boundary Recall (called
 Average Miss Rate in the updated paper), Average Undersegmentation Error
 and Average Explained Variation (called Average Unexplained Variation in the updated paper)
