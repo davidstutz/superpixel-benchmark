@@ -2,7 +2,8 @@
 
 For getting started quickly:
 
-* [#Quick Start](quick-start)
+* [Getting Started](#getting-started)
+* [Docker](../docker/README.md)
 
 For details, there are three main components that need to be built:
 

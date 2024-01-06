@@ -1,0 +1,299 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 104fd9d..e327f13 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -45,22 +45,20 @@ option(BUILD_CRS "Build CRS" ON)
+ option(BUILD_ERGC "Build ERGC" ON)
+ 
+ # Remaining algorithms:
+-option(BUILD_FH "Build FH" OFF)
+-option(BUILD_MSS "Build MSS" OFF)
+-option(BUILD_PB "Build PB" OFF)
+-option(BUILD_PRESLIC "Build preSLIC" OFF)
+-option(BUILD_CW "Build CW" OFF)
+-option(BUILD_CIS "Build CIS" OFF)
+-option(BUILD_W "Build W" OFF)
+-option(BUILD_LSC "Build LSC" OFF)
+-option(BUILD_VC "Build VC" OFF)
+-option(BUILD_CCS "Build CCS" OFF)
+-option(BUILD_VC "Build VC" OFF)
+-option(BUILD_CCS "Build CCS" OFF)
+-option(BUILD_DASP "Build DASP" OFF)
+-option(BUILD_VCCS "Build VCCS" OFF)
++option(BUILD_VC "Build VC" ON)
++option(BUILD_FH "Build FH" ON)
++option(BUILD_MSS "Build MSS" ON)
++option(BUILD_PB "Build PB" ON)
++option(BUILD_PRESLIC "Build preSLIC" ON)
++option(BUILD_CW "Build CW" OFF)  # cvGetMatSize declaration error
++option(BUILD_CIS "Build CIS" OFF) # licensing
++option(BUILD_W "Build W" ON)
++option(BUILD_LSC "Build LSC" ON)
++option(BUILD_CCS "Build CCS" ON)
++option(BUILD_DASP "Build DASP" ON) # needed eigen imports
++option(BUILD_VCCS "Build VCCS" ON)
+ option(BUILD_REFH "Build reFH" ON)
+-option(BUILD_VLSLIC "Build vlSLIC" OFF)
++option(BUILD_VLSLIC "Build vlSLIC" ON)
+ 
+ # Examples:
+ option(BUILD_EXAMPLES "Build examples" ON)
+diff --git a/lib_dasp/lib_dasp/Graph.hpp b/lib_dasp/lib_dasp/Graph.hpp
+index f095835..75d3f85 100644
+--- a/lib_dasp/lib_dasp/Graph.hpp
++++ b/lib_dasp/lib_dasp/Graph.hpp
+@@ -12,7 +12,7 @@
+ #include "as_range.hpp"
+ #include "graphseg.hpp"
+ #include <boost/graph/adjacency_list.hpp>
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ 
+ namespace dasp
+ {
+diff --git a/lib_dasp/lib_dasp/IO.hpp b/lib_dasp/lib_dasp/IO.hpp
+index 8f74c64..dfd2770 100644
+--- a/lib_dasp/lib_dasp/IO.hpp
++++ b/lib_dasp/lib_dasp/IO.hpp
+@@ -2,7 +2,7 @@
+ #define INCLUDED_DASP_IO_HPP_
+ 
+ #include "Graph.hpp"
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ #include <string>
+ #include <vector>
+ 
+diff --git a/lib_dasp/lib_dasp/Metric.hpp b/lib_dasp/lib_dasp/Metric.hpp
+index c3d06c1..43828ee 100644
+--- a/lib_dasp/lib_dasp/Metric.hpp
++++ b/lib_dasp/lib_dasp/Metric.hpp
+@@ -11,7 +11,7 @@
+ #include "Point.hpp"
+ #include <Danvil/Tools/MoreMath.h>
+ #include <Danvil/Tools/FunctionCache.h>
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ 
+ namespace dasp
+ {
+diff --git a/lib_dasp/lib_dasp/Neighbourhood.hpp b/lib_dasp/lib_dasp/Neighbourhood.hpp
+index 2ef4dbc..e6a4ca4 100644
+--- a/lib_dasp/lib_dasp/Neighbourhood.hpp
++++ b/lib_dasp/lib_dasp/Neighbourhood.hpp
+@@ -13,7 +13,7 @@
+ #include <Slimage/Slimage.hpp>
+ #include <boost/graph/adjacency_list.hpp>
+ #include <boost/graph/copy.hpp>
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ #include <vector>
+ 
+ namespace dasp
+diff --git a/lib_dasp/lib_dasp/Plots.cpp b/lib_dasp/lib_dasp/Plots.cpp
+index 0b76fef..181a868 100644
+--- a/lib_dasp/lib_dasp/Plots.cpp
++++ b/lib_dasp/lib_dasp/Plots.cpp
+@@ -17,7 +17,7 @@
+ #include <Danvil/Color.h>
+ #include <Danvil/Color/LAB.h>
+ #include <Danvil/Color/HSV.h>
+-#include <Eigen/Geometry>
++#include <eigen3/Eigen/Geometry>
+ #include <cmath>
+ #include <iostream>
+ 
+diff --git a/lib_dasp/lib_dasp/Point.hpp b/lib_dasp/lib_dasp/Point.hpp
+index 7dc12ba..654fab3 100644
+--- a/lib_dasp/lib_dasp/Point.hpp
++++ b/lib_dasp/lib_dasp/Point.hpp
+@@ -11,7 +11,7 @@
+ #include "Parameters.hpp"
+ #include "Array.hpp"
+ #include <Danvil/Tools/MoreMath.h>
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ #include <vector>
+ 
+ namespace dasp
+diff --git a/lib_dasp/lib_dasp/Seed.hpp b/lib_dasp/lib_dasp/Seed.hpp
+index a2e3f08..63d0247 100644
+--- a/lib_dasp/lib_dasp/Seed.hpp
++++ b/lib_dasp/lib_dasp/Seed.hpp
+@@ -8,7 +8,7 @@
+ #ifndef DASP_SEED_HPP_
+ #define DASP_SEED_HPP_
+ 
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ 
+ namespace dasp
+ {
+diff --git a/lib_dasp/lib_dasp/Segmentation.hpp b/lib_dasp/lib_dasp/Segmentation.hpp
+index f129901..a598fd2 100644
+--- a/lib_dasp/lib_dasp/Segmentation.hpp
++++ b/lib_dasp/lib_dasp/Segmentation.hpp
+@@ -13,7 +13,7 @@
+ #include <Labeling.hpp>
+ #include <graphseg.hpp>
+ #include <Slimage/Slimage.hpp>
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ #include <boost/graph/adjacency_list.hpp>
+ #include <boost/graph/copy.hpp>
+ #include <vector>
+diff --git a/lib_dasp/lib_dasp/impl/Clustering.hpp b/lib_dasp/lib_dasp/impl/Clustering.hpp
+index 312b949..397e008 100644
+--- a/lib_dasp/lib_dasp/impl/Clustering.hpp
++++ b/lib_dasp/lib_dasp/impl/Clustering.hpp
+@@ -12,7 +12,7 @@
+ #include "../Parameters.hpp"
+ #include "../Metric.hpp"
+ #include <Slimage/Slimage.hpp>
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ #include <iostream>
+ 
+ namespace dasp
+diff --git a/lib_dasp/lib_dasp/impl/Sampling.hpp b/lib_dasp/lib_dasp/impl/Sampling.hpp
+index 37c00c2..39bd014 100644
+--- a/lib_dasp/lib_dasp/impl/Sampling.hpp
++++ b/lib_dasp/lib_dasp/impl/Sampling.hpp
+@@ -10,7 +10,7 @@
+ 
+ #include "../Point.hpp"
+ #include "../Seed.hpp"
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ #include <vector>
+ 
+ namespace dasp
+diff --git a/lib_dasp/lib_dasp_common/color.hpp b/lib_dasp/lib_dasp_common/color.hpp
+index 49ce261..755fa0f 100644
+--- a/lib_dasp/lib_dasp_common/color.hpp
++++ b/lib_dasp/lib_dasp_common/color.hpp
+@@ -2,7 +2,7 @@
+ #define COMMON_COLOR_HPP_
+ //----------------------------------------------------------------------------//
+ #include <Danvil/Color.h>
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ #include <Slimage/Slimage.hpp>
+ //----------------------------------------------------------------------------//
+ namespace common {
+diff --git a/lib_dasp/lib_dasp_density/density/PointDensity.hpp b/lib_dasp/lib_dasp_density/density/PointDensity.hpp
+index 7432a0f..fc9c643 100644
+--- a/lib_dasp/lib_dasp_density/density/PointDensity.hpp
++++ b/lib_dasp/lib_dasp_density/density/PointDensity.hpp
+@@ -2,7 +2,7 @@
+ #define INCLUDED_PDS_DENSITY_HPP
+ 
+ #include <Danvil/Tools/FunctionCache.h>
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ #include <vector>
+ 
+ namespace density
+diff --git a/lib_dasp/lib_dasp_density/density/ScalePyramid.hpp b/lib_dasp/lib_dasp_density/density/ScalePyramid.hpp
+index ca0fabf..0447909 100644
+--- a/lib_dasp/lib_dasp_density/density/ScalePyramid.hpp
++++ b/lib_dasp/lib_dasp_density/density/ScalePyramid.hpp
+@@ -9,7 +9,7 @@
+ #define INCLUDED_DENSITY_SCALEPYRAMID_HPP_
+ 
+ #include <Slimage/Slimage.hpp>
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ #include <stdexcept>
+ #include <vector>
+ #include <tuple>
+diff --git a/lib_dasp/lib_dasp_density/density/Smooth.hpp b/lib_dasp/lib_dasp_density/density/Smooth.hpp
+index 1f232f4..3f26650 100644
+--- a/lib_dasp/lib_dasp_density/density/Smooth.hpp
++++ b/lib_dasp/lib_dasp_density/density/Smooth.hpp
+@@ -1,7 +1,7 @@
+ #ifndef INCLUDED_DENSITY_SMOOTH_HPP
+ #define INCLUDED_DENSITY_SMOOTH_HPP
+ 
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ 
+ namespace density
+ {
+diff --git a/lib_dasp/lib_dasp_density/density/Visualization.hpp b/lib_dasp/lib_dasp_density/density/Visualization.hpp
+index 789f4e5..083255d 100644
+--- a/lib_dasp/lib_dasp_density/density/Visualization.hpp
++++ b/lib_dasp/lib_dasp_density/density/Visualization.hpp
+@@ -3,7 +3,7 @@
+ 
+ #include <Danvil/Color.h>
+ #include <Slimage/Slimage.hpp>
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ #include <vector>
+ 
+ namespace density
+diff --git a/lib_dasp/lib_dasp_graphseg/Common.hpp b/lib_dasp/lib_dasp_graphseg/Common.hpp
+index 4b2fb40..23a6796 100644
+--- a/lib_dasp/lib_dasp_graphseg/Common.hpp
++++ b/lib_dasp/lib_dasp_graphseg/Common.hpp
+@@ -9,7 +9,7 @@
+ #define DASP_SPECTRAL_COMMON_HPP
+ 
+ #include <boost/graph/adjacency_list.hpp>
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ #include <vector>
+ 
+ namespace graphseg
+diff --git a/lib_dasp/lib_dasp_graphseg/Rendering.hpp b/lib_dasp/lib_dasp_graphseg/Rendering.hpp
+index 5d2fb92..8c12b79 100644
+--- a/lib_dasp/lib_dasp_graphseg/Rendering.hpp
++++ b/lib_dasp/lib_dasp_graphseg/Rendering.hpp
+@@ -7,7 +7,7 @@
+ #include <GL/glew.h>
+ #include <graphseg/as_range.hpp>
+ #include <boost/graph/adjacency_list.hpp>
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ 
+ namespace graphseg
+ {
+diff --git a/lib_dasp/lib_dasp_graphseg/spectral/eigen.cpp b/lib_dasp/lib_dasp_graphseg/spectral/eigen.cpp
+index 717da4a..efda39e 100644
+--- a/lib_dasp/lib_dasp_graphseg/spectral/eigen.cpp
++++ b/lib_dasp/lib_dasp_graphseg/spectral/eigen.cpp
+@@ -1,5 +1,5 @@
+ #include "solver.hpp"
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ #ifdef SPECTRAL_VERBOSE
+ #	include <iostream>
+ #endif
+diff --git a/lib_dasp/lib_dasp_pds/pds/Fattal.hpp b/lib_dasp/lib_dasp_pds/pds/Fattal.hpp
+index 2fce379..9edaac0 100644
+--- a/lib_dasp/lib_dasp_pds/pds/Fattal.hpp
++++ b/lib_dasp/lib_dasp_pds/pds/Fattal.hpp
+@@ -10,7 +10,7 @@
+ //----------------------------------------------------------------------------//
+ #include <Slimage/Slimage.hpp>
+ #include <Danvil/Tools/FunctionCache.h>
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ #include <vector>
+ #include <algorithm>
+ #include <cmath>
+diff --git a/lib_dasp/lib_dasp_pds/pds/PDS.hpp b/lib_dasp/lib_dasp_pds/pds/PDS.hpp
+index 91185d3..8be9ba1 100644
+--- a/lib_dasp/lib_dasp_pds/pds/PDS.hpp
++++ b/lib_dasp/lib_dasp_pds/pds/PDS.hpp
+@@ -1,7 +1,7 @@
+ #ifndef INCLUDED_PDS_PDS_HPP
+ #define INCLUDED_PDS_PDS_HPP
+ 
+-#include <Eigen/Dense>
++#include <eigen3/Eigen/Dense>
+ #include <vector>
+ 
+ namespace pds
+
