@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 104fd9d..fae48c5 100644
+index 104fd9d..8c18180 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -31,6 +31,10 @@
@@ -41,7 +41,7 @@ index 104fd9d..fae48c5 100644
 +option(BUILD_W "Build W" ON)
 +option(BUILD_LSC "Build LSC" ON)
 +option(BUILD_CCS "Build CCS" ON)
-+option(BUILD_DASP "Build DASP" ON) # having eigen troubles
++option(BUILD_DASP "Build DASP" ON) # needed eigen imports
 +option(BUILD_VCCS "Build VCCS" ON)
  option(BUILD_REFH "Build reFH" ON)
 -option(BUILD_VLSLIC "Build vlSLIC" OFF)
@@ -50,7 +50,7 @@ index 104fd9d..fae48c5 100644
  # Examples:
  option(BUILD_EXAMPLES "Build examples" ON)
 diff --git a/dasp_cli/main.cpp b/dasp_cli/main.cpp
-index 5cf712a..7f4bdfa 100755
+index 5cf712a..7f4bdfa 100644
 --- a/dasp_cli/main.cpp
 +++ b/dasp_cli/main.cpp
 @@ -40,6 +40,13 @@
@@ -180,7 +180,7 @@ index 7e816dc..402b3e1 100644
          int iterations, int compactness, bool lab, cv::Mat& labels) {
      
 diff --git a/lib_ccs/fMOG.cpp b/lib_ccs/fMOG.cpp
-index 213af15..519c474 100644
+index 213af15..abd7fe7 100644
 --- a/lib_ccs/fMOG.cpp
 +++ b/lib_ccs/fMOG.cpp
 @@ -1,14 +1,14 @@
@@ -189,8 +189,8 @@ index 213af15..519c474 100644
   *
 - *  Created on: 02 Aðu 2011
 - *      Author: Tuðhan Marpuç
-+ *  Created on: 02 Aï¿½u 2011
-+ *      Author: Tuï¿½han Marpuï¿½
++ *  Created on: 02 AÃ°u 2011
++ *      Author: TuÃ°han MarpuÃ§
   */
  
  
@@ -222,7 +222,7 @@ index 01992f1..19018e0 100644
   * \author David Stutz
   */
 diff --git a/lib_dasp/lib_dasp/Graph.hpp b/lib_dasp/lib_dasp/Graph.hpp
-index f095835..75d3f85 100755
+index f095835..75d3f85 100644
 --- a/lib_dasp/lib_dasp/Graph.hpp
 +++ b/lib_dasp/lib_dasp/Graph.hpp
 @@ -12,7 +12,7 @@
@@ -235,7 +235,7 @@ index f095835..75d3f85 100755
  namespace dasp
  {
 diff --git a/lib_dasp/lib_dasp/IO.hpp b/lib_dasp/lib_dasp/IO.hpp
-index 8f74c64..dfd2770 100755
+index 8f74c64..dfd2770 100644
 --- a/lib_dasp/lib_dasp/IO.hpp
 +++ b/lib_dasp/lib_dasp/IO.hpp
 @@ -2,7 +2,7 @@
@@ -248,7 +248,7 @@ index 8f74c64..dfd2770 100755
  #include <vector>
  
 diff --git a/lib_dasp/lib_dasp/Metric.hpp b/lib_dasp/lib_dasp/Metric.hpp
-index c3d06c1..43828ee 100755
+index c3d06c1..43828ee 100644
 --- a/lib_dasp/lib_dasp/Metric.hpp
 +++ b/lib_dasp/lib_dasp/Metric.hpp
 @@ -11,7 +11,7 @@
@@ -261,7 +261,7 @@ index c3d06c1..43828ee 100755
  namespace dasp
  {
 diff --git a/lib_dasp/lib_dasp/Neighbourhood.hpp b/lib_dasp/lib_dasp/Neighbourhood.hpp
-index 2ef4dbc..e6a4ca4 100755
+index 2ef4dbc..e6a4ca4 100644
 --- a/lib_dasp/lib_dasp/Neighbourhood.hpp
 +++ b/lib_dasp/lib_dasp/Neighbourhood.hpp
 @@ -13,7 +13,7 @@
@@ -274,7 +274,7 @@ index 2ef4dbc..e6a4ca4 100755
  
  namespace dasp
 diff --git a/lib_dasp/lib_dasp/Plots.cpp b/lib_dasp/lib_dasp/Plots.cpp
-index 0b76fef..181a868 100755
+index 0b76fef..181a868 100644
 --- a/lib_dasp/lib_dasp/Plots.cpp
 +++ b/lib_dasp/lib_dasp/Plots.cpp
 @@ -17,7 +17,7 @@
@@ -287,7 +287,7 @@ index 0b76fef..181a868 100755
  #include <iostream>
  
 diff --git a/lib_dasp/lib_dasp/Point.hpp b/lib_dasp/lib_dasp/Point.hpp
-index 7dc12ba..654fab3 100755
+index 7dc12ba..654fab3 100644
 --- a/lib_dasp/lib_dasp/Point.hpp
 +++ b/lib_dasp/lib_dasp/Point.hpp
 @@ -11,7 +11,7 @@
@@ -300,7 +300,7 @@ index 7dc12ba..654fab3 100755
  
  namespace dasp
 diff --git a/lib_dasp/lib_dasp/Seed.hpp b/lib_dasp/lib_dasp/Seed.hpp
-index a2e3f08..63d0247 100755
+index a2e3f08..63d0247 100644
 --- a/lib_dasp/lib_dasp/Seed.hpp
 +++ b/lib_dasp/lib_dasp/Seed.hpp
 @@ -8,7 +8,7 @@
@@ -313,7 +313,7 @@ index a2e3f08..63d0247 100755
  namespace dasp
  {
 diff --git a/lib_dasp/lib_dasp/Segmentation.hpp b/lib_dasp/lib_dasp/Segmentation.hpp
-index f129901..a598fd2 100755
+index f129901..a598fd2 100644
 --- a/lib_dasp/lib_dasp/Segmentation.hpp
 +++ b/lib_dasp/lib_dasp/Segmentation.hpp
 @@ -13,7 +13,7 @@
@@ -326,7 +326,7 @@ index f129901..a598fd2 100755
  #include <boost/graph/copy.hpp>
  #include <vector>
 diff --git a/lib_dasp/lib_dasp/impl/Clustering.hpp b/lib_dasp/lib_dasp/impl/Clustering.hpp
-index 312b949..397e008 100755
+index 312b949..397e008 100644
 --- a/lib_dasp/lib_dasp/impl/Clustering.hpp
 +++ b/lib_dasp/lib_dasp/impl/Clustering.hpp
 @@ -12,7 +12,7 @@
@@ -339,7 +339,7 @@ index 312b949..397e008 100755
  
  namespace dasp
 diff --git a/lib_dasp/lib_dasp/impl/Sampling.hpp b/lib_dasp/lib_dasp/impl/Sampling.hpp
-index 37c00c2..39bd014 100755
+index 37c00c2..39bd014 100644
 --- a/lib_dasp/lib_dasp/impl/Sampling.hpp
 +++ b/lib_dasp/lib_dasp/impl/Sampling.hpp
 @@ -10,7 +10,7 @@
@@ -352,7 +352,7 @@ index 37c00c2..39bd014 100755
  
  namespace dasp
 diff --git a/lib_dasp/lib_dasp_common/color.hpp b/lib_dasp/lib_dasp_common/color.hpp
-index 49ce261..755fa0f 100755
+index 49ce261..755fa0f 100644
 --- a/lib_dasp/lib_dasp_common/color.hpp
 +++ b/lib_dasp/lib_dasp_common/color.hpp
 @@ -2,7 +2,7 @@
@@ -365,7 +365,7 @@ index 49ce261..755fa0f 100755
  //----------------------------------------------------------------------------//
  namespace common {
 diff --git a/lib_dasp/lib_dasp_density/density/CMakeLists.txt b/lib_dasp/lib_dasp_density/density/CMakeLists.txt
-index d531a65..19f6966 100755
+index d531a65..19f6966 100644
 --- a/lib_dasp/lib_dasp_density/density/CMakeLists.txt
 +++ b/lib_dasp/lib_dasp_density/density/CMakeLists.txt
 @@ -1,3 +1,5 @@
@@ -375,7 +375,7 @@ index d531a65..19f6966 100755
  
  add_library(dasp_density
 diff --git a/lib_dasp/lib_dasp_density/density/PointDensity.hpp b/lib_dasp/lib_dasp_density/density/PointDensity.hpp
-index 7432a0f..fc9c643 100755
+index 7432a0f..fc9c643 100644
 --- a/lib_dasp/lib_dasp_density/density/PointDensity.hpp
 +++ b/lib_dasp/lib_dasp_density/density/PointDensity.hpp
 @@ -2,7 +2,7 @@
@@ -388,7 +388,7 @@ index 7432a0f..fc9c643 100755
  
  namespace density
 diff --git a/lib_dasp/lib_dasp_density/density/ScalePyramid.hpp b/lib_dasp/lib_dasp_density/density/ScalePyramid.hpp
-index ca0fabf..0447909 100755
+index ca0fabf..0447909 100644
 --- a/lib_dasp/lib_dasp_density/density/ScalePyramid.hpp
 +++ b/lib_dasp/lib_dasp_density/density/ScalePyramid.hpp
 @@ -9,7 +9,7 @@
@@ -401,7 +401,7 @@ index ca0fabf..0447909 100755
  #include <vector>
  #include <tuple>
 diff --git a/lib_dasp/lib_dasp_density/density/Smooth.hpp b/lib_dasp/lib_dasp_density/density/Smooth.hpp
-index 1f232f4..3f26650 100755
+index 1f232f4..3f26650 100644
 --- a/lib_dasp/lib_dasp_density/density/Smooth.hpp
 +++ b/lib_dasp/lib_dasp_density/density/Smooth.hpp
 @@ -1,7 +1,7 @@
@@ -414,7 +414,7 @@ index 1f232f4..3f26650 100755
  namespace density
  {
 diff --git a/lib_dasp/lib_dasp_density/density/Visualization.hpp b/lib_dasp/lib_dasp_density/density/Visualization.hpp
-index 789f4e5..083255d 100755
+index 789f4e5..083255d 100644
 --- a/lib_dasp/lib_dasp_density/density/Visualization.hpp
 +++ b/lib_dasp/lib_dasp_density/density/Visualization.hpp
 @@ -3,7 +3,7 @@
@@ -427,7 +427,7 @@ index 789f4e5..083255d 100755
  
  namespace density
 diff --git a/lib_dasp/lib_dasp_graphseg/Common.hpp b/lib_dasp/lib_dasp_graphseg/Common.hpp
-index 4b2fb40..23a6796 100755
+index 4b2fb40..23a6796 100644
 --- a/lib_dasp/lib_dasp_graphseg/Common.hpp
 +++ b/lib_dasp/lib_dasp_graphseg/Common.hpp
 @@ -9,7 +9,7 @@
@@ -440,7 +440,7 @@ index 4b2fb40..23a6796 100755
  
  namespace graphseg
 diff --git a/lib_dasp/lib_dasp_graphseg/Rendering.hpp b/lib_dasp/lib_dasp_graphseg/Rendering.hpp
-index 5d2fb92..8c12b79 100755
+index 5d2fb92..8c12b79 100644
 --- a/lib_dasp/lib_dasp_graphseg/Rendering.hpp
 +++ b/lib_dasp/lib_dasp_graphseg/Rendering.hpp
 @@ -7,7 +7,7 @@
@@ -453,7 +453,7 @@ index 5d2fb92..8c12b79 100755
  namespace graphseg
  {
 diff --git a/lib_dasp/lib_dasp_graphseg/spectral/eigen.cpp b/lib_dasp/lib_dasp_graphseg/spectral/eigen.cpp
-index 717da4a..efda39e 100755
+index 717da4a..efda39e 100644
 --- a/lib_dasp/lib_dasp_graphseg/spectral/eigen.cpp
 +++ b/lib_dasp/lib_dasp_graphseg/spectral/eigen.cpp
 @@ -1,5 +1,5 @@
@@ -464,7 +464,7 @@ index 717da4a..efda39e 100755
  #	include <iostream>
  #endif
 diff --git a/lib_dasp/lib_dasp_pds/pds/Fattal.hpp b/lib_dasp/lib_dasp_pds/pds/Fattal.hpp
-index 2fce379..9edaac0 100755
+index 2fce379..9edaac0 100644
 --- a/lib_dasp/lib_dasp_pds/pds/Fattal.hpp
 +++ b/lib_dasp/lib_dasp_pds/pds/Fattal.hpp
 @@ -10,7 +10,7 @@
@@ -477,7 +477,7 @@ index 2fce379..9edaac0 100755
  #include <algorithm>
  #include <cmath>
 diff --git a/lib_dasp/lib_dasp_pds/pds/PDS.hpp b/lib_dasp/lib_dasp_pds/pds/PDS.hpp
-index 91185d3..8be9ba1 100755
+index 91185d3..8be9ba1 100644
 --- a/lib_dasp/lib_dasp_pds/pds/PDS.hpp
 +++ b/lib_dasp/lib_dasp_pds/pds/PDS.hpp
 @@ -1,7 +1,7 @@
@@ -490,7 +490,7 @@ index 91185d3..8be9ba1 100755
  
  namespace pds
 diff --git a/lib_dasp/lib_dasp_slimage/Slimage/detail/OpenCv.hpp b/lib_dasp/lib_dasp_slimage/Slimage/detail/OpenCv.hpp
-index 19b6976..0f92849 100755
+index 19b6976..0f92849 100644
 --- a/lib_dasp/lib_dasp_slimage/Slimage/detail/OpenCv.hpp
 +++ b/lib_dasp/lib_dasp_slimage/Slimage/detail/OpenCv.hpp
 @@ -9,7 +9,15 @@
@@ -690,7 +690,7 @@ index f3cf45a..94b500b 100644
      
      float color_weight = 1.f - spatial_weight - normal_weight;
 diff --git a/vccs_cli/main.cpp b/vccs_cli/main.cpp
-index 49af72c..0c1ee9c 100755
+index 49af72c..0c1ee9c 100644
 --- a/vccs_cli/main.cpp
 +++ b/vccs_cli/main.cpp
 @@ -41,6 +41,13 @@
