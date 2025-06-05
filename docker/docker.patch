@@ -510,6 +510,26 @@ index 19b6976..0f92849 100755
  //----------------------------------------------------------------------------//
  namespace slimage {
  //----------------------------------------------------------------------------//
+diff --git a/lib_etps/CMakeLists.txt b/lib_etps/CMakeLists.txt
+index f08814a..eae586d 100644
+--- a/lib_etps/CMakeLists.txt
++++ b/lib_etps/CMakeLists.txt
+@@ -36,8 +36,13 @@ find_package(PNG REQUIRED)
+ find_package(png++ REQUIRED)
+ 
+ if(CMAKE_COMPILER_IS_GNUCXX)
+-   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -msse4.2") # Removed -O3 nand -std=c++11
+-endif(CMAKE_COMPILER_IS_GNUCXX)
++    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
++
++    if(CMAKE_SYSTEM_PROCESSOR MATCHES "x86_64")
++        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse4.2")
++    endif()
++endif()
++
+ 
+ include_directories(${OpenCV_INCLUDE_DIRS}
+     ${PNG_INCLUDE_DIR}
 diff --git a/lib_etps/spixel.cpp b/lib_etps/spixel.cpp
 index 3e88a45..124c6f5 100644
 --- a/lib_etps/spixel.cpp
@@ -648,6 +668,27 @@ index 253a3ef..5a4d2bb 100644
  //////////////////////////////////////////////////////////////////////
  // Construction/Destruction
  //////////////////////////////////////////////////////////////////////
+diff --git a/lib_vccs/vccs_opencv_pcl.cpp b/lib_vccs/vccs_opencv_pcl.cpp
+index f3cf45a..94b500b 100644
+--- a/lib_vccs/vccs_opencv_pcl.cpp
++++ b/lib_vccs/vccs_opencv_pcl.cpp
+@@ -84,9 +84,13 @@ void VCCS_OpenCV_PCL::computeSuperpixels(const cv::Mat &image, const cv::Mat &cl
+             point_cloud->push_back(point);
+         }
+     }
+-    
+-    pcl::SupervoxelClustering<pcl::PointXYZRGBA> super(voxel_resolution, seed_resolution, 
+-            use_transform);
++
++    #if PCL_VERSION_COMPARE(>=, 1, 13, 0)
++        pcl::SupervoxelClustering<pcl::PointXYZRGBA> super(voxel_resolution, seed_resolution);
++    #else
++        pcl::SupervoxelClustering<pcl::PointXYZRGBA> super(voxel_resolution, seed_resolution, use_transform);
++    #endif
++
+     super.setInputCloud(point_cloud);
+     
+     float color_weight = 1.f - spatial_weight - normal_weight;
 diff --git a/vccs_cli/main.cpp b/vccs_cli/main.cpp
 index 49af72c..0c1ee9c 100755
 --- a/vccs_cli/main.cpp

@@ -9,13 +9,13 @@ run: build
 		superpixels bash
 
 build-buster:
-	docker build --build-arg BASE_IMAGE=debian:buster-20240612-slim  -t superpixels:buster-20240612-slim .
+	docker build --build-arg BASE_IMAGE=debian:buster-20240612-slim   -t superpixels:buster-20240612-slim .
 
 build-bullseye:
 	docker build --build-arg BASE_IMAGE=debian:bullseye-20250520-slim -t superpixels:bullseye-20250520-slim .
 
 build-bookworm:
-	docker build --build-arg BASE_IMAGE=debian:bookworm-20250520-slim -t superpixels:bookworm-20250520-slim .
+	docker build --build-arg BASE_IMAGE=debian:bookworm-20250520-slim -t superpixels:bookworm-20250520-slim -f Dockerfile.bookworm .
 
 build-trixie:
 	docker build --build-arg BASE_IMAGE=debian:trixie-20250520-slim   -t superpixels:trixie-20250520-slim .
