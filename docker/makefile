@@ -8,8 +8,36 @@ run: build
 		-v `pwd`/raw:/app/raw:ro \
 		superpixels bash
 
-build:
-	docker build -t superpixels .
+build-buster:
+	docker build --build-arg BASE_IMAGE=debian:buster-20240612-slim  -t superpixels:buster-20240612-slim .
+
+build-bullseye:
+	docker build --build-arg BASE_IMAGE=debian:bullseye-20250520-slim -t superpixels:bullseye-20250520-slim .
+
+build-bookworm:
+	docker build --build-arg BASE_IMAGE=debian:bookworm-20250520-slim -t superpixels:bookworm-20250520-slim .
+
+build-trixie:
+	docker build --build-arg BASE_IMAGE=debian:trixie-20250520-slim   -t superpixels:trixie-20250520-slim .
+
+build: build-buster
+	docker tag superpixels:buster-20240612-slim superpixels:latest
+	@echo "Superpixels container with 'latest' tag built successfully."
+
+setup-buildx:
+	docker buildx create --name multiarch
+
+multi-buster:
+	docker buildx build --builder multiarch --platform linux/amd64,linux/arm64 \
+		--build-arg BASE_IMAGE=debian:buster-20240612-slim \
+		-t mathematicalmichael/superpixels:buster-20240612-slim \
+		--push .
+
+multi-bullseye:
+	docker buildx build --builder multiarch --platform linux/amd64,linux/arm64 \
+		--build-arg BASE_IMAGE=debian:bullseye-20250520-slim \
+		-t mathematicalmichael/superpixels:bullseye-20250520-slim \
+		--push .
 
 # Images need to be in .bmp format, so `imagemagick` is bundled in the container for convenience
 # Put images in ./raw/

@@ -1,6 +1,8 @@
-FROM python:3.11.4-buster
+ARG BASE_IMAGE=debian:bullseye-20250520-slim
+FROM ${BASE_IMAGE}
+
 RUN export DEBIAN_FRONTEND="noninteractive"
-ENV APP_HOME /app
+ENV APP_HOME=/app
 
 RUN apt-get update && \
 	apt-get install -qq -y \
@@ -14,19 +16,12 @@ RUN apt-get update && \
 		ffmpeg \
 		git \
 		graphicsmagick-imagemagick-compat \
+		potrace \
 		libboost-all-dev \
 		libeigen3-dev \
 		libopencv-dev \
 		libpng-dev \
 		libpng++-dev \
-		potrace \
-	&& apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN mkdir -p $APP_HOME/
-
-RUN apt-get update && \
-	apt-get install -qq -y \
 		libgoogle-glog-dev \
 		libpcl-dev \
 		libusb-1.0-0 \
@@ -35,6 +30,8 @@ RUN apt-get update && \
 	&& apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+RUN mkdir -p $APP_HOME/
+
 RUN cd /usr/local/include && \
 	ln -sf eigen3/Eigen Eigen
 	#ln -sf eigen3/unsupported unsupported
@@ -42,11 +39,17 @@ RUN cd /usr/local/include && \
 
 # Clone repo and get it ready for compilation
 RUN git clone https://github.com/davidstutz/superpixel-benchmark/ $APP_HOME/super
-# patch contains minor updates. not all algorithms are built, but many are. 
+# patch contains updates for library compatibility. 
+# NOTE: not all algorithms are built, but many (most) are. 
 COPY docker.patch $APP_HOME/super/
 RUN cd $APP_HOME/super && \
+	git reset --hard d454f143ceee43811f4604f02661e24d60e6ed91 && \
     git apply docker.patch && \
-    git submodule update --init --recursive
+    git submodule update --init --recursive 
+    # find . -type f \( -name '*.hpp' -o -name '*.h' -o -name '*.cpp' \) \
+    #   -exec sed -i 's|#include <boost/timer.hpp>|#include <boost/timer/timer.hpp>|g' {} + && \
+    # find . -type f -name '*.cpp' \
+    #   -exec sed -i 's/\bboost::timer\s\+\([a-zA-Z_][a-zA-Z0-9_]*\)/boost::timer::cpu_timer \1/g' {} +
 
 RUN cd $APP_HOME/super && \
 	mkdir build && \
@@ -68,3 +71,4 @@ RUN useradd -m super
 RUN chown -R super:super $APP_HOME
 USER super
 ENTRYPOINT ["dumb-init", "--"]
+CMD ["bash"]
