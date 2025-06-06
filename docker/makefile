@@ -15,7 +15,7 @@ build-bullseye:
 	docker build --build-arg BASE_IMAGE=debian:bullseye-20250520-slim -t superpixels:bullseye-20250520-slim .
 
 build-bookworm:
-	docker build --build-arg BASE_IMAGE=debian:bookworm-20250520-slim -t superpixels:bookworm-20250520-slim -f Dockerfile.bookworm .
+	docker build --build-arg BASE_IMAGE=debian:bookworm-20250520-slim -t superpixels:bookworm-20250520-slim .
 
 build-trixie:
 	docker build --build-arg BASE_IMAGE=debian:trixie-20250520-slim   -t superpixels:trixie-20250520-slim .
@@ -26,18 +26,6 @@ build: build-buster
 
 setup-buildx:
 	docker buildx create --name multiarch
-
-multi-buster:
-	docker buildx build --builder multiarch --platform linux/amd64,linux/arm64 \
-		--build-arg BASE_IMAGE=debian:buster-20240612-slim \
-		-t mathematicalmichael/superpixels:buster-20240612-slim \
-		--push .
-
-multi-bullseye:
-	docker buildx build --builder multiarch --platform linux/amd64,linux/arm64 \
-		--build-arg BASE_IMAGE=debian:bullseye-20250520-slim \
-		-t mathematicalmichael/superpixels:bullseye-20250520-slim \
-		--push .
 
 # Images need to be in .bmp format, so `imagemagick` is bundled in the container for convenience
 # Put images in ./raw/
