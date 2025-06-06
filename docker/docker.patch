@@ -530,6 +530,27 @@ index f08814a..eae586d 100644
  
  include_directories(${OpenCV_INCLUDE_DIRS}
      ${PNG_INCLUDE_DIR}
+diff --git a/lib_etps/SGMStereo.cpp b/lib_etps/SGMStereo.cpp
+index a4cccef..1118d19 100644
+--- a/lib_etps/SGMStereo.cpp
++++ b/lib_etps/SGMStereo.cpp
+@@ -19,7 +19,15 @@
+ #include <limits.h>
+ #include <stack>
+ #include <algorithm>
+-#include <nmmintrin.h>
++#ifdef __SSE4_2__
++  #include <nmmintrin.h>
++  // x86-specific code using SSE4.2 intrinsics
++#elif defined(__ARM_NEON)
++  #include <arm_neon.h>
++  // ARM-specific code using NEON intrinsics
++#else
++  // Fallback or generic implementation
++#endif
+ #include <stdexcept>
+ 
+ // Default parameters
 diff --git a/lib_etps/spixel.cpp b/lib_etps/spixel.cpp
 index 3e88a45..124c6f5 100644
 --- a/lib_etps/spixel.cpp
