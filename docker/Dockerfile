@@ -27,8 +27,9 @@ RUN apt-get update && \
 		libusb-1.0-0 \
 		libopenni2-0 \
 		libpcap0.8 \
+		pkg-config \
 	&& apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+	&& rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p $APP_HOME/
 
@@ -44,12 +45,14 @@ RUN git clone https://github.com/davidstutz/superpixel-benchmark/ $APP_HOME/supe
 COPY docker.patch $APP_HOME/super/
 RUN cd $APP_HOME/super && \
 	git reset --hard d454f143ceee43811f4604f02661e24d60e6ed91 && \
-    git submodule update --init --recursive && \
-    git apply docker.patch
-    # find . -type f \( -name '*.hpp' -o -name '*.h' -o -name '*.cpp' \) \
-    #   -exec sed -i 's|#include <boost/timer.hpp>|#include <boost/timer/timer.hpp>|g' {} + && \
-    # find . -type f -name '*.cpp' \
-    #   -exec sed -i 's/\bboost::timer\s\+\([a-zA-Z_][a-zA-Z0-9_]*\)/boost::timer::cpu_timer \1/g' {} +
+	git submodule update --init --recursive && \
+	git apply docker.patch
+	# find . -type f \( -name '*.hpp' -o -name '*.h' -o -name '*.cpp' \) \
+	# -exec sed -i \
+	#   -e 's|#include <boost/timer.hpp>|#include <boost/timer/timer.hpp>|g' \
+	#   -e 's/\bboost::timer\b/boost::timer::cpu_timer/g' \
+	#   -e 's/\([A-Za-z_][A-Za-z0-9_]*\)\.elapsed()/((\1.elapsed().user+\1.elapsed().system)\/1e9)/g' \
+	#   {} +
 
 RUN cd $APP_HOME/super && \
 	mkdir build && \
