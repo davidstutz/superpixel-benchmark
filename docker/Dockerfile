@@ -44,8 +44,8 @@ RUN git clone https://github.com/davidstutz/superpixel-benchmark/ $APP_HOME/supe
 COPY docker.patch $APP_HOME/super/
 RUN cd $APP_HOME/super && \
 	git reset --hard d454f143ceee43811f4604f02661e24d60e6ed91 && \
-    git apply docker.patch && \
-    git submodule update --init --recursive 
+    git submodule update --init --recursive && \
+    git apply docker.patch
     # find . -type f \( -name '*.hpp' -o -name '*.h' -o -name '*.cpp' \) \
     #   -exec sed -i 's|#include <boost/timer.hpp>|#include <boost/timer/timer.hpp>|g' {} + && \
     # find . -type f -name '*.cpp' \
