@@ -33,10 +33,13 @@ COPY docker.patch timer-patch.sh super/
 WORKDIR $APP_HOME/super
 RUN git reset --hard d454f143ceee43811f4604f02661e24d60e6ed91 && \
     git submodule update --init --recursive && \
-	git apply docker.patch && \
+    git apply docker.patch && \
     ./timer-patch.sh && \
+    sed -i -E \
+        's|cmake_minimum_required[[:space:]]*\([[:space:]]*VERSION[[:space:]]*2\.8[[:space:]]*\)|cmake_minimum_required(VERSION 2.8.12...3.25)|' \
+        $(find . -name CMakeLists.txt) && \
     sed -i \
-        's/cimg::cut(116*fY - 16,0,100)/cimg::cut(116*fY - 16,0.0f,100.0f)/g' \
+        's/cimg::cut(116\*fY - 16,0,100)/cimg::cut(116*fY - 16,0.0f,100.0f)/g' \
         /usr/include/CImg.h
 
 # Build
@@ -44,13 +47,23 @@ WORKDIR $APP_HOME/super/build
 RUN cmake .. && make
 RUN strip --strip-unneeded $APP_HOME/super/bin/*
 
+# gather all shared‐lib deps for every binary
+RUN mkdir -p /tmp/dep_libs && \
+    for bin in $APP_HOME/super/bin/*; do \
+        ldd "$bin" \
+            | awk '/=>/ && $3 ~ /^\// { print $3 }' \
+            | sort -u \
+            | xargs -r -I '{}' cp -L '{}' /tmp/dep_libs/ ; \
+    done
+
 FROM ${BASE_IMAGE} AS runtime
 LABEL org.opencontainers.image.authors="mathematicalmichael (Michael Pilosov) <consistentbayes@gmail.com>" \
       org.opencontainers.image.source="https://github.com/davidstutz/superpixel-benchmark"
 
 ENV DEBIAN_FRONTEND=noninteractive \
     APP_HOME=/app \
-    PATH=/app/super/bin:$PATH
+    PATH=/app/super/bin:$PATH \
+    LD_LIBRARY_PATH=/app/super/lib
 
 # Minimal runtime tools & libs
 RUN apt-get update && \
@@ -65,6 +78,7 @@ RUN apt-get update && \
 # Copy superpixel-benchmark binaries and supporting files
 # Copying to '/app/super/bin' to support previous 'docker run' syntax
 COPY --from=builder $APP_HOME/super/bin $APP_HOME/super/bin
+COPY --from=builder /tmp/dep_libs/ $APP_HOME/super/lib
 
 RUN useradd -m super \
     && chown -R super:super $APP_HOME

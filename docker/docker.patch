@@ -49,6 +49,19 @@ index 104fd9d..c6b3c24 100644
  
  # Examples:
  option(BUILD_EXAMPLES "Build examples" ON)
+diff --git a/cmake/FindGlog.cmake b/cmake/FindGlog.cmake
+index a529148..944b52d 100644
+--- a/cmake/FindGlog.cmake
++++ b/cmake/FindGlog.cmake
+@@ -28,7 +28,7 @@ find_library(GLOG_LIBRARY glog libglog
+         lib
+         lib64)
+ 
+-find_package_handle_standard_args(GLOG DEFAULT_MSG
++find_package_handle_standard_args(Glog DEFAULT_MSG
+     GLOG_INCLUDE_DIR GLOG_LIBRARY)
+ 
+ if(GLOG_FOUND)
 diff --git a/dasp_cli/main.cpp b/dasp_cli/main.cpp
 index 5cf712a..7f4bdfa 100755
 --- a/dasp_cli/main.cpp
