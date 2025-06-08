@@ -5,10 +5,11 @@ RUN export DEBIAN_FRONTEND="noninteractive"
 ENV APP_HOME=/app
 
 RUN apt-get update && \
-	apt-get install -qq -y \
+	apt-get install -yqq --no-install-recommends \
 		autotools-dev \
 		automake \
 		build-essential \
+		ca-certificates \
 		cimg-dev \
 		cimg-doc \
 		cimg-examples \
