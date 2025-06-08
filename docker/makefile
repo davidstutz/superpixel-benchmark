@@ -6,7 +6,7 @@ run: build
 		-v `pwd`/in:/app/in \
 		-v `pwd`/out:/app/out \
 		-v `pwd`/raw:/app/raw:ro \
-		superpixels bash
+		superpixels:latest bash
 
 build-buster:
 	docker build --build-arg BASE_IMAGE=debian:buster-20240612-slim   -t superpixels:buster-20240612-slim .
@@ -20,8 +20,8 @@ build-bookworm:
 build-trixie:
 	docker build --build-arg BASE_IMAGE=debian:trixie-20250520-slim   -t superpixels:trixie-20250520-slim .
 
-build: build-buster
-	docker tag superpixels:buster-20240612-slim superpixels:latest
+build: build-bookworm
+	docker tag superpixels:bookworm-20250520-slim superpixels:latest
 	@echo "Superpixels container with 'latest' tag built successfully."
 
 setup-buildx:

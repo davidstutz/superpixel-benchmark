@@ -43,16 +43,14 @@ RUN git clone https://github.com/davidstutz/superpixel-benchmark/ $APP_HOME/supe
 # patch contains updates for library compatibility. 
 # NOTE: not all algorithms are built, but many (most) are. 
 COPY docker.patch $APP_HOME/super/
+# trixie compatibility patch via `sed` in `timer-patch.sh`
+COPY timer-patch.sh $APP_HOME/super/
 RUN cd $APP_HOME/super && \
 	git reset --hard d454f143ceee43811f4604f02661e24d60e6ed91 && \
 	git submodule update --init --recursive && \
-	git apply docker.patch
-	# find . -type f \( -name '*.hpp' -o -name '*.h' -o -name '*.cpp' \) \
-	# -exec sed -i \
-	#   -e 's|#include <boost/timer.hpp>|#include <boost/timer/timer.hpp>|g' \
-	#   -e 's/\bboost::timer\b/boost::timer::cpu_timer/g' \
-	#   -e 's/\([A-Za-z_][A-Za-z0-9_]*\)\.elapsed()/((\1.elapsed().user+\1.elapsed().system)\/1e9)/g' \
-	#   {} +
+	git apply docker.patch && \
+	./timer-patch.sh && \
+	sed -i 's/cimg::cut(116\*fY - 16,0,100)/cimg::cut(116*fY - 16,0.0f,100.0f)/g' /usr/include/CImg.h
 
 RUN cd $APP_HOME/super && \
 	mkdir build && \
