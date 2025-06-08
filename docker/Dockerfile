@@ -1,76 +1,76 @@
-ARG BASE_IMAGE=debian:bullseye-20250520-slim
-FROM ${BASE_IMAGE}
+ARG BASE_IMAGE=debian:bookworm-20250520-slim
+FROM ${BASE_IMAGE} AS builder
 
-RUN export DEBIAN_FRONTEND="noninteractive"
-ENV APP_HOME=/app
+ENV DEBIAN_FRONTEND=noninteractive \
+    APP_HOME=/app
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
+# Install build-time dependencies (caches apt lists between builds)
 RUN apt-get update && \
-	apt-get install -yqq --no-install-recommends \
-		autotools-dev \
-		automake \
-		build-essential \
-		ca-certificates \
-		cimg-dev \
-		cimg-doc \
-		cimg-examples \
-		cmake \
-		ffmpeg \
-		git \
-		graphicsmagick-imagemagick-compat \
-		potrace \
-		libboost-all-dev \
-		libeigen3-dev \
-		libopencv-dev \
-		libpng-dev \
-		libpng++-dev \
-		libgoogle-glog-dev \
-		libpcl-dev \
-		libusb-1.0-0 \
-		libopenni2-0 \
-		libpcap0.8 \
-		pkg-config \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
+    apt-get install -yqq --no-install-recommends \
+      autotools-dev automake build-essential \
+      ca-certificates \
+      cimg-dev cimg-doc cimg-examples \
+      cmake git \
+      libboost-all-dev \
+      libeigen3-dev \
+      libopencv-dev \
+      libpng-dev libpng++-dev \
+      libgoogle-glog-dev \
+      libpcl-dev \
+      libusb-1.0-0 libopenni2-0 libpcap0.8 \
+      pkg-config \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p $APP_HOME/
+# Eigen symlink
+RUN ln -sf /usr/include/eigen3/Eigen /usr/local/include/Eigen
 
-RUN cd /usr/local/include && \
-	ln -sf eigen3/Eigen Eigen
-	#ln -sf eigen3/unsupported unsupported
-# the commented out line above helps depending on the base image. python ones dont need it.
-
-# Clone repo and get it ready for compilation
-RUN git clone https://github.com/davidstutz/superpixel-benchmark/ $APP_HOME/super
-# patch contains updates for library compatibility. 
-# NOTE: not all algorithms are built, but many (most) are. 
-COPY docker.patch $APP_HOME/super/
-# trixie compatibility patch via `sed` in `timer-patch.sh`
-COPY timer-patch.sh $APP_HOME/super/
-RUN cd $APP_HOME/super && \
-	git reset --hard d454f143ceee43811f4604f02661e24d60e6ed91 && \
-	git submodule update --init --recursive && \
-	git apply docker.patch && \
-	./timer-patch.sh && \
-	sed -i 's/cimg::cut(116\*fY - 16,0,100)/cimg::cut(116*fY - 16,0.0f,100.0f)/g' /usr/include/CImg.h
-
-RUN cd $APP_HOME/super && \
-	mkdir build && \
-	cd build && \
-	#cmake .. -DGLOG_ROOT_DIR=/app/glog && \
-	cmake .. && \
-	make
-
+# Clone + patch (timer-patch.sh is boost::timer updates + a fix to CImg.h for debian:trixie)
 WORKDIR $APP_HOME
-# dumb-init for proper handling of control-signals when interacting with the container
-RUN apt-get update && \
-	apt-get install -qq -y \
-	dumb-init \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/*
+RUN git clone https://github.com/davidstutz/superpixel-benchmark.git super
+COPY docker.patch timer-patch.sh super/
 
-# adding a non-root user, helps with permissions on mounted volumes
-RUN useradd -m super
-RUN chown -R super:super $APP_HOME
+WORKDIR $APP_HOME/super
+RUN git reset --hard d454f143ceee43811f4604f02661e24d60e6ed91 && \
+    git submodule update --init --recursive && \
+	git apply docker.patch && \
+    ./timer-patch.sh && \
+    sed -i \
+        's/cimg::cut(116*fY - 16,0,100)/cimg::cut(116*fY - 16,0.0f,100.0f)/g' \
+        /usr/include/CImg.h
+
+# Build
+WORKDIR $APP_HOME/super/build
+RUN cmake .. && make
+RUN strip --strip-unneeded $APP_HOME/super/bin/*
+
+FROM ${BASE_IMAGE} AS runtime
+LABEL org.opencontainers.image.authors="mathematicalmichael (Michael Pilosov) <consistentbayes@gmail.com>" \
+      org.opencontainers.image.source="https://github.com/davidstutz/superpixel-benchmark"
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    APP_HOME=/app \
+    PATH=/app/super/bin:$PATH
+
+# Minimal runtime tools & libs
+RUN apt-get update && \
+    apt-get install -yqq --no-install-recommends \
+      ca-certificates \
+      ffmpeg \
+      potrace \
+      graphicsmagick-imagemagick-compat \
+      dumb-init \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy superpixel-benchmark binaries and supporting files
+# Copying to '/app/super/bin' to support previous 'docker run' syntax
+COPY --from=builder $APP_HOME/super/bin $APP_HOME/super/bin
+
+RUN useradd -m super \
+    && chown -R super:super $APP_HOME
+
 USER super
+WORKDIR $APP_HOME
+
 ENTRYPOINT ["dumb-init", "--"]
 CMD ["bash"]
