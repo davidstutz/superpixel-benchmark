@@ -66,7 +66,7 @@ RUN apt-get update && \
 	apt-get install -qq -y \
 	dumb-init \
 	&& apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+	&& rm -rf /var/lib/apt/lists/*
 
 # adding a non-root user, helps with permissions on mounted volumes
 RUN useradd -m super
