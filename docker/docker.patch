@@ -863,6 +863,27 @@ index ef97cdc..7eb197e 100644
  void
  _vl_x86cpu_info_init (VlX86CpuInfo *self)
  {
+diff --git a/lib_vccs/CMakeLists.txt b/lib_vccs/CMakeLists.txt
+index 5fd196b..2733372 100644
+--- a/lib_vccs/CMakeLists.txt
++++ b/lib_vccs/CMakeLists.txt
+@@ -32,7 +32,15 @@ cmake_minimum_required (VERSION 2.8)
+ project (superpixel_benchmark)
+ 
+ find_package(OpenCV REQUIRED)
+-find_package(PCL REQUIRED)
++
++if(NOT TARGET JsonCpp::JsonCpp)
++  add_library(JsonCpp::JsonCpp INTERFACE IMPORTED)
++  set_target_properties(JsonCpp::JsonCpp PROPERTIES
++    INTERFACE_INCLUDE_DIRECTORIES "/usr/include/jsoncpp"
++    INTERFACE_LINK_LIBRARIES jsoncpp)
++endif()
++find_package(PCL REQUIRED COMPONENTS common io filters kdtree search sample_consensus features ml registration segmentation)
++
+ include_directories(${PCL_INCLUDE_DIRS} ${EIGEN_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
+ # link_directories(${PCL_LIBRARY_DIRS})
+ # add_definitions(${PCL_DEFINITIONS})
 diff --git a/lib_vccs/vccs_opencv_pcl.cpp b/lib_vccs/vccs_opencv_pcl.cpp
 index f3cf45a..94b500b 100644
 --- a/lib_vccs/vccs_opencv_pcl.cpp
@@ -904,6 +925,26 @@ index ef97cdc..7eb197e 100644
  void
  _vl_x86cpu_info_init (VlX86CpuInfo *self)
  {
+diff --git a/vccs_cli/CMakeLists.txt b/vccs_cli/CMakeLists.txt
+index 5976e0e..3cd52c3 100755
+--- a/vccs_cli/CMakeLists.txt
++++ b/vccs_cli/CMakeLists.txt
+@@ -32,7 +32,14 @@ include_directories(../lib_seeds_revised_depth/)
+ 
+ find_package(Boost COMPONENTS system filesystem program_options REQUIRED)
+ find_package(OpenCV REQUIRED)
+-find_package(PCL REQUIRED)
++
++if(NOT TARGET JsonCpp::JsonCpp)
++  add_library(JsonCpp::JsonCpp INTERFACE IMPORTED)
++  set_target_properties(JsonCpp::JsonCpp PROPERTIES
++    INTERFACE_INCLUDE_DIRECTORIES "/usr/include/jsoncpp"
++    INTERFACE_LINK_LIBRARIES jsoncpp)
++endif()
++find_package(PCL REQUIRED COMPONENTS common io filters kdtree search sample_consensus features ml registration segmentation)
+ 
+ include_directories(../lib_eval/
+     ../lib_vccs/
 diff --git a/vccs_cli/main.cpp b/vccs_cli/main.cpp
 index 49af72c..0c1ee9c 100755
 --- a/vccs_cli/main.cpp

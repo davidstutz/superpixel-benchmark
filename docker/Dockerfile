@@ -17,8 +17,8 @@ RUN apt-get update && \
       libopencv-dev \
       libpng-dev libpng++-dev \
       libgoogle-glog-dev \
-      libpcl-dev \
-      libusb-1.0-0 libopenni2-0 libpcap0.8 \
+      libpcl-dev libflann-dev \
+      libusb-1.0-0-dev libopenni2-0 libpcap0.8 \
       pkg-config \
     && rm -rf /var/lib/apt/lists/*
 
@@ -38,6 +38,8 @@ RUN git reset --hard d454f143ceee43811f4604f02661e24d60e6ed91 && \
     sed -i -E \
         's|cmake_minimum_required[[:space:]]*\([[:space:]]*VERSION[[:space:]]*2\.8[[:space:]]*\)|cmake_minimum_required(VERSION 2.8.12...3.25)|' \
         $(find . -name CMakeLists.txt) && \
+    find . -name CMakeLists.txt -exec sed -i '/find_package(Boost/i\
+        if(POLICY CMP0167)\n  cmake_policy(SET CMP0167 NEW)\nendif()\n' {} + && \
     sed -i \
         's/cimg::cut(116\*fY - 16,0,100)/cimg::cut(116*fY - 16,0.0f,100.0f)/g' \
         /usr/include/CImg.h
