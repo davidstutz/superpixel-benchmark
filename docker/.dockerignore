@@ -1,3 +1,4 @@
 README.md
 makefile
-*.sh
+push-*.sh
+diff.sh
