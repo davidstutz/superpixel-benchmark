@@ -6,6 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install build-time dependencies (caches apt lists between builds)
+RUN echo 'Acquire::Retries "5";' > /etc/apt/apt.conf.d/80-retries
 RUN apt-get update && \
     apt-get install -yqq --no-install-recommends \
       autotools-dev automake build-essential \
@@ -70,10 +71,10 @@ ENV DEBIAN_FRONTEND=noninteractive \
 # Minimal runtime tools & libs
 RUN apt-get update && \
     apt-get install -yqq --no-install-recommends \
-      ca-certificates \
-      ffmpeg \
-      potrace \
-      graphicsmagick-imagemagick-compat \
+    #   ca-certificates \
+    #   ffmpeg \
+    #   potrace \
+    #   graphicsmagick-imagemagick-compat \
       dumb-init \
     && rm -rf /var/lib/apt/lists/*
 
