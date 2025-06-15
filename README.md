@@ -24,6 +24,7 @@ Also make also sure to cite additional papers when using datasets or superpixel 
 
 **Updates:**
 
+* The docker files have been updated to the latest debian releases as well as ARM64 in [PR18](https://github.com/davidstutz/superpixel-benchmark/pull/18).
 * A docker implementation containing many of the algorithms was added to [./docker](./docker/).
 * An implementation of the average metrics, i.e. Average Boundary Recall (called
 Average Miss Rate in the updated paper), Average Undersegmentation Error
@@ -96,7 +97,7 @@ this repository:
 
 Included                                   | Algorithm    | Reference
 -------------------------------------------|--------------|-----------
-:ballot_box_with_check:                    | CCS          | [Ref. & Web](http://www.emrahtasli.com/research/spextraction/)
+:ballot_box_with_check:                    | CCS          | Ref. & Web (link remove, please check paper)
 [Instructions](docs/BUILDING_CIS.md)       | CIS          | [Ref.](http://www.csd.uwo.ca/~olga/Papers/eccv2010final.pdf) & [Web](http://www.csd.uwo.ca/faculty/olga/)
 :ballot_box_with_check:                    | CRS          | [Ref.](http://link.springer.com/chapter/10.1007%2F978-3-642-40395-8_21#page-1) & [Web](http://www.vsi.cs.uni-frankfurt.de/research/superpixel-segmentation/)
 :ballot_box_with_check:                    | CW           | [Ref.](https://www.tu-chemnitz.de/etit/proaut/rsrc/cws_pSLIC_ICPR.pdf) & [Web](https://www.tu-chemnitz.de/etit/proaut/forschung/cv/segmentation.html.en)
