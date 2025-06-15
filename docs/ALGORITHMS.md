@@ -7,7 +7,7 @@ corresponding references are given below the table.
 
 Algorithm    | Library       | Executable    | Implementation | License    | Reference | Link
 -------------|---------------|---------------|----------------|------------|-----------|-----
-CCS          | `lib_ccs`     | `ccs_cli`     | C++            | ?          | [22,23]   | [Web](http://www.emrahtasli.com/research/spextraction/)
+CCS          | `lib_ccs`     | `ccs_cli`     | C++            | ?          | [22,23]   | Web  (link remove, please check paper)
 CIS          | `lib_cis`     | `cis_cli`     | C++            | non-comm.  | [10]      | [Web](http://www.csd.uwo.ca/faculty/olga/)
 CRS          | `lib_crs`     | `crs_cli`     | C++            | GPL3       | [13,14]   | [Web](http://www.vsi.cs.uni-frankfurt.de/research/superpixel-segmentation/)
 CW           | `lib_cw`      | `cw_cli`      | C++            | GPL3       | [25]      | [Web](https://www.tu-chemnitz.de/etit/proaut/forschung/cv/segmentation.html.en)
