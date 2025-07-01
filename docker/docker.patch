@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 104fd9d..c6b3c24 100644
+index 104fd9d..1d158cc 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -31,6 +31,10 @@
@@ -21,13 +21,14 @@ index 104fd9d..c6b3c24 100644
 -option(BUILD_MSS "Build MSS" OFF)
 -option(BUILD_PB "Build PB" OFF)
 -option(BUILD_PRESLIC "Build preSLIC" OFF)
-+# CW is OFF b/c cvGetMatSize declaration error
-+# CIS is OFF bc of licensing
+-option(BUILD_CW "Build CW" OFF)
++# CIS is OFF due to restrictive licensing
++
 +option(BUILD_FH "Build FH" ON)
 +option(BUILD_MSS "Build MSS" ON)
 +option(BUILD_PB "Build PB" ON)
 +option(BUILD_PRESLIC "Build preSLIC" ON)
- option(BUILD_CW "Build CW" OFF)
++option(BUILD_CW "Build CW" ON)
  option(BUILD_CIS "Build CIS" OFF)
 -option(BUILD_W "Build W" OFF)
 -option(BUILD_LSC "Build LSC" OFF)
@@ -234,6 +235,57 @@ index 01992f1..19018e0 100644
  /** \brief Wrapper for running CRS on OpenCV images.
   * \author David Stutz
   */
+diff --git a/lib_cw/compact_watershed.cpp b/lib_cw/compact_watershed.cpp
+index d85c8d7..ab87c39 100644
+--- a/lib_cw/compact_watershed.cpp
++++ b/lib_cw/compact_watershed.cpp
+@@ -67,7 +67,9 @@
+  */
+ 
+ #include "compact_watershed.h"
+-#include <cxmisc.h>
++#include <opencv2/core/version.hpp>
++#include <opencv2/core/core_c.h>
++#include <opencv2/core/types_c.h>
+ 
+ /****************************************************************************************\
+ *                                Compact Watershed                                      *
+@@ -192,7 +194,7 @@ namespace cws
+       if( !CV_ARE_SIZES_EQ( src, dst ))
+           CV_Error( CV_StsUnmatchedSizes, "The input and output images must have the same size" );
+ 
+-      size = cvGetMatSize(src);
++      size = cvSize(src->cols, src->rows);
+       storage = cvCreateMemStorage();
+ 
+       istep = src->step;
+@@ -353,11 +355,22 @@ namespace cws
+   }
+ 
+ 
+-  void compact_watershed( InputArray _src, InputOutputArray markers , float compValStep)
++  void compact_watershed(InputArray _src, InputOutputArray markers, float compValStep)
+   {
+-      Mat src = _src.getMat();
+-      CvMat c_src = _src.getMat(), c_markers = markers.getMat();
+-      cws::cvWatershed( &c_src, &c_markers,compValStep );
++    cv::Mat src = _src.getMat();
++    cv::Mat markerMat = markers.getMat();
++
++    #if CV_VERSION_MAJOR < 4
++      // OpenCV 2.x/3.x: Use the old C API conversion
++      CvMat c_src = src;
++      CvMat c_markers = markerMat;
++      cws::cvWatershed(&c_src, &c_markers, compValStep);
++    #else
++      // OpenCV 4.x: C API is deprecated; use the data pointer to create a CvMat header
++      CvMat c_src = cvMat(src.rows, src.cols, src.type(), src.data);
++      CvMat c_markers = cvMat(markerMat.rows, markerMat.cols, markerMat.type(), markerMat.data);
++      cws::cvWatershed(&c_src, &c_markers, compValStep);
++    #endif
+   }
+ } // namespace cws
+ 
 diff --git a/lib_dasp/lib_dasp/Graph.hpp b/lib_dasp/lib_dasp/Graph.hpp
 index f095835..75d3f85 100755
 --- a/lib_dasp/lib_dasp/Graph.hpp
